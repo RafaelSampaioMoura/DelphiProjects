@@ -2,68 +2,92 @@ object TextEditorForm: TTextEditorForm
   Left = 0
   Top = 0
   Caption = 'Text Editor'
-  ClientHeight = 400
+  ClientHeight = 406
   ClientWidth = 400
   Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnKeyUp = FormKeyUp
+  OnMouseUp = FormMouseUp
   DesignerMasterStyle = 0
   object StatusBar1: TStatusBar
-    Position.Y = 378.000000000000000000
+    Position.Y = 382.000000000000000000
     ShowSizeGrip = True
     Size.Width = 400.000000000000000000
-    Size.Height = 22.000000000000000000
+    Size.Height = 24.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
     object StatusBar: TStatusBar
       ShowSizeGrip = True
       Size.Width = 400.000000000000000000
-      Size.Height = 22.000000000000000000
+      Size.Height = 24.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       object Editor: TMemo
         Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
         DataDetectorTypes = []
-        Position.X = 8.000000000000000000
-        Position.Y = -344.000000000000000000
-        Size.Width = 385.000000000000000000
-        Size.Height = 337.000000000000000000
+        Position.Y = -392.000000000000000000
+        Size.Width = 400.000000000000000000
+        Size.Height = 385.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
-        Viewport.Width = 381.000000000000000000
-        Viewport.Height = 333.000000000000000000
+        Viewport.Width = 396.000000000000000000
+        Viewport.Height = 381.000000000000000000
+      end
+      object LineNumber: TLabel
+        TabOrder = 1
+      end
+      object LineCount: TLabel
+        Position.X = 280.000000000000000000
+        TabOrder = 2
+      end
+      object ColumnNumber: TLabel
+        Position.X = 136.000000000000000000
+        Size.Width = 120.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
       end
     end
   end
   object ActionList: TActionList
+    Left = 24
+    Top = 312
     object NewAction: TAction
       Category = 'File'
       Text = 'New'
       ShortCut = 16462
+      OnExecute = NewActionExecute
     end
     object OpenAction: TAction
       Category = 'File'
       Text = 'Open'
       ShortCut = 16463
+      OnExecute = OpenActionExecute
     end
     object SaveAction: TAction
       Category = 'File'
       Text = 'Save'
       ShortCut = 16467
+      OnExecute = SaveActionExecute
     end
     object SaveAsAction: TAction
       Category = 'File'
       Text = 'SaveAs'
+      OnExecute = SaveAsActionExecute
     end
     object ExitAction: TAction
       Category = 'File'
       Text = 'Exit'
+      OnExecute = ExitActionExecute
     end
     object CutAction: TAction
       Category = 'Edit'
       Text = 'Cut'
       ShortCut = 16472
+      OnExecute = CutActionExecute
     end
     object CopyAction: TAction
       Category = 'Edit'
@@ -96,7 +120,8 @@ object TextEditorForm: TTextEditorForm
     end
   end
   object MainMenu: TMainMenu
-    Left = 32
+    Left = 136
+    Top = 312
     object FileMenu: TMenuItem
       Text = 'File'
       object NewMenu: TMenuItem
@@ -182,9 +207,11 @@ object TextEditorForm: TTextEditorForm
     end
   end
   object OpenDialog: TOpenDialog
-    Left = 64
+    Left = 232
+    Top = 312
   end
   object SaveDialog: TSaveDialog
-    Left = 96
+    Left = 328
+    Top = 312
   end
 end

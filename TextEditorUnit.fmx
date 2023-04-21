@@ -93,6 +93,7 @@ object TextEditorForm: TTextEditorForm
       Category = 'Edit'
       Text = 'Copy'
       ShortCut = 16451
+      OnExecute = CopyActionExecute
     end
     object PasteAction: TAction
       Category = 'Edit'
