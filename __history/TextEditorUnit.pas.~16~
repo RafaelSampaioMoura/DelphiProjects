@@ -57,7 +57,6 @@ type
     procedure SaveActionExecute(Sender: TObject);
     procedure SaveAsActionExecute(Sender: TObject);
     procedure ExitActionExecute(Sender: TObject);
-    procedure CutActionExecute(Sender: TObject);
   private
     { Private declarations }
     CurrentFile: String;
@@ -78,12 +77,6 @@ uses
   FMX.DialogService.Sync;
 
 { TTextEditorForm }
-
-procedure TTextEditorForm.CutActionExecute(Sender: TObject);
-begin
-  Editor.CutToClipboard;
-  UpdateStatusBar;
-end;
 
 procedure TTextEditorForm.ExitActionExecute(Sender: TObject);
 begin

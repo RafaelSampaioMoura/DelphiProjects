@@ -2,7 +2,7 @@ object TextEditorForm: TTextEditorForm
   Left = 0
   Top = 0
   Caption = 'Text Editor'
-  ClientHeight = 406
+  ClientHeight = 400
   ClientWidth = 400
   Position = ScreenCenter
   FormFactor.Width = 320
@@ -13,7 +13,7 @@ object TextEditorForm: TTextEditorForm
   OnMouseUp = FormMouseUp
   DesignerMasterStyle = 0
   object StatusBar1: TStatusBar
-    Position.Y = 382.000000000000000000
+    Position.Y = 376.000000000000000000
     ShowSizeGrip = True
     Size.Width = 400.000000000000000000
     Size.Height = 24.000000000000000000
@@ -87,7 +87,6 @@ object TextEditorForm: TTextEditorForm
       Category = 'Edit'
       Text = 'Cut'
       ShortCut = 16472
-      OnExecute = CutActionExecute
     end
     object CopyAction: TAction
       Category = 'Edit'
