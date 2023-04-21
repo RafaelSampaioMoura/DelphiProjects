@@ -220,7 +220,6 @@ procedure TTextEditorForm.WordWrapActionExecute(Sender: TObject);
 begin
   Editor.WordWrap := not Editor.WordWrap;
   WordWrapAction.Checked := Editor.WordWrap;
-  UpdateStatusBar;
 end;
 
 end.

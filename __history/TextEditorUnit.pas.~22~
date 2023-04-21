@@ -54,6 +54,15 @@ type
       Shift: TShiftState; X, Y: Single);
     procedure NewActionExecute(Sender: TObject);
     procedure OpenActionExecute(Sender: TObject);
+    procedure SaveActionExecute(Sender: TObject);
+    procedure SaveAsActionExecute(Sender: TObject);
+    procedure ExitActionExecute(Sender: TObject);
+    procedure CutActionExecute(Sender: TObject);
+    procedure CopyActionExecute(Sender: TObject);
+    procedure PasteActionExecute(Sender: TObject);
+    procedure SelectAllActionExecute(Sender: TObject);
+    procedure UndoActionExecute(Sender: TObject);
+    procedure DeleteActionExecute(Sender: TObject);
   private
     { Private declarations }
     CurrentFile: String;
@@ -74,6 +83,31 @@ uses
   FMX.DialogService.Sync;
 
 { TTextEditorForm }
+
+procedure TTextEditorForm.CopyActionExecute(Sender: TObject);
+begin
+  Editor.CopyToClipboard;
+end;
+
+procedure TTextEditorForm.CutActionExecute(Sender: TObject);
+begin
+  Editor.CutToClipboard;
+  UpdateStatusBar;
+end;
+
+procedure TTextEditorForm.DeleteActionExecute(Sender: TObject);
+begin
+  if Editor.SelLength > 0 then
+    Editor.DeleteSelection
+  else
+    Editor.DeleteFrom(Editor.CaretPosition, 1, [TDeleteOption.MoveCaret]);
+  UpdateStatusBar;
+end;
+
+procedure TTextEditorForm.ExitActionExecute(Sender: TObject);
+begin
+  Application.Terminate;
+end;
 
 procedure TTextEditorForm.FormCreate(Sender: TObject);
   begin
@@ -124,6 +158,54 @@ begin
         Caption := 'TextEditor - ' + ExtractFileName(FileName);
       end;
   end;
+end;
+
+procedure TTextEditorForm.PasteActionExecute(Sender: TObject);
+begin
+  Editor.PasteFromClipboard;
+  UpdateStatusBar;
+end;
+
+procedure TTextEditorForm.SaveActionExecute(Sender: TObject);
+begin
+  if CurrentFile = '' then
+    SaveAsAction.Execute()
+  else
+    Editor.Lines.SaveToFile(CurrentFile);
+end;
+
+procedure TTextEditorForm.SaveAsActionExecute(Sender: TObject);
+var
+  FileName: String;
+  UserResponse: TModalResult;
+begin
+  if SaveDialog.Execute = True then
+  begin
+    FileName := SaveDialog.FileName;
+    if FileExists(FileName) then
+    begin
+      UserResponse := TDialogServiceSync.MessageDialog(
+      'File already exists. Do you want to overwrite?',
+      TMsgDlgType.mtInformation, mbYesNo, TMsgDlgBtn.mbYes, 0);
+    if UserResponse = mrNo then
+      Exit();
+    end;
+    Editor.Lines.SaveToFile(FileName);
+    CurrentFile := FileName;
+    Caption := 'TextEditor - ' + ExtractFileName(FileName);
+  end;
+end;
+
+procedure TTextEditorForm.SelectAllActionExecute(Sender: TObject);
+begin
+  Editor.SelectAll;
+  UpdateStatusBar;
+end;
+
+procedure TTextEditorForm.UndoActionExecute(Sender: TObject);
+begin
+  Editor.UnDo;
+  UpdateStatusBar;
 end;
 
 procedure TTextEditorForm.UpdateStatusBar;

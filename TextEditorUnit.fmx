@@ -122,6 +122,7 @@ object TextEditorForm: TTextEditorForm
     object WordWrapAction: TAction
       Category = 'Format'
       Text = 'WordWrap'
+      OnExecute = WordWrapActionExecute
     end
   end
   object MainMenu: TMainMenu
