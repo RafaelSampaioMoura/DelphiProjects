@@ -62,7 +62,6 @@ type
     procedure PasteActionExecute(Sender: TObject);
     procedure SelectAllActionExecute(Sender: TObject);
     procedure UndoActionExecute(Sender: TObject);
-    procedure DeleteActionExecute(Sender: TObject);
   private
     { Private declarations }
     CurrentFile: String;
@@ -92,15 +91,6 @@ end;
 procedure TTextEditorForm.CutActionExecute(Sender: TObject);
 begin
   Editor.CutToClipboard;
-  UpdateStatusBar;
-end;
-
-procedure TTextEditorForm.DeleteActionExecute(Sender: TObject);
-begin
-  if Editor.SelLength > 0 then
-    Editor.DeleteSelection
-  else
-    Editor.DeleteFrom(Editor.CaretPosition, 1, [TDeleteOption.MoveCaret]);
   UpdateStatusBar;
 end;
 

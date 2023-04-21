@@ -117,6 +117,7 @@ object TextEditorForm: TTextEditorForm
       Category = 'Edit'
       Text = 'Delete'
       ShortCut = 46
+      OnExecute = DeleteActionExecute
     end
     object WordWrapAction: TAction
       Category = 'Format'
