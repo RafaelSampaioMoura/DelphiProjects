@@ -54,7 +54,6 @@ type
       Shift: TShiftState; X, Y: Single);
     procedure NewActionExecute(Sender: TObject);
     procedure OpenActionExecute(Sender: TObject);
-    procedure SaveActionExecute(Sender: TObject);
   private
     { Private declarations }
     CurrentFile: String;
@@ -125,14 +124,6 @@ begin
         Caption := 'TextEditor - ' + ExtractFileName(FileName);
       end;
   end;
-end;
-
-procedure TTextEditorForm.SaveActionExecute(Sender: TObject);
-begin
-  if CurrentFile = '' then
-    SaveAsAction.Execute()
-  else
-    Editor.Lines.SaveToFile(CurrentFile);
 end;
 
 procedure TTextEditorForm.UpdateStatusBar;

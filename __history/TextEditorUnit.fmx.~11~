@@ -9,8 +9,6 @@ object TextEditorForm: TTextEditorForm
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
-  OnKeyUp = FormKeyUp
-  OnMouseUp = FormMouseUp
   DesignerMasterStyle = 0
   object StatusBar1: TStatusBar
     Position.Y = 376.000000000000000000
@@ -59,19 +57,16 @@ object TextEditorForm: TTextEditorForm
       Category = 'File'
       Text = 'New'
       ShortCut = 16462
-      OnExecute = NewActionExecute
     end
     object OpenAction: TAction
       Category = 'File'
       Text = 'Open'
       ShortCut = 16463
-      OnExecute = OpenActionExecute
     end
     object SaveAction: TAction
       Category = 'File'
       Text = 'Save'
       ShortCut = 16467
-      OnExecute = SaveActionExecute
     end
     object SaveAsAction: TAction
       Category = 'File'

@@ -8,9 +8,6 @@ object TextEditorForm: TTextEditorForm
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnCreate = FormCreate
-  OnKeyUp = FormKeyUp
-  OnMouseUp = FormMouseUp
   DesignerMasterStyle = 0
   object StatusBar1: TStatusBar
     Position.Y = 376.000000000000000000
@@ -37,10 +34,6 @@ object TextEditorForm: TTextEditorForm
         Viewport.Height = 381.000000000000000000
       end
       object LineNumber: TLabel
-        TabOrder = 1
-      end
-      object LineCount: TLabel
-        Position.X = 280.000000000000000000
         TabOrder = 2
       end
       object ColumnNumber: TLabel
@@ -49,6 +42,10 @@ object TextEditorForm: TTextEditorForm
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 3
+      end
+      object LineCount: TLabel
+        Position.X = 280.000000000000000000
+        TabOrder = 4
       end
     end
   end
@@ -59,19 +56,16 @@ object TextEditorForm: TTextEditorForm
       Category = 'File'
       Text = 'New'
       ShortCut = 16462
-      OnExecute = NewActionExecute
     end
     object OpenAction: TAction
       Category = 'File'
       Text = 'Open'
       ShortCut = 16463
-      OnExecute = OpenActionExecute
     end
     object SaveAction: TAction
       Category = 'File'
       Text = 'Save'
       ShortCut = 16467
-      OnExecute = SaveActionExecute
     end
     object SaveAsAction: TAction
       Category = 'File'

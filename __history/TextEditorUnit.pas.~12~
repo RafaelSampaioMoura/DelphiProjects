@@ -52,9 +52,6 @@ type
       Shift: TShiftState);
     procedure FormMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Single);
-    procedure NewActionExecute(Sender: TObject);
-    procedure OpenActionExecute(Sender: TObject);
-    procedure SaveActionExecute(Sender: TObject);
   private
     { Private declarations }
     CurrentFile: String;
@@ -69,10 +66,6 @@ var
 implementation
 
 {$R *.fmx}
-
-uses
-
-  FMX.DialogService.Sync;
 
 { TTextEditorForm }
 
@@ -92,47 +85,6 @@ procedure TTextEditorForm.FormMouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Single);
 begin
   UpdateStatusBar;
-end;
-
-procedure TTextEditorForm.NewActionExecute(Sender: TObject);
-var
-  UserResponse: Integer;
-begin
-  if not Editor.Text.IsEmpty then
-  begin
-    UserResponse := TDialogServiceSync.MessageDialog(
-      'This will clear the current Document. Do you want to continue?',
-      TMsgDlgType.mtInformation, mbYesNo, TMsgDlgBtn.mbYes, 0);
-    if UserResponse = mrYes then
-    begin
-      Editor.Text := '';  // Initialize the memo count line to "1"
-      Editor.Lines.Add('') // New files have no file name until saved
-    end;
-  end;
-end;
-
-procedure TTextEditorForm.OpenActionExecute(Sender: TObject);
-var
-  FileName: String;
-begin
-  if OpenDialog.Execute = True then
-  begin
-    FileName := OpenDialog.FileName;
-    if FileExists(FileName) then
-      begin
-        Editor.Lines.LoadFromFile(FileName);
-        CurrentFile := FileName;
-        Caption := 'TextEditor - ' + ExtractFileName(FileName);
-      end;
-  end;
-end;
-
-procedure TTextEditorForm.SaveActionExecute(Sender: TObject);
-begin
-  if CurrentFile = '' then
-    SaveAsAction.Execute()
-  else
-    Editor.Lines.SaveToFile(CurrentFile);
 end;
 
 procedure TTextEditorForm.UpdateStatusBar;

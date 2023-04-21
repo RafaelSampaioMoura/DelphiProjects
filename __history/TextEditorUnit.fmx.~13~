@@ -71,7 +71,6 @@ object TextEditorForm: TTextEditorForm
       Category = 'File'
       Text = 'Save'
       ShortCut = 16467
-      OnExecute = SaveActionExecute
     end
     object SaveAsAction: TAction
       Category = 'File'
