@@ -59,7 +59,6 @@ type
     procedure ExitActionExecute(Sender: TObject);
     procedure CutActionExecute(Sender: TObject);
     procedure CopyActionExecute(Sender: TObject);
-    procedure PasteActionExecute(Sender: TObject);
   private
     { Private declarations }
     CurrentFile: String;
@@ -146,12 +145,6 @@ begin
         Caption := 'TextEditor - ' + ExtractFileName(FileName);
       end;
   end;
-end;
-
-procedure TTextEditorForm.PasteActionExecute(Sender: TObject);
-begin
-  Editor.PasteFromClipboard;
-  UpdateStatusBar;
 end;
 
 procedure TTextEditorForm.SaveActionExecute(Sender: TObject);
