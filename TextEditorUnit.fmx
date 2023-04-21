@@ -105,6 +105,7 @@ object TextEditorForm: TTextEditorForm
       Category = 'Edit'
       Text = 'SelectAll'
       ShortCut = 16449
+      OnExecute = SelectAllActionExecute
     end
     object UndoAction: TAction
       Category = 'Edit'

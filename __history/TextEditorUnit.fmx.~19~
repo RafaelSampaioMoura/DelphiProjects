@@ -2,15 +2,18 @@ object TextEditorForm: TTextEditorForm
   Left = 0
   Top = 0
   Caption = 'Text Editor'
-  ClientHeight = 400
+  ClientHeight = 406
   ClientWidth = 400
   Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnKeyUp = FormKeyUp
+  OnMouseUp = FormMouseUp
   DesignerMasterStyle = 0
   object StatusBar1: TStatusBar
-    Position.Y = 376.000000000000000000
+    Position.Y = 382.000000000000000000
     ShowSizeGrip = True
     Size.Width = 400.000000000000000000
     Size.Height = 24.000000000000000000
@@ -34,6 +37,10 @@ object TextEditorForm: TTextEditorForm
         Viewport.Height = 381.000000000000000000
       end
       object LineNumber: TLabel
+        TabOrder = 1
+      end
+      object LineCount: TLabel
+        Position.X = 280.000000000000000000
         TabOrder = 2
       end
       object ColumnNumber: TLabel
@@ -42,10 +49,6 @@ object TextEditorForm: TTextEditorForm
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 3
-      end
-      object LineCount: TLabel
-        Position.X = 280.000000000000000000
-        TabOrder = 4
       end
     end
   end
@@ -56,39 +59,47 @@ object TextEditorForm: TTextEditorForm
       Category = 'File'
       Text = 'New'
       ShortCut = 16462
+      OnExecute = NewActionExecute
     end
     object OpenAction: TAction
       Category = 'File'
       Text = 'Open'
       ShortCut = 16463
+      OnExecute = OpenActionExecute
     end
     object SaveAction: TAction
       Category = 'File'
       Text = 'Save'
       ShortCut = 16467
+      OnExecute = SaveActionExecute
     end
     object SaveAsAction: TAction
       Category = 'File'
       Text = 'SaveAs'
+      OnExecute = SaveAsActionExecute
     end
     object ExitAction: TAction
       Category = 'File'
       Text = 'Exit'
+      OnExecute = ExitActionExecute
     end
     object CutAction: TAction
       Category = 'Edit'
       Text = 'Cut'
       ShortCut = 16472
+      OnExecute = CutActionExecute
     end
     object CopyAction: TAction
       Category = 'Edit'
       Text = 'Copy'
       ShortCut = 16451
+      OnExecute = CopyActionExecute
     end
     object PasteAction: TAction
       Category = 'Edit'
       Text = 'Paste'
       ShortCut = 16470
+      OnExecute = PasteActionExecute
     end
     object SelectAllAction: TAction
       Category = 'Edit'

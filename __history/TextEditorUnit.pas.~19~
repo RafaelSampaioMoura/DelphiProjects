@@ -60,7 +60,6 @@ type
     procedure CutActionExecute(Sender: TObject);
     procedure CopyActionExecute(Sender: TObject);
     procedure PasteActionExecute(Sender: TObject);
-    procedure SelectAllActionExecute(Sender: TObject);
   private
     { Private declarations }
     CurrentFile: String;
@@ -183,12 +182,6 @@ begin
     CurrentFile := FileName;
     Caption := 'TextEditor - ' + ExtractFileName(FileName);
   end;
-end;
-
-procedure TTextEditorForm.SelectAllActionExecute(Sender: TObject);
-begin
-  Editor.SelectAll;
-  UpdateStatusBar;
 end;
 
 procedure TTextEditorForm.UpdateStatusBar;
