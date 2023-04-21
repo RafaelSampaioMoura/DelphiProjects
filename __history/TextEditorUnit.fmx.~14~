@@ -76,7 +76,6 @@ object TextEditorForm: TTextEditorForm
     object SaveAsAction: TAction
       Category = 'File'
       Text = 'SaveAs'
-      OnExecute = SaveAsActionExecute
     end
     object ExitAction: TAction
       Category = 'File'

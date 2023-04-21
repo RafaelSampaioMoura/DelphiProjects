@@ -55,7 +55,6 @@ type
     procedure NewActionExecute(Sender: TObject);
     procedure OpenActionExecute(Sender: TObject);
     procedure SaveActionExecute(Sender: TObject);
-    procedure SaveAsActionExecute(Sender: TObject);
   private
     { Private declarations }
     CurrentFile: String;
@@ -134,28 +133,6 @@ begin
     SaveAsAction.Execute()
   else
     Editor.Lines.SaveToFile(CurrentFile);
-end;
-
-procedure TTextEditorForm.SaveAsActionExecute(Sender: TObject);
-var
-  FileName: String;
-  UserResponse: TModalResult;
-begin
-  if SaveDialog.Execute = True then
-  begin
-    FileName := SaveDialog.FileName;
-    if FileExists(FileName) then
-    begin
-      UserResponse := TDialogServiceSync.MessageDialog(
-      'File already exists. Do you want to overwrite?',
-      TMsgDlgType.mtInformation, mbYesNo, TMsgDlgBtn.mbYes, 0);
-    if UserResponse = mrNo then
-      Exit();
-    end;
-    Editor.Lines.SaveToFile(FileName);
-    CurrentFile := FileName;
-    Caption := 'TextEditor - ' + ExtractFileName(FileName);
-  end;
 end;
 
 procedure TTextEditorForm.UpdateStatusBar;
