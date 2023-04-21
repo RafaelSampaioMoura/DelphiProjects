@@ -81,7 +81,6 @@ object TextEditorForm: TTextEditorForm
     object ExitAction: TAction
       Category = 'File'
       Text = 'Exit'
-      OnExecute = ExitActionExecute
     end
     object CutAction: TAction
       Category = 'Edit'

@@ -56,7 +56,6 @@ type
     procedure OpenActionExecute(Sender: TObject);
     procedure SaveActionExecute(Sender: TObject);
     procedure SaveAsActionExecute(Sender: TObject);
-    procedure ExitActionExecute(Sender: TObject);
   private
     { Private declarations }
     CurrentFile: String;
@@ -77,11 +76,6 @@ uses
   FMX.DialogService.Sync;
 
 { TTextEditorForm }
-
-procedure TTextEditorForm.ExitActionExecute(Sender: TObject);
-begin
-  Application.Terminate;
-end;
 
 procedure TTextEditorForm.FormCreate(Sender: TObject);
   begin
