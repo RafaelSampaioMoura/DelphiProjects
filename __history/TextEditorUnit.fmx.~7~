@@ -10,48 +10,33 @@ object TextEditorForm: TTextEditorForm
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
   object StatusBar1: TStatusBar
-    Position.Y = 376.000000000000000000
+    Position.Y = 378.000000000000000000
     ShowSizeGrip = True
     Size.Width = 400.000000000000000000
-    Size.Height = 24.000000000000000000
+    Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
     object StatusBar: TStatusBar
       ShowSizeGrip = True
       Size.Width = 400.000000000000000000
-      Size.Height = 24.000000000000000000
+      Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       object Editor: TMemo
         Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
         DataDetectorTypes = []
-        Position.Y = -392.000000000000000000
-        Size.Width = 400.000000000000000000
-        Size.Height = 385.000000000000000000
+        Position.X = 8.000000000000000000
+        Position.Y = -344.000000000000000000
+        Size.Width = 385.000000000000000000
+        Size.Height = 337.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
-        Viewport.Width = 396.000000000000000000
-        Viewport.Height = 381.000000000000000000
-      end
-      object LineNumber: TLabel
-        TabOrder = 2
-      end
-      object ColumnNumber: TLabel
-        Position.X = 136.000000000000000000
-        Size.Width = 120.000000000000000000
-        Size.Height = 17.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 3
-      end
-      object LineCount: TLabel
-        Position.X = 280.000000000000000000
-        TabOrder = 4
+        Viewport.Width = 381.000000000000000000
+        Viewport.Height = 333.000000000000000000
       end
     end
   end
   object ActionList: TActionList
-    Left = 24
-    Top = 312
     object NewAction: TAction
       Category = 'File'
       Text = 'New'
@@ -111,8 +96,7 @@ object TextEditorForm: TTextEditorForm
     end
   end
   object MainMenu: TMainMenu
-    Left = 136
-    Top = 312
+    Left = 32
     object FileMenu: TMenuItem
       Text = 'File'
       object NewMenu: TMenuItem
@@ -198,11 +182,9 @@ object TextEditorForm: TTextEditorForm
     end
   end
   object OpenDialog: TOpenDialog
-    Left = 232
-    Top = 312
+    Left = 64
   end
   object SaveDialog: TSaveDialog
-    Left = 328
-    Top = 312
+    Left = 96
   end
 end

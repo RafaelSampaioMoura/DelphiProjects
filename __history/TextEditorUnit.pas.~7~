@@ -44,9 +44,6 @@ type
     UndoMenu: TMenuItem;
     DeleteMenu: TMenuItem;
     WordWrapMenu: TMenuItem;
-    LineNumber: TLabel;
-    ColumnNumber: TLabel;
-    LineCount: TLabel;
   private
     { Private declarations }
   public
