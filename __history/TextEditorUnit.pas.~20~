@@ -61,7 +61,6 @@ type
     procedure CopyActionExecute(Sender: TObject);
     procedure PasteActionExecute(Sender: TObject);
     procedure SelectAllActionExecute(Sender: TObject);
-    procedure UndoActionExecute(Sender: TObject);
   private
     { Private declarations }
     CurrentFile: String;
@@ -189,12 +188,6 @@ end;
 procedure TTextEditorForm.SelectAllActionExecute(Sender: TObject);
 begin
   Editor.SelectAll;
-  UpdateStatusBar;
-end;
-
-procedure TTextEditorForm.UndoActionExecute(Sender: TObject);
-begin
-  Editor.UnDo;
   UpdateStatusBar;
 end;
 

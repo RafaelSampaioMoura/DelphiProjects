@@ -111,6 +111,7 @@ object TextEditorForm: TTextEditorForm
       Category = 'Edit'
       Text = 'Undo'
       ShortCut = 16474
+      OnExecute = UndoActionExecute
     end
     object DeleteAction: TAction
       Category = 'Edit'
