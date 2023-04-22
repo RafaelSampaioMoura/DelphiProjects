@@ -1,0 +1,242 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 651
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object MemoContent: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Lines.Strings = (
+      
+        '[{"id":2747,"type":"Song","title":"Lady Madonna","artist":{"id":' +
+        '19,"type":"Artist","nameWithoutThePrefix":"Beatles","useThePrefi' +
+        'x":true,"name":"The Beatles"},"chordsPresent":true,"tabTypes":["' +
+        'PLAYER","TEXT_GUITAR_TAB","CHORDS","TEXT_BASS_TAB"]},{"id":9549,' +
+        '"type":"Song","title":"I Deserve It","artist":{"id":2959,"type":' +
+        '"Artist","nameWithoutThePrefix":"Madonna","useThePrefix":false,"' +
+        'name":"Madonna"},"chordsPresent":true,"tabTypes":["PLAYER","CHOR' +
+        'DS"]},{"id":10090,"type":"Song","title":"Secret","artist":{"id":' +
+        '2959,"type":"Artist","nameWithoutThePrefix":"Madonna","useThePre' +
+        'fix":false,"name":"Madonna"},"chordsPresent":true,"tabTypes":["P' +
+        'LAYER","TEXT_GUITAR_TAB","CHORDS"]},{"id":10091,"type":"Song","t' +
+        'itle":"Love Profusion","artist":{"id":2959,"type":"Artist","name' +
+        'WithoutThePrefix":"Madonna","useThePrefix":false,"name":"Madonna' +
+        '"},"chordsPresent":true,"tabTypes":["PLAYER","CHORDS"]},{"id":10' +
+        '093,"type":"Song","title":"Hollywood","artist":{"id":2959,"type"' +
+        ':"Artist","nameWithoutThePrefix":"Madonna","useThePrefix":false,' +
+        '"name":"Madonna"},"chordsPresent":true,"tabTypes":["PLAYER","TEX' +
+        'T_GUITAR_TAB","CHORDS"]},{"id":10159,"type":"Song","title":"Like' +
+        ' a Prayer","artist":{"id":2959,"type":"Artist","nameWithoutThePr' +
+        'efix":"Madonna","useThePrefix":false,"name":"Madonna"},"chordsPr' +
+        'esent":true,"tabTypes":["PLAYER","TEXT_GUITAR_TAB","CHORDS","TEX' +
+        'T_BASS_TAB"]},{"id":13724,"type":"Song","title":"Don'#39't Cry For M' +
+        'e Argentina (Evita)","artist":{"id":2959,"type":"Artist","nameWi' +
+        'thoutThePrefix":"Madonna","useThePrefix":false,"name":"Madonna"}' +
+        ',"chordsPresent":false,"tabTypes":["PLAYER"]},{"id":12927,"type"' +
+        ':"Song","title":"Papa Don'#39't Preach","artist":{"id":2959,"type":"' +
+        'Artist","nameWithoutThePrefix":"Madonna","useThePrefix":false,"n' +
+        'ame":"Madonna"},"chordsPresent":true,"tabTypes":["PLAYER","CHORD' +
+        'S"]},{"id":22814,"type":"Song","title":"Frozen (Intro)","artist"' +
+        ':{"id":2959,"type":"Artist","nameWithoutThePrefix":"Madonna","us' +
+        'eThePrefix":false,"name":"Madonna"},"chordsPresent":false,"tabTy' +
+        'pes":["PLAYER"]},{"id":10103,"type":"Song","title":"Drowned Worl' +
+        'd","artist":{"id":2959,"type":"Artist","nameWithoutThePrefix":"M' +
+        'adonna","useThePrefix":false,"name":"Madonna"},"chordsPresent":f' +
+        'alse,"tabTypes":["PLAYER"]},{"id":22856,"type":"Song","title":"4' +
+        ' Minutes","artist":{"id":2959,"type":"Artist","nameWithoutThePre' +
+        'fix":"Madonna","useThePrefix":false,"name":"Madonna"},"chordsPre' +
+        'sent":true,"tabTypes":["PLAYER","TEXT_GUITAR_TAB","CHORDS"]},{"i' +
+        'd":22860,"type":"Song","title":"Hung Up","artist":{"id":2959,"ty' +
+        'pe":"Artist","nameWithoutThePrefix":"Madonna","useThePrefix":fal' +
+        'se,"name":"Madonna"},"chordsPresent":true,"tabTypes":["PLAYER","' +
+        'TEXT_GUITAR_TAB","CHORDS"]},{"id":22861,"type":"Song","title":"I' +
+        'nto The Groove","artist":{"id":2959,"type":"Artist","nameWithout' +
+        'ThePrefix":"Madonna","useThePrefix":false,"name":"Madonna"},"cho' +
+        'rdsPresent":true,"tabTypes":["PLAYER","CHORDS"]},{"id":22862,"ty' +
+        'pe":"Song","title":"La Isla Bonita","artist":{"id":2959,"type":"' +
+        'Artist","nameWithoutThePrefix":"Madonna","useThePrefix":false,"n' +
+        'ame":"Madonna"},"chordsPresent":true,"tabTypes":["PLAYER","CHORD' +
+        'S"]},{"id":22863,"type":"Song","title":"Lucky Star","artist":{"i' +
+        'd":2959,"type":"Artist","nameWithoutThePrefix":"Madonna","useThe' +
+        'Prefix":false,"name":"Madonna"},"chordsPresent":false,"tabTypes"' +
+        ':["PLAYER"]},{"id":22865,"type":"Song","title":"Who'#39's That Girl"' +
+        ',"artist":{"id":2959,"type":"Artist","nameWithoutThePrefix":"Mad' +
+        'onna","useThePrefix":false,"name":"Madonna"},"chordsPresent":tru' +
+        'e,"tabTypes":["PLAYER","CHORDS"]},{"id":22864,"type":"Song","tit' +
+        'le":"Material Girl","artist":{"id":2959,"type":"Artist","nameWit' +
+        'houtThePrefix":"Madonna","useThePrefix":false,"name":"Madonna"},' +
+        '"chordsPresent":true,"tabTypes":["PLAYER","CHORDS"]},{"id":22866' +
+        ',"type":"Song","title":"Vogue","artist":{"id":2959,"type":"Artis' +
+        't","nameWithoutThePrefix":"Madonna","useThePrefix":false,"name":' +
+        '"Madonna"},"chordsPresent":true,"tabTypes":["PLAYER","CHORDS"]},' +
+        '{"id":22867,"type":"Song","title":"Take A Bow","artist":{"id":29' +
+        '59,"type":"Artist","nameWithoutThePrefix":"Madonna","useThePrefi' +
+        'x":false,"name":"Madonna"},"chordsPresent":false,"tabTypes":["PL' +
+        'AYER","TEXT_GUITAR_TAB"]},{"id":23041,"type":"Song","title":"Don' +
+        #39't Tell Me (Intro)","artist":{"id":2959,"type":"Artist","nameWit' +
+        'houtThePrefix":"Madonna","useThePrefix":false,"name":"Madonna"},' +
+        '"chordsPresent":false,"tabTypes":["PLAYER"]},{"id":10089,"type":' +
+        '"Song","title":"X-Static Process","artist":{"id":2959,"type":"Ar' +
+        'tist","nameWithoutThePrefix":"Madonna","useThePrefix":false,"nam' +
+        'e":"Madonna"},"chordsPresent":true,"tabTypes":["PLAYER","TEXT_GU' +
+        'ITAR_TAB","CHORDS"]},{"id":10112,"type":"Song","title":"Holiday"' +
+        ',"artist":{"id":2959,"type":"Artist","nameWithoutThePrefix":"Mad' +
+        'onna","useThePrefix":false,"name":"Madonna"},"chordsPresent":tru' +
+        'e,"tabTypes":["PLAYER","CHORDS","TEXT_BASS_TAB"]},{"id":488566,"' +
+        'type":"Song","title":"Lady Madonna (Acoustic Version)","artist":' +
+        '{"id":19,"type":"Artist","nameWithoutThePrefix":"Beatles","useTh' +
+        'ePrefix":true,"name":"The Beatles"},"chordsPresent":false,"tabTy' +
+        'pes":["PLAYER"]},{"id":22858,"type":"Song","title":"Cherish","ar' +
+        'tist":{"id":2959,"type":"Artist","nameWithoutThePrefix":"Madonna' +
+        '","useThePrefix":false,"name":"Madonna"},"chordsPresent":true,"t' +
+        'abTypes":["PLAYER","CHORDS"]},{"id":22859,"type":"Song","title":' +
+        '"Fever","artist":{"id":2959,"type":"Artist","nameWithoutThePrefi' +
+        'x":"Madonna","useThePrefix":false,"name":"Madonna"},"chordsPrese' +
+        'nt":false,"tabTypes":["PLAYER"]},{"id":59530,"type":"Song","titl' +
+        'e":"Lady Madonna","artist":{"id":1904,"type":"Artist","nameWitho' +
+        'utThePrefix":"Marcel Dadi","useThePrefix":false,"name":"Marcel D' +
+        'adi"},"chordsPresent":false,"tabTypes":["PLAYER"]},{"id":60145,"' +
+        'type":"Song","title":"Ray Of Light","artist":{"id":2959,"type":"' +
+        'Artist","nameWithoutThePrefix":"Madonna","useThePrefix":false,"n' +
+        'ame":"Madonna"},"chordsPresent":true,"tabTypes":["PLAYER","TEXT_' +
+        'GUITAR_TAB","CHORDS"]},{"id":61777,"type":"Song","title":"Lady M' +
+        'adonna","artist":{"id":723,"type":"Artist","nameWithoutThePrefix' +
+        '":"Chet Atkins","useThePrefix":false,"name":"Chet Atkins"},"chor' +
+        'dsPresent":false,"tabTypes":["PLAYER"]},{"id":62547,"type":"Song' +
+        '","title":"The Power Of Goodbye","artist":{"id":2959,"type":"Art' +
+        'ist","nameWithoutThePrefix":"Madonna","useThePrefix":false,"name' +
+        '":"Madonna"},"chordsPresent":true,"tabTypes":["PLAYER","CHORDS"]' +
+        '},{"id":73582,"type":"Song","title":"This Used To Be My Playgrou' +
+        'nd","artist":{"id":2959,"type":"Artist","nameWithoutThePrefix":"' +
+        'Madonna","useThePrefix":false,"name":"Madonna"},"chordsPresent":' +
+        'true,"tabTypes":["PLAYER","CHORDS"]},{"id":387691,"type":"Song",' +
+        '"title":"Madonna (Live)","artist":{"id":50671,"type":"Artist","n' +
+        'ameWithoutThePrefix":"Kathleen","useThePrefix":false,"name":"Kat' +
+        'hleen"},"chordsPresent":false,"tabTypes":["PLAYER"]},{"id":41254' +
+        '5,"type":"Song","title":"(The Beatles)- Lady Madonna","artist":{' +
+        '"id":55107,"type":"Artist","nameWithoutThePrefix":"Mockingbirdra' +
+        'velle","useThePrefix":false,"name":"Mockingbirdravelle"},"chords' +
+        'Present":false,"tabTypes":["PLAYER"]},{"id":419243,"type":"Song"' +
+        ',"title":"Dress You Up","artist":{"id":2959,"type":"Artist","nam' +
+        'eWithoutThePrefix":"Madonna","useThePrefix":false,"name":"Madonn' +
+        'a"},"chordsPresent":false,"tabTypes":["PLAYER"]},{"id":419242,"t' +
+        'ype":"Song","title":"One More Chance","artist":{"id":2959,"type"' +
+        ':"Artist","nameWithoutThePrefix":"Madonna","useThePrefix":false,' +
+        '"name":"Madonna"},"chordsPresent":false,"tabTypes":["PLAYER"]},{' +
+        '"id":419239,"type":"Song","title":"Crazy For You","artist":{"id"' +
+        ':2959,"type":"Artist","nameWithoutThePrefix":"Madonna","useThePr' +
+        'efix":false,"name":"Madonna"},"chordsPresent":false,"tabTypes":[' +
+        '"PLAYER"]},{"id":419240,"type":"Song","title":"Live To Tell","ar' +
+        'tist":{"id":2959,"type":"Artist","nameWithoutThePrefix":"Madonna' +
+        '","useThePrefix":false,"name":"Madonna"},"chordsPresent":false,"' +
+        'tabTypes":["PLAYER"]},{"id":419241,"type":"Song","title":"Americ' +
+        'an Pie","artist":{"id":2959,"type":"Artist","nameWithoutThePrefi' +
+        'x":"Madonna","useThePrefix":false,"name":"Madonna"},"chordsPrese' +
+        'nt":false,"tabTypes":["PLAYER"]},{"id":22857,"type":"Song","titl' +
+        'e":"Bedtime Story","artist":{"id":2959,"type":"Artist","nameWith' +
+        'outThePrefix":"Madonna","useThePrefix":false,"name":"Madonna"},"' +
+        'chordsPresent":false,"tabTypes":["PLAYER"]},{"id":455105,"type":' +
+        '"Song","title":"Anal Madonna","artist":{"id":7997,"type":"Artist' +
+        '","nameWithoutThePrefix":"Impiety","useThePrefix":false,"name":"' +
+        'Impiety"},"chordsPresent":false,"tabTypes":["PLAYER"]},{"id":107' +
+        '67,"type":"Song","title":"Like a Virgin","artist":{"id":2959,"ty' +
+        'pe":"Artist","nameWithoutThePrefix":"Madonna","useThePrefix":fal' +
+        'se,"name":"Madonna"},"chordsPresent":true,"tabTypes":["PLAYER","' +
+        'TEXT_GUITAR_TAB","CHORDS","TEXT_BASS_TAB"]},{"id":479412,"type":' +
+        '"Song","title":"Frozen","artist":{"id":2959,"type":"Artist","nam' +
+        'eWithoutThePrefix":"Madonna","useThePrefix":false,"name":"Madonn' +
+        'a"},"chordsPresent":false,"tabTypes":["PLAYER"]}]')
+    TextSettings.WordWrap = True
+    Align = Client
+    Size.Width = 651.000000000000000000
+    Size.Height = 360.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Viewport.Width = 631.000000000000000000
+    Viewport.Height = 356.000000000000000000
+  end
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 651.000000000000000000
+    Size.Height = 120.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    object StringGrid1: TStringGrid
+      CanFocus = True
+      ClipChildren = True
+      Position.X = 328.000000000000000000
+      TabOrder = 0
+      Viewport.Width = 196.000000000000000000
+      Viewport.Height = 75.000000000000000000
+    end
+  end
+  object EditParamspattern: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 6
+    Text = 'Madonna'
+    Position.Y = 88.000000000000000000
+    object LabelParamspattern: TLabel
+      Position.Y = -16.000000000000000000
+      TextSettings.WordWrap = False
+      Text = 'Params.pattern'
+      TabOrder = 0
+    end
+  end
+  object Button1: TButton
+    Position.X = 216.000000000000000000
+    Position.Y = 88.000000000000000000
+    TabOrder = 7
+    Text = 'Execute'
+    OnClick = Button1Click
+  end
+  object RESTClient1: TRESTClient
+    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
+    AcceptCharset = 'utf-8, *;q=0.8'
+    BaseURL = 'http://www.songsterr.com/a/ra'
+    Params = <>
+    Left = 88
+    Top = 8
+  end
+  object RESTRequest1: TRESTRequest
+    Client = RESTClient1
+    Params = <
+      item
+        Name = 'pattern'
+        Value = 'Madonna'
+      end>
+    Resource = 'songs.json'
+    Response = RESTResponse1
+    Left = 160
+    Top = 16
+  end
+  object RESTResponse1: TRESTResponse
+    ContentType = 'application/json'
+    Left = 216
+    Top = 16
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkControlToFieldContent: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = RESTResponse1
+      FieldName = 'Content'
+      Control = MemoContent
+      Track = False
+    end
+    object LinkControlToFieldParamspattern: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = RESTRequest1
+      FieldName = 'Params.pattern'
+      Control = EditParamspattern
+      Track = False
+    end
+  end
+end

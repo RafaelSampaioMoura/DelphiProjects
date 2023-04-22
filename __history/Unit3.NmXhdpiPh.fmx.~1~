@@ -1,0 +1,12 @@
+inherited Form3_NmXhdpiPh: TForm3_NmXhdpiPh
+  ClientHeight = 615
+  ClientWidth = 400
+  DesignerMasterStyle = 0
+  inherited Button1: TButton
+    Position.X = 88.000000000000000000
+    Size.Width = 217.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    OnClick = Button1Click
+  end
+end

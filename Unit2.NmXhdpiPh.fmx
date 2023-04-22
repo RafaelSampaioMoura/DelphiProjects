@@ -1,0 +1,21 @@
+inherited Form2_NmXhdpiPh: TForm2_NmXhdpiPh
+  ClientHeight = 615
+  ClientWidth = 400
+  DesignerMasterStyle = 0
+  inherited Memo1: TMemo [0]
+    Align = Client
+    Size.Width = 400.000000000000000000
+    Size.Height = 615.000000000000000000
+    Size.PlatformDefault = False
+    Viewport.Width = 400.000000000000000000
+    Viewport.Height = 615.000000000000000000
+  end
+  inherited Button1: TButton [1]
+    Position.X = 88.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 201.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    OnClick = Button1Click
+  end
+end

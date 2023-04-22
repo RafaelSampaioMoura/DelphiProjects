@@ -1,0 +1,41 @@
+object Form4: TForm4
+  Left = 0
+  Top = 0
+  Caption = 'Form4'
+  ClientHeight = 210
+  ClientWidth = 250
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object PrincipalLayout: TFlowLayout
+    Align = Client
+    Size.Width = 250.000000000000000000
+    Size.Height = 210.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Justify = Center
+    JustifyLastLine = Center
+    FlowDirection = LeftToRight
+    VerticalGap = 3.000000000000000000
+    object Display: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 0
+      Position.X = 25.000000000000000000
+      Size.Width = 200.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object MemoryButtonsGrid: TGridLayout
+      ItemHeight = 30.000000000000000000
+      ItemWidth = 50.000000000000000000
+      Orientation = Horizontal
+      Position.X = 25.000000000000000000
+      Position.Y = 25.000000000000000000
+      Size.Width = 200.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+  end
+end

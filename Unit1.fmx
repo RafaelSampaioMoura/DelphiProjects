@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Form1'
   ClientHeight = 480
-  ClientWidth = 307
+  ClientWidth = 1068
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -153,19 +153,46 @@ object Form1: TForm1
         'a"},"chordsPresent":false,"tabTypes":["PLAYER"]}]')
     TextSettings.WordWrap = True
     Align = Client
-    Size.Width = 307.000000000000000000
-    Size.Height = 360.000000000000000000
+    Size.Width = 1068.000000000000000000
+    Size.Height = 303.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
-    Viewport.Width = 287.000000000000000000
-    Viewport.Height = 356.000000000000000000
+    Viewport.Width = 1048.000000000000000000
+    Viewport.Height = 299.000000000000000000
   end
   object Panel1: TPanel
     Align = Top
-    Size.Width = 307.000000000000000000
-    Size.Height = 120.000000000000000000
+    Size.Width = 1068.000000000000000000
+    Size.Height = 177.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 5
+    object StringGrid1: TStringGrid
+      CanFocus = True
+      ClipChildren = True
+      Position.X = 328.000000000000000000
+      TabOrder = 0
+      Viewport.Width = 196.000000000000000000
+      Viewport.Height = 75.000000000000000000
+    end
+    object Label1: TLabel
+      Position.X = 528.000000000000000000
+      Position.Y = 72.000000000000000000
+      Text = 'Label1'
+      TabOrder = 1
+    end
+    object ToolBar1: TToolBar
+      Size.Width = 1068.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+    end
+    object ShadowEffect1: TShadowEffect
+      Distance = 3.000000000000000000
+      Direction = 45.000000000000000000
+      Softness = 0.300000011920929000
+      Opacity = 0.600000023841857900
+      ShadowColor = claBlack
+    end
   end
   object EditParamspattern: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -186,13 +213,22 @@ object Form1: TForm1
     Text = 'Execute'
     OnClick = Button1Click
   end
+  object StringGridBindSourceDB1: TStringGrid
+    CanFocus = True
+    ClipChildren = True
+    Position.X = 432.000000000000000000
+    Position.Y = 192.000000000000000000
+    TabOrder = 14
+    Viewport.Width = 196.000000000000000000
+    Viewport.Height = 75.000000000000000000
+  end
   object RESTClient1: TRESTClient
     Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
     AcceptCharset = 'utf-8, *;q=0.8'
     BaseURL = 'http://www.songsterr.com/a/ra'
     Params = <>
-    Left = 24
-    Top = 144
+    Left = 944
+    Top = 48
   end
   object RESTRequest1: TRESTRequest
     Client = RESTClient1
@@ -203,13 +239,13 @@ object Form1: TForm1
       end>
     Resource = 'songs.json'
     Response = RESTResponse1
-    Left = 104
-    Top = 144
+    Left = 872
+    Top = 48
   end
   object RESTResponse1: TRESTResponse
     ContentType = 'application/json'
-    Left = 208
-    Top = 144
+    Left = 792
+    Top = 48
   end
   object BindingsList1: TBindingsList
     Methods = <>
@@ -230,5 +266,43 @@ object Form1: TForm1
       Control = EditParamspattern
       Track = False
     end
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGridBindSourceDB1
+      Columns = <>
+    end
+  end
+  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+    FieldDefs = <>
+    Left = 664
+    Top = 48
+  end
+  object StyleBook1: TStyleBook
+    Styles = <>
+    Left = 1008
+    Top = 48
+  end
+  object FDMemTable1: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 656
+    Top = 112
+  end
+  object BindSourceDB1: TBindSourceDB
+    ScopeMappings = <>
+    Left = 736
+    Top = 112
+  end
+  object BindingsList2: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 816
+    Top = 112
   end
 end
