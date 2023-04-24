@@ -42,6 +42,26 @@ object Form5: TForm5
       Text = 'Planets'
       OnClick = planetsClick
     end
+    object films: TRadioButton
+      Position.X = 304.000000000000000000
+      TabOrder = 4
+      Text = 'Films'
+      OnClick = filmsClick
+    end
+    object starships: TRadioButton
+      Position.X = 304.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 5
+      Text = 'Starships'
+      OnClick = starshipsClick
+    end
+    object species: TRadioButton
+      Position.X = 304.000000000000000000
+      Position.Y = 32.000000000000000000
+      TabOrder = 6
+      Text = 'Species'
+      OnClick = speciesClick
+    end
   end
   object GridBindSourceDB1: TGrid
     Align = Client
@@ -85,8 +105,9 @@ object Form5: TForm5
   end
   object EditParamsid: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 18
+    TabOrder = 17
     KeyboardType = DecimalNumberPad
+    Text = '1'
     Position.Y = 24.000000000000000000
     Size.Width = 25.000000000000000000
     Size.Height = 22.000000000000000000
@@ -113,22 +134,23 @@ object Form5: TForm5
         Kind = pkURLSEGMENT
         Name = 'id'
         Options = [poAutoCreated]
+        Value = '1'
       end>
     Left = 88
-    Top = 160
+    Top = 184
   end
   object RESTRequest1: TRESTRequest
     AssignedValues = [rvConnectTimeout, rvReadTimeout]
     Client = RESTClient1
     Params = <>
     Response = RESTResponse1
-    Left = 168
-    Top = 160
+    Left = 160
+    Top = 184
   end
   object RESTResponse1: TRESTResponse
     ContentType = 'application/json'
-    Left = 272
-    Top = 168
+    Left = 240
+    Top = 184
   end
   object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
     Active = True
@@ -136,8 +158,8 @@ object Form5: TForm5
     FieldDefs = <>
     Response = RESTResponse1
     TypesMode = Rich
-    Left = 376
-    Top = 152
+    Left = 368
+    Top = 184
   end
   object FDMemTable1: TFDMemTable
     Active = True
@@ -215,20 +237,20 @@ object Form5: TForm5
     UpdateOptions.FetchGeneratorsPoint = gpNone
     UpdateOptions.CheckRequired = False
     StoreDefs = True
-    Left = 480
-    Top = 168
+    Left = 488
+    Top = 184
   end
   object BindSourceDB1: TBindSourceDB
     DataSet = FDMemTable1
     ScopeMappings = <>
-    Left = 544
-    Top = 152
+    Left = 568
+    Top = 184
   end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 12
-    Top = 157
+    Left = 20
+    Top = 181
     object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1

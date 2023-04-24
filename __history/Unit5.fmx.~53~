@@ -42,26 +42,6 @@ object Form5: TForm5
       Text = 'Planets'
       OnClick = planetsClick
     end
-    object films: TRadioButton
-      Position.X = 304.000000000000000000
-      TabOrder = 4
-      Text = 'Films'
-      OnClick = filmsClick
-    end
-    object starships: TRadioButton
-      Position.X = 304.000000000000000000
-      Position.Y = 16.000000000000000000
-      TabOrder = 5
-      Text = 'Starships'
-      OnClick = starshipsClick
-    end
-    object species: TRadioButton
-      Position.X = 304.000000000000000000
-      Position.Y = 32.000000000000000000
-      TabOrder = 6
-      Text = 'Species'
-      OnClick = speciesClick
-    end
   end
   object GridBindSourceDB1: TGrid
     Align = Client

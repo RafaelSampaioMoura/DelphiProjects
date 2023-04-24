@@ -35,10 +35,16 @@ type
     EditParamsid: TEdit;
     idSelector: TLabel;
     LinkControlToFieldParamsid: TLinkControlToField;
+    films: TRadioButton;
+    starships: TRadioButton;
+    species: TRadioButton;
     procedure Button1Click(Sender: TObject);
     procedure peopleClick(Sender: TObject);
     procedure planetsClick(Sender: TObject);
     procedure vehiclesClick(Sender: TObject);
+    procedure filmsClick(Sender: TObject);
+    procedure starshipsClick(Sender: TObject);
+    procedure speciesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,6 +69,20 @@ begin
   jValue := RESTResponse1.JSONValue;
   MemoContent.Text := jValue.ToString;
   //FDMemTable1.DataSetField.SetData(jValue.GetValue<TJSONValue>('results'));
+end;
+
+procedure TForm5.filmsClick(Sender: TObject);
+begin
+  if films.IsChecked then
+    begin
+      RESTClient1.Params[0].Value := '';
+      films.IsChecked := false;
+    end
+  else
+    begin
+      RESTClient1.Params[0].Value := films.Name;
+      films.IsChecked := true;
+    end;
 end;
 
 procedure TForm5.peopleClick(Sender: TObject);
@@ -90,6 +110,34 @@ begin
     begin
       RESTClient1.Params[0].Value := planets.Name;
       planets.IsChecked := true;
+    end;
+end;
+
+procedure TForm5.speciesClick(Sender: TObject);
+begin
+  if species.IsChecked then
+    begin
+      RESTClient1.Params[0].Value := '';
+      species.IsChecked := false;
+    end
+  else
+    begin
+      RESTClient1.Params[0].Value := species.Name;
+      species.IsChecked := true;
+    end;
+end;
+
+procedure TForm5.starshipsClick(Sender: TObject);
+begin
+  if starships.IsChecked then
+    begin
+      RESTClient1.Params[0].Value := '';
+      starships.IsChecked := false;
+    end
+  else
+    begin
+      RESTClient1.Params[0].Value := starships.Name;
+      starships.IsChecked := true;
     end;
 end;
 

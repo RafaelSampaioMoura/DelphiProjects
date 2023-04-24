@@ -51,3 +51,12 @@ Coordinates=550,120,91,58
 [idSelector]
 Coordinates=550,60,72,58
 
+[films]
+Coordinates=500,380,41,36
+
+[starships]
+Coordinates=500,430,66,36
+
+[species]
+Coordinates=500,480,58,36
+
