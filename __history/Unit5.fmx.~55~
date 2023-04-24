@@ -1,0 +1,273 @@
+object Form5: TForm5
+  Left = 0
+  Top = 0
+  Caption = 'Form5'
+  ClientHeight = 347
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 640.000000000000000000
+    Size.Height = 120.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Button1: TButton
+      Position.X = 24.000000000000000000
+      Position.Y = 24.000000000000000000
+      TabOrder = 0
+      Text = 'Execute'
+      OnClick = Button1Click
+    end
+    object people: TRadioButton
+      IsChecked = True
+      Position.X = 224.000000000000000000
+      TabOrder = 1
+      Text = 'People'
+      OnClick = peopleClick
+    end
+    object vehicles: TRadioButton
+      Position.X = 224.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 2
+      Text = 'Vehicles'
+      OnClick = vehiclesClick
+    end
+    object planets: TRadioButton
+      Position.X = 224.000000000000000000
+      Position.Y = 32.000000000000000000
+      TabOrder = 3
+      Text = 'Planets'
+      OnClick = planetsClick
+    end
+    object films: TRadioButton
+      Position.X = 304.000000000000000000
+      TabOrder = 5
+      Text = 'Films'
+      OnClick = filmsClick
+    end
+    object starships: TRadioButton
+      Position.X = 304.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 6
+      Text = 'Starships'
+    end
+    object species: TRadioButton
+      Position.X = 304.000000000000000000
+      Position.Y = 32.000000000000000000
+      TabOrder = 7
+      Text = 'Species'
+    end
+  end
+  object GridBindSourceDB1: TGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
+    Size.Width = 640.000000000000000000
+    Size.Height = 227.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    RowCount = 1
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 186.000000000000000000
+  end
+  object MemoContent: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Lines.Strings = (
+      
+        '{"name":"Tatooine","rotation_period":"23","orbital_period":"304"' +
+        ',"diameter":"10465","climate":"arid","gravity":"1 standard","ter' +
+        'rain":"desert","surface_water":"1","population":"200000","reside' +
+        'nts":["https://swapi.dev/api/people/1/","https://swapi.dev/api/p' +
+        'eople/2/","https://swapi.dev/api/people/4/","https://swapi.dev/a' +
+        'pi/people/6/","https://swapi.dev/api/people/7/","https://swapi.d' +
+        'ev/api/people/8/","https://swapi.dev/api/people/9/","https://swa' +
+        'pi.dev/api/people/11/","https://swapi.dev/api/people/43/","https' +
+        '://swapi.dev/api/people/62/"],"films":["https://swapi.dev/api/fi' +
+        'lms/1/","https://swapi.dev/api/films/3/","https://swapi.dev/api/' +
+        'films/4/","https://swapi.dev/api/films/5/","https://swapi.dev/ap' +
+        'i/films/6/"],"created":"2014-12-09T13:50:49.641000Z","edited":"2' +
+        '014-12-20T20:58:18.411000Z","url":"https://swapi.dev/api/planets' +
+        '/1/"}')
+    TextSettings.WordWrap = True
+    Position.Y = 64.000000000000000000
+    Size.Width = 625.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Viewport.Width = 605.000000000000000000
+    Viewport.Height = 46.000000000000000000
+  end
+  object EditParamsid: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 17
+    KeyboardType = DecimalNumberPad
+    Text = '1'
+    Position.Y = 24.000000000000000000
+    Size.Width = 25.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    object idSelector: TLabel
+      Position.Y = -16.000000000000000000
+      TextSettings.WordWrap = False
+      Text = 'SelectID'
+      TabOrder = 0
+    end
+  end
+  object RESTClient1: TRESTClient
+    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
+    AcceptCharset = 'utf-8, *;q=0.8'
+    BaseURL = 'https://swapi.dev/api/{category}/{id}'
+    Params = <
+      item
+        Kind = pkURLSEGMENT
+        Name = 'category'
+        Options = [poAutoCreated]
+        Value = 'planets'
+      end
+      item
+        Kind = pkURLSEGMENT
+        Name = 'id'
+        Options = [poAutoCreated]
+        Value = '1'
+      end>
+    Left = 88
+    Top = 184
+  end
+  object RESTRequest1: TRESTRequest
+    AssignedValues = [rvConnectTimeout, rvReadTimeout]
+    Client = RESTClient1
+    Params = <>
+    Response = RESTResponse1
+    Left = 160
+    Top = 184
+  end
+  object RESTResponse1: TRESTResponse
+    ContentType = 'application/json'
+    Left = 240
+    Top = 184
+  end
+  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTable1
+    FieldDefs = <>
+    Response = RESTResponse1
+    TypesMode = Rich
+    Left = 368
+    Top = 184
+  end
+  object FDMemTable1: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'name'
+        DataType = ftWideString
+        Size = 8
+      end
+      item
+        Name = 'rotation_period'
+        DataType = ftInteger
+      end
+      item
+        Name = 'orbital_period'
+        DataType = ftInteger
+      end
+      item
+        Name = 'diameter'
+        DataType = ftInteger
+      end
+      item
+        Name = 'climate'
+        DataType = ftWideString
+        Size = 4
+      end
+      item
+        Name = 'gravity'
+        DataType = ftWideString
+        Size = 10
+      end
+      item
+        Name = 'terrain'
+        DataType = ftWideString
+        Size = 6
+      end
+      item
+        Name = 'surface_water'
+        DataType = ftInteger
+      end
+      item
+        Name = 'population'
+        DataType = ftInteger
+      end
+      item
+        Name = 'residents'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'films'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'created'
+        DataType = ftDateTime
+      end
+      item
+        Name = 'edited'
+        DataType = ftDateTime
+      end
+      item
+        Name = 'url'
+        DataType = ftWideString
+        Size = 32
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable]
+    UpdateOptions.LockWait = True
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    StoreDefs = True
+    Left = 488
+    Top = 184
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTable1
+    ScopeMappings = <>
+    Left = 568
+    Top = 184
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 181
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = GridBindSourceDB1
+      Columns = <>
+    end
+    object LinkControlToFieldContent: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = RESTResponse1
+      FieldName = 'Content'
+      Control = MemoContent
+      Track = False
+    end
+    object LinkControlToFieldParamsid: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = RESTClient1
+      FieldName = 'Params.id'
+      Control = EditParamsid
+      Track = False
+    end
+  end
+end

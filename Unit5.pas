@@ -27,15 +27,24 @@ type
     GridBindSourceDB1: TGrid;
     LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     BindingsList1: TBindingsList;
-    EditParamsid: TEdit;
-    LabelParamsid: TLabel;
-    LinkControlToFieldParamsid: TLinkControlToField;
     MemoContent: TMemo;
     LinkControlToFieldContent: TLinkControlToField;
-    RadioButton1: TRadioButton;
-    RadioButton2: TRadioButton;
-    RadioButton3: TRadioButton;
+    people: TRadioButton;
+    vehicles: TRadioButton;
+    planets: TRadioButton;
+    EditParamsid: TEdit;
+    idSelector: TLabel;
+    LinkControlToFieldParamsid: TLinkControlToField;
+    films: TRadioButton;
+    starships: TRadioButton;
+    species: TRadioButton;
     procedure Button1Click(Sender: TObject);
+    procedure peopleClick(Sender: TObject);
+    procedure planetsClick(Sender: TObject);
+    procedure vehiclesClick(Sender: TObject);
+    procedure filmsClick(Sender: TObject);
+    procedure starshipsClick(Sender: TObject);
+    procedure speciesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,10 +64,95 @@ var
   value: TRESTResponse;
   dataset: TRESTResponseDataSetAdapter;
 begin
+  RESTClient1.Params[1].Value := EditParamsid.Text;
   RESTRequest1.Execute;
   jValue := RESTResponse1.JSONValue;
   MemoContent.Text := jValue.ToString;
-  FDMemTable1.DataSetField.SetData(jValue.GetValue<TJSONValue>('results'));
+  //FDMemTable1.DataSetField.SetData(jValue.GetValue<TJSONValue>('results'));
+end;
+
+procedure TForm5.filmsClick(Sender: TObject);
+begin
+  if films.IsChecked then
+    begin
+      RESTClient1.Params[0].Value := '';
+      films.IsChecked := false;
+    end
+  else
+    begin
+      RESTClient1.Params[0].Value := films.Name;
+      films.IsChecked := true;
+    end;
+end;
+
+procedure TForm5.peopleClick(Sender: TObject);
+begin
+  if people.IsChecked then
+    begin
+      RESTClient1.Params[0].Value := '';
+      people.IsChecked := false;
+    end
+  else
+    begin
+      RESTClient1.Params[0].Value := people.Name;
+      people.IsChecked := true;
+    end;
+end;
+
+procedure TForm5.planetsClick(Sender: TObject);
+begin
+  if planets.IsChecked then
+    begin
+      RESTClient1.Params[0].Value := '';
+      planets.IsChecked := false;
+    end
+  else
+    begin
+      RESTClient1.Params[0].Value := planets.Name;
+      planets.IsChecked := true;
+    end;
+end;
+
+procedure TForm5.speciesClick(Sender: TObject);
+begin
+  if species.IsChecked then
+    begin
+      RESTClient1.Params[0].Value := '';
+      species.IsChecked := false;
+    end
+  else
+    begin
+      RESTClient1.Params[0].Value := species.Name;
+      species.IsChecked := true;
+    end;
+end;
+
+procedure TForm5.starshipsClick(Sender: TObject);
+begin
+  if starships.IsChecked then
+    begin
+      RESTClient1.Params[0].Value := '';
+      starships.IsChecked := false;
+    end
+  else
+    begin
+      RESTClient1.Params[0].Value := starships.Name;
+      starships.IsChecked := true;
+    end;
+end;
+
+procedure TForm5.vehiclesClick(Sender: TObject);
+begin
+  if vehicles.IsChecked then
+    begin
+      RESTClient1.Params[0].Value := '';
+      vehicles.IsChecked := false;
+    end
+  else
+    begin
+      RESTClient1.Params[0].Value := vehicles.Name;
+      vehicles.IsChecked := true;
+    end;
 end;
 
 end.
