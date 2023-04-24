@@ -1,0 +1,187 @@
+object Form5: TForm5
+  Left = 0
+  Top = 0
+  Caption = 'Form5'
+  ClientHeight = 347
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 640.000000000000000000
+    Size.Height = 120.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Button1: TButton
+      Position.X = 24.000000000000000000
+      Position.Y = 24.000000000000000000
+      TabOrder = 0
+      Text = 'Execute'
+      OnClick = Button1Click
+    end
+    object RadioButton1: TRadioButton
+      Position.X = 224.000000000000000000
+      TabOrder = 2
+      Text = 'People'
+    end
+    object RadioButton2: TRadioButton
+      Position.X = 224.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 3
+      Text = 'Vehicles'
+    end
+    object RadioButton3: TRadioButton
+      Position.X = 224.000000000000000000
+      Position.Y = 32.000000000000000000
+      TabOrder = 4
+      Text = 'Planets'
+    end
+  end
+  object GridBindSourceDB1: TGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
+    Size.Width = 640.000000000000000000
+    Size.Height = 227.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    RowCount = 0
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 202.000000000000000000
+  end
+  object EditParamsid: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 9
+    KeyboardType = DecimalNumberPad
+    Position.Y = 24.000000000000000000
+    Size.Width = 25.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    object LabelParamsid: TLabel
+      Position.Y = -16.000000000000000000
+      TextSettings.WordWrap = False
+      Text = 'Search By ID'
+      TabOrder = 0
+    end
+  end
+  object MemoContent: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    TextSettings.WordWrap = True
+    Position.Y = 64.000000000000000000
+    Size.Width = 625.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 10
+    Viewport.Width = 621.000000000000000000
+    Viewport.Height = 46.000000000000000000
+  end
+  object RESTClient1: TRESTClient
+    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
+    AcceptCharset = 'utf-8, *;q=0.8'
+    BaseURL = 'https://swapi.dev/api/people/{id}'
+    Params = <
+      item
+        Kind = pkURLSEGMENT
+        Name = 'id'
+        Options = [poAutoCreated]
+      end>
+    Left = 88
+    Top = 160
+  end
+  object RESTRequest1: TRESTRequest
+    AssignedValues = [rvConnectTimeout, rvReadTimeout]
+    Client = RESTClient1
+    Params = <
+      item
+        Kind = pkURLSEGMENT
+        Name = 'id'
+      end>
+    Response = RESTResponse1
+    Left = 168
+    Top = 160
+  end
+  object RESTResponse1: TRESTResponse
+    ContentType = 'application/json'
+    Left = 272
+    Top = 168
+  end
+  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTable1
+    FieldDefs = <>
+    Response = RESTResponse1
+    TypesMode = Rich
+    Left = 376
+    Top = 152
+  end
+  object FDMemTable1: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'count'
+        DataType = ftFloat
+      end
+      item
+        Name = 'next'
+        DataType = ftWideString
+        Size = 36
+      end
+      item
+        Name = 'previous'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'results'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable]
+    UpdateOptions.LockWait = True
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    StoreDefs = True
+    Left = 480
+    Top = 168
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTable1
+    ScopeMappings = <>
+    Left = 544
+    Top = 152
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 12
+    Top = 157
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = GridBindSourceDB1
+      Columns = <>
+    end
+    object LinkControlToFieldParamsid: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = RESTRequest1
+      FieldName = 'Params.id'
+      Control = EditParamsid
+      Track = False
+    end
+    object LinkControlToFieldContent: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = RESTResponse1
+      FieldName = 'Content'
+      Control = MemoContent
+      Track = False
+    end
+  end
+end
