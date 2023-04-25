@@ -61,14 +61,16 @@ implementation
 procedure TForm5.Button1Click(Sender: TObject);
 var
   jValue:TJSONValue;
-  value: TRESTResponse;
-  dataset: TRESTResponseDataSetAdapter;
 begin
-  RESTClient1.Params[1].Value := EditParamsid.Text;
+  RESTResponse1.RootElement := '';
   RESTRequest1.Execute;
+  if RESTClient1.Params[1].Value = '' then
+    if RESTResponse1.StatusCode = 200 then
+      begin
+        RESTResponse1.RootElement := 'results';
+      end;
   jValue := RESTResponse1.JSONValue;
   MemoContent.Text := jValue.ToString;
-  //FDMemTable1.DataSetField.SetData(jValue.GetValue<TJSONValue>('results'));
 end;
 
 procedure TForm5.filmsClick(Sender: TObject);
@@ -89,7 +91,6 @@ procedure TForm5.peopleClick(Sender: TObject);
 begin
   if people.IsChecked then
     begin
-      RESTClient1.Params[0].Value := '';
       people.IsChecked := false;
     end
   else
@@ -103,7 +104,6 @@ procedure TForm5.planetsClick(Sender: TObject);
 begin
   if planets.IsChecked then
     begin
-      RESTClient1.Params[0].Value := '';
       planets.IsChecked := false;
     end
   else
@@ -117,7 +117,6 @@ procedure TForm5.speciesClick(Sender: TObject);
 begin
   if species.IsChecked then
     begin
-      RESTClient1.Params[0].Value := '';
       species.IsChecked := false;
     end
   else
@@ -131,7 +130,6 @@ procedure TForm5.starshipsClick(Sender: TObject);
 begin
   if starships.IsChecked then
     begin
-      RESTClient1.Params[0].Value := '';
       starships.IsChecked := false;
     end
   else
@@ -145,7 +143,6 @@ procedure TForm5.vehiclesClick(Sender: TObject);
 begin
   if vehicles.IsChecked then
     begin
-      RESTClient1.Params[0].Value := '';
       vehicles.IsChecked := false;
     end
   else
