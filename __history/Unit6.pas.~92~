@@ -64,18 +64,23 @@ implementation
 procedure TForm6.ConnectClick(Sender: TObject);
   var
     DialogueMessage: string;
+    SQLQuery: string;
   begin
+    SQLQuery := Concat('USE ', FDConnection1.Params.Database, ';\n SHOW tables;');
     FDConnection1.Connected := true;
     DialogueMessage := Concat('Connected to the ',
       FDConnection1.Params.Database, ' database.');
     ShowMessage(DialogueMessage);
     Execute.Enabled := true;
+    FDQuery1.SQL.Text := SQLQuery;
+    FDQuery1.Open;
   end;
 
 procedure TForm6.ExecuteClick(Sender: TObject);
   var
     SQLQuery: string;
     DialogueMessage: string;
+    Log: IFDDataSetReference;
   begin
         if SQLLimit.IsEmpty then
           begin

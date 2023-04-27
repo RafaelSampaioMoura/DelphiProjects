@@ -17,7 +17,7 @@ uses
 type
   TForm5 = class(TForm)
     Panel1: TPanel;
-    Button1: TButton;
+    Execute: TButton;
     RESTClient1: TRESTClient;
     RESTRequest1: TRESTRequest;
     RESTResponse1: TRESTResponse;
@@ -38,6 +38,8 @@ type
     films: TRadioButton;
     starships: TRadioButton;
     species: TRadioButton;
+    Connect: TButton;
+    Button3: TButton;
     procedure Button1Click(Sender: TObject);
     procedure peopleClick(Sender: TObject);
     procedure planetsClick(Sender: TObject);
@@ -57,20 +59,6 @@ var
 implementation
 
 {$R *.fmx}
-
-procedure TForm5.Button1Click(Sender: TObject);
-var
-  jValue:TJSONValue;
-begin
-  RESTRequest1.Execute;
-  RESTResponseDataSetAdapter1.RootElement := '';
-  if RESTResponse1.StatusCode = 200 then
-    if RESTClient1.Params[1].Value = '' then
-      begin
-        RESTResponseDataSetAdapter1.RootElement := 'results';
-      end;
-  MemoContent.Text := jValue.ToString;
-end;
 
 procedure TForm5.filmsClick(Sender: TObject);
 begin

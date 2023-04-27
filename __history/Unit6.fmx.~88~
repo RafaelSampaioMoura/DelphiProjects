@@ -140,6 +140,7 @@ object Form6: TForm6
       'Server=127.0.0.1'
       'DriverID=MySQL'
       'Database=sakila')
+    Connected = True
     LoginPrompt = False
     Left = 56
     Top = 144

@@ -35,10 +35,9 @@ type
     StringGridBindSourceDB1: TStringGrid;
     LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     BindingsList1: TBindingsList;
-    ComboBox1: TComboBox;
-    ListBoxItem1: TListBoxItem;
-    ListBoxItem2: TListBoxItem;
-    ListBoxItem3: TListBoxItem;
+    Functions: TComboBox;
+    SELECT: TListBoxItem;
+    DELETE: TListBoxItem;
     procedure sakilaClick(Sender: TObject);
     procedure menagerieClick(Sender: TObject);
     procedure world_xClick(Sender: TObject);
@@ -77,6 +76,7 @@ procedure TForm6.ExecuteClick(Sender: TObject);
   var
     SQLQuery: string;
     DialogueMessage: string;
+    Log: IFDDataSetReference;
   begin
         if SQLLimit.IsEmpty then
           begin
@@ -85,9 +85,12 @@ procedure TForm6.ExecuteClick(Sender: TObject);
           end
         else
           begin
-            SQLQuery := Concat(Edit1.Text, ' LIMIT ', SQLLimit);
+            SQLQuery := Concat(Functions.Items[Functions.ItemIndex], ' ',
+               Edit1.Text, ' LIMIT ', SQLLimit);
             FDQuery1.SQL.Text := SQLQuery;
             FDQuery1.Open;
+            FDQuery1.FetchAll();
+            log := FDQuery1.Data;
           end;
   end;
 

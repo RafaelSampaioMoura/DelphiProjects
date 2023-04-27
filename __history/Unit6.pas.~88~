@@ -76,6 +76,7 @@ procedure TForm6.ExecuteClick(Sender: TObject);
   var
     SQLQuery: string;
     DialogueMessage: string;
+    Log: IFDDataSetReference;
   begin
         if SQLLimit.IsEmpty then
           begin
@@ -86,7 +87,6 @@ procedure TForm6.ExecuteClick(Sender: TObject);
           begin
             SQLQuery := Concat(Functions.Items[Functions.ItemIndex], ' ',
                Edit1.Text, ' LIMIT ', SQLLimit);
-            readln(SQLQuery);
             FDQuery1.SQL.Text := SQLQuery;
             FDQuery1.Open;
           end;
