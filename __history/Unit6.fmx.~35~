@@ -32,34 +32,70 @@ object Form6: TForm6
     Size.Height = 97.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 10
-    object Button1: TButton
-      Position.Y = 48.000000000000000000
-      TabOrder = 1
-      Text = 'Button1'
+    object Connect: TButton
+      Position.X = 104.000000000000000000
+      Position.Y = 32.000000000000000000
+      TabOrder = 0
+      Text = 'Connect'
     end
     object Button2: TButton
-      Position.X = 88.000000000000000000
-      Position.Y = 48.000000000000000000
-      TabOrder = 2
+      Position.X = 344.000000000000000000
+      Position.Y = 56.000000000000000000
+      TabOrder = 1
       Text = 'Button2'
     end
-    object RadioButton2: TRadioButton
-      Position.X = 232.000000000000000000
+    object sakila: TRadioButton
+      IsChecked = True
       Position.Y = 8.000000000000000000
-      TabOrder = 3
-      Text = 'RadioButton2'
+      TabOrder = 2
+      Text = 'sakila'
     end
-    object RadioButton3: TRadioButton
-      Position.X = 232.000000000000000000
+    object managerie: TRadioButton
       Position.Y = 32.000000000000000000
-      TabOrder = 4
-      Text = 'RadioButton3'
+      TabOrder = 3
+      Text = 'managerie'
     end
-    object RadioButton4: TRadioButton
-      Position.X = 232.000000000000000000
+    object world_x: TRadioButton
       Position.Y = 56.000000000000000000
+      TabOrder = 4
+      Text = 'world_x'
+    end
+    object ListBox1: TListBox
+      Position.X = 224.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 65.000000000000000000
+      Size.PlatformDefault = False
       TabOrder = 5
-      Text = 'RadioButton4'
+      DisableFocusEffect = True
+      DefaultItemStyles.ItemStyle = ''
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      Viewport.Width = 85.000000000000000000
+      Viewport.Height = 61.000000000000000000
+      object ListBoxItem1: TListBoxItem
+        TabOrder = 0
+        Text = 'ListBoxItem1'
+      end
+      object ListBoxItem2: TListBoxItem
+        Position.Y = 19.000000000000000000
+        TabOrder = 1
+        Text = 'ListBoxItem2'
+      end
+      object ListBoxItem3: TListBoxItem
+        Position.Y = 38.000000000000000000
+        TabOrder = 2
+        Text = 'ListBoxItem3'
+      end
+    end
+    object Edit1: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 6
+      Position.X = 344.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 169.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
     end
   end
   object BindNavigator1: TBindNavigator
@@ -128,23 +164,5 @@ object Form6: TForm6
   object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
     Left = 312
     Top = 136
-  end
-  object PopupMenu1: TPopupMenu
-    Left = 416
-    Top = 8
-    object MenuItem1: TMenuItem
-      RadioItem = True
-      Text = 'MenuItem1'
-    end
-    object MenuItem2: TMenuItem
-      RadioItem = True
-      Text = 'MenuItem2'
-    end
-    object MenuItem3: TMenuItem
-      Text = 'MenuItem3'
-    end
-    object MenuItem4: TMenuItem
-      Text = 'MenuItem4'
-    end
   end
 end

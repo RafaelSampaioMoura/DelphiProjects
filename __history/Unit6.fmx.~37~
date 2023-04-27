@@ -32,41 +32,43 @@ object Form6: TForm6
     Size.Height = 97.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 10
-    object Button1: TButton
-      Position.Y = 48.000000000000000000
+    object Connect: TButton
+      Position.X = 104.000000000000000000
+      Position.Y = 32.000000000000000000
       TabOrder = 0
-      Text = 'Button1'
+      Text = 'Connect'
     end
     object Button2: TButton
-      Position.X = 88.000000000000000000
-      Position.Y = 48.000000000000000000
+      Position.X = 344.000000000000000000
+      Position.Y = 56.000000000000000000
       TabOrder = 1
       Text = 'Button2'
     end
-    object RadioButton2: TRadioButton
-      Position.X = 232.000000000000000000
+    object sakila: TRadioButton
+      IsChecked = True
       Position.Y = 8.000000000000000000
       TabOrder = 2
-      Text = 'RadioButton2'
+      Text = 'sakila'
+      OnClick = sakilaClick
     end
-    object RadioButton3: TRadioButton
-      Position.X = 232.000000000000000000
+    object managerie: TRadioButton
       Position.Y = 32.000000000000000000
       TabOrder = 3
-      Text = 'RadioButton3'
+      Text = 'managerie'
+      OnClick = managerieClick
     end
-    object RadioButton4: TRadioButton
-      Position.X = 232.000000000000000000
+    object world_x: TRadioButton
       Position.Y = 56.000000000000000000
       TabOrder = 4
-      Text = 'RadioButton4'
+      Text = 'world_x'
     end
     object ListBox1: TListBox
-      Position.X = 336.000000000000000000
+      Position.X = 224.000000000000000000
+      Position.Y = 16.000000000000000000
       Size.Width = 89.000000000000000000
       Size.Height = 65.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 6
+      TabOrder = 5
       DisableFocusEffect = True
       DefaultItemStyles.ItemStyle = ''
       DefaultItemStyles.GroupHeaderStyle = ''
@@ -90,8 +92,9 @@ object Form6: TForm6
     end
     object Edit1: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 7
-      Position.Y = 16.000000000000000000
+      TabOrder = 6
+      Position.X = 344.000000000000000000
+      Position.Y = 24.000000000000000000
       Size.Width = 169.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False

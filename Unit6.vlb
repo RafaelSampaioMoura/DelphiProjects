@@ -48,9 +48,9 @@ Coordinates=37,77,59,58
 [sakila]
 Coordinates=39,173,92,36
 
-[managerie]
-Coordinates=425,1,92,36
-
 [world_x]
 Coordinates=425,56,92,36
+
+[menagerie]
+Coordinates=425,1,92,36
 

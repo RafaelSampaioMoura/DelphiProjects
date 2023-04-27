@@ -14,7 +14,7 @@ uses
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, FireDAC.Comp.UI, Data.Bind.Components,
   Data.Bind.Grid, FMX.Controls.Presentation, FMX.ScrollBox, FMX.Grid,
   FireDAC.Comp.DataSet, FMX.Layouts, Fmx.Bind.Navigator, Data.Bind.DBScope,
-  FMX.Edit, FMX.StdCtrls;
+  FMX.Edit, FMX.StdCtrls, FMX.Menus, FMX.ListBox;
 
 type
   TForm6 = class(TForm)
@@ -29,11 +29,22 @@ type
     BindingsList1: TBindingsList;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
-    Edit1: TEdit;
     RadioButton1: TRadioButton;
     Panel1: TPanel;
-    Button1: TButton;
-    procedure BindNavigator1Click(Sender: TObject; Button: TNavigateButton);
+    Connect: TButton;
+    Button2: TButton;
+    sakila: TRadioButton;
+    managerie: TRadioButton;
+    world_x: TRadioButton;
+    ListBox1: TListBox;
+    ListBoxItem1: TListBoxItem;
+    ListBoxItem2: TListBoxItem;
+    ListBoxItem3: TListBoxItem;
+    Edit1: TEdit;
+    procedure sakilaClick(Sender: TObject);
+    procedure managerieClick(Sender: TObject);
+    procedure world_xClick(Sender: TObject);
+    procedure ConnectClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,10 +58,36 @@ implementation
 
 {$R *.fmx}
 
-procedure TForm6.BindNavigator1Click(Sender: TObject; Button: TNavigateButton);
-begin
-  FDQuery2.SQL.Text := Edit1.Text;
-  FDQuery2.Open;
-end;
 
+procedure TForm6.ConnectClick(Sender: TObject);
+  begin
+    FDConnection1.Connected := true;
+  end;
+
+procedure TForm6.managerieClick(Sender: TObject);
+  begin
+    begin
+      if managerie.IsChecked then
+        managerie.IsChecked := false
+      else
+        FDConnection1.Params.Database := sakila.Text;
+    end;
+  end;
+
+procedure TForm6.sakilaClick(Sender: TObject);
+  begin
+    if sakila.IsChecked then
+      sakila.IsChecked := false
+    else
+      FDConnection1.Params.Database := sakila.Text;
+  end;
+procedure TForm6.world_xClick(Sender: TObject);
+  begin
+    begin
+      if world_x.IsChecked then
+        world_x.IsChecked := false
+      else
+        FDConnection1.Params.Database := sakila.Text;
+    end;
+  end;
 end.
