@@ -34,13 +34,17 @@ type
     Connect: TButton;
     Button2: TButton;
     sakila: TRadioButton;
-    managerie: TRadioButton;
+    menagerie: TRadioButton;
     world_x: TRadioButton;
     ListBox1: TListBox;
     ListBoxItem1: TListBoxItem;
     ListBoxItem2: TListBoxItem;
     ListBoxItem3: TListBoxItem;
     Edit1: TEdit;
+    procedure sakilaClick(Sender: TObject);
+    procedure menagerieClick(Sender: TObject);
+    procedure world_xClick(Sender: TObject);
+    procedure ConnectClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,4 +59,35 @@ implementation
 {$R *.fmx}
 
 
+procedure TForm6.ConnectClick(Sender: TObject);
+  begin
+    FDConnection1.Connected := true;
+  end;
+
+procedure TForm6.menagerieClick(Sender: TObject);
+  begin
+    begin
+      if menagerie.IsChecked then
+        menagerie.IsChecked := false
+      else
+        FDConnection1.Params.Database := sakila.Text;
+    end;
+  end;
+
+procedure TForm6.sakilaClick(Sender: TObject);
+  begin
+    if sakila.IsChecked then
+      sakila.IsChecked := false
+    else
+      FDConnection1.Params.Database := sakila.Text;
+  end;
+procedure TForm6.world_xClick(Sender: TObject);
+  begin
+    begin
+      if world_x.IsChecked then
+        world_x.IsChecked := false
+      else
+        FDConnection1.Params.Database := sakila.Text;
+    end;
+  end;
 end.

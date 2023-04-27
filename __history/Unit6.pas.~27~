@@ -14,7 +14,7 @@ uses
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, FireDAC.Comp.UI, Data.Bind.Components,
   Data.Bind.Grid, FMX.Controls.Presentation, FMX.ScrollBox, FMX.Grid,
   FireDAC.Comp.DataSet, FMX.Layouts, Fmx.Bind.Navigator, Data.Bind.DBScope,
-  FMX.Edit, FMX.StdCtrls;
+  FMX.Edit, FMX.StdCtrls, FMX.Menus, FMX.ListBox;
 
 type
   TForm6 = class(TForm)
@@ -31,7 +31,17 @@ type
     FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
     RadioButton1: TRadioButton;
     Panel1: TPanel;
-    procedure Button1Click(Sender: TObject);
+    Connect: TButton;
+    Button2: TButton;
+    sakila: TRadioButton;
+    managerie: TRadioButton;
+    world_x: TRadioButton;
+    ListBox1: TListBox;
+    ListBoxItem1: TListBoxItem;
+    ListBoxItem2: TListBoxItem;
+    ListBoxItem3: TListBoxItem;
+    Edit1: TEdit;
+    procedure sakilaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,10 +55,12 @@ implementation
 
 {$R *.fmx}
 
-procedure TForm6.Button1Click(Sender: TObject);
-begin
-  FDQuery2.SQL.Text := Edit1.Text;
-  FDQuery2.Open;
-end;
 
+procedure TForm6.sakilaClick(Sender: TObject);
+  begin
+    if sakila.IsChecked then
+      sakila.IsChecked := false
+    else
+      FDConnection1.Params.Database := sakila.Text;
+  end;
 end.

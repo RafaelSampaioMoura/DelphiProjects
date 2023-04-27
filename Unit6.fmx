@@ -37,6 +37,7 @@ object Form6: TForm6
       Position.Y = 32.000000000000000000
       TabOrder = 0
       Text = 'Connect'
+      OnClick = ConnectClick
     end
     object Button2: TButton
       Position.X = 344.000000000000000000
@@ -49,16 +50,19 @@ object Form6: TForm6
       Position.Y = 8.000000000000000000
       TabOrder = 2
       Text = 'sakila'
+      OnClick = sakilaClick
     end
-    object managerie: TRadioButton
+    object menagerie: TRadioButton
       Position.Y = 32.000000000000000000
       TabOrder = 3
-      Text = 'managerie'
+      Text = 'menagerie'
+      OnClick = menagerieClick
     end
     object world_x: TRadioButton
       Position.Y = 56.000000000000000000
       TabOrder = 4
       Text = 'world_x'
+      OnClick = world_xClick
     end
     object ListBox1: TListBox
       Position.X = 224.000000000000000000
