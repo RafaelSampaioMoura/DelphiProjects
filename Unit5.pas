@@ -83,6 +83,9 @@ end;
 
 procedure TForm5.ConnectClick(Sender: TObject);
 begin
+  FDConnection1.Params.Database := 'star_wars';
+  FDConnection1.Connected := true;
+  ShowMessage('Connected to the Star Wars database');
   SaveToDatabase.Enabled := true;
 end;
 
