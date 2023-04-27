@@ -52,6 +52,7 @@ type
     procedure filmsClick(Sender: TObject);
     procedure starshipsClick(Sender: TObject);
     procedure speciesClick(Sender: TObject);
+    procedure ConnectClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,6 +79,11 @@ begin
       end;
   jValue := RESTResponse1.JSONValue;
   MemoContent.Text := jValue.ToString;
+end;
+
+procedure TForm5.ConnectClick(Sender: TObject);
+begin
+  SaveToDatabase.Enabled := true;
 end;
 
 procedure TForm5.filmsClick(Sender: TObject);

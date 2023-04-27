@@ -64,13 +64,15 @@ object Form5: TForm5
     end
     object Connect: TButton
       Position.X = 416.000000000000000000
-      TabOrder = 8
+      TabOrder = 7
       Text = 'Connect'
+      OnClick = ConnectClick
     end
     object SaveToDatabase: TButton
+      Enabled = False
       Position.X = 416.000000000000000000
       Position.Y = 32.000000000000000000
-      TabOrder = 9
+      TabOrder = 8
       Text = 'Save'
     end
   end
