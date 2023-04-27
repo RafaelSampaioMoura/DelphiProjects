@@ -233,13 +233,4 @@ object Form5: TForm5
       Track = False
     end
   end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'User_Name=root'
-      'Password=06011997'
-      'Server=127.0.0.1'
-      'DriverID=MySQL')
-    Left = 48
-    Top = 192
-  end
 end
