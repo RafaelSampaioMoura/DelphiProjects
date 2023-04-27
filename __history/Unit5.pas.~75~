@@ -12,7 +12,9 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FMX.Grid.Style, Fmx.Bind.Grid,
   Data.Bind.Grid, FMX.Grid, Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, REST.Response.Adapter;
+  FireDAC.Comp.Client, REST.Response.Adapter, FireDAC.UI.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef, FireDAC.FMXUI.Wait;
 
 type
   TForm5 = class(TForm)
@@ -38,6 +40,9 @@ type
     films: TRadioButton;
     starships: TRadioButton;
     species: TRadioButton;
+    Connect: TButton;
+    SaveToDatabase: TButton;
+    FDConnection1: TFDConnection;
     procedure Button1Click(Sender: TObject);
     procedure peopleClick(Sender: TObject);
     procedure planetsClick(Sender: TObject);
@@ -62,12 +67,12 @@ procedure TForm5.Button1Click(Sender: TObject);
 var
   jValue:TJSONValue;
 begin
+  RESTResponse1.RootElement := '';
   RESTRequest1.Execute;
-  RESTResponseDataSetAdapter1.RootElement := '';
-  if RESTResponse1.StatusCode = 200 then
-    if RESTClient1.Params[1].Value = '' then
+  if RESTClient1.Params[1].Value = '' then
+    if RESTResponse1.StatusCode = 200 then
       begin
-        RESTResponseDataSetAdapter1.RootElement := 'results';
+        RESTResponse1.RootElement := 'results';
       end;
   jValue := RESTResponse1.JSONValue;
   MemoContent.Text := jValue.ToString;
