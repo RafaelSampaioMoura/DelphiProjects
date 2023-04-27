@@ -45,6 +45,9 @@ type
     FDConnection1: TFDConnection;
     BindSourceDB2: TBindSourceDB;
     FDQuery1: TFDQuery;
+    Return: TButton;
+    Edit1: TEdit;
+    DatabaseQuery: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure peopleClick(Sender: TObject);
     procedure planetsClick(Sender: TObject);
@@ -139,8 +142,8 @@ var
   SQLQuery: string;
 begin
   SQLQuery := Concat('INSERT INTO t1 VALUES(', QuotedStr(GlobalJValue.ToString), ');');
-  //FDQuery1.SQL.Text := SQLQuery;
-  FDQuery1.ExecSQL(SQLQuery);
+  FDQuery1.SQL.Text := SQLQuery;
+  FDQuery1.ExecSQL;
 end;
 
 procedure TForm5.speciesClick(Sender: TObject);

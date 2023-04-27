@@ -1,0 +1,284 @@
+object Form5: TForm5
+  Left = 0
+  Top = 0
+  Caption = 'Form5'
+  ClientHeight = 347
+  ClientWidth = 973
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 973.000000000000000000
+    Size.Height = 161.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Button1: TButton
+      Position.X = 56.000000000000000000
+      Position.Y = 24.000000000000000000
+      TabOrder = 0
+      Text = 'Execute'
+      OnClick = Button1Click
+    end
+    object people: TRadioButton
+      IsChecked = True
+      Position.X = 224.000000000000000000
+      TabOrder = 1
+      Text = 'People'
+      OnClick = peopleClick
+    end
+    object vehicles: TRadioButton
+      Position.X = 224.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 2
+      Text = 'Vehicles'
+      OnClick = vehiclesClick
+    end
+    object planets: TRadioButton
+      Position.X = 224.000000000000000000
+      Position.Y = 32.000000000000000000
+      TabOrder = 3
+      Text = 'Planets'
+      OnClick = planetsClick
+    end
+    object films: TRadioButton
+      Position.X = 304.000000000000000000
+      TabOrder = 4
+      Text = 'Films'
+      OnClick = filmsClick
+    end
+    object starships: TRadioButton
+      Position.X = 304.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 5
+      Text = 'Starships'
+      OnClick = starshipsClick
+    end
+    object species: TRadioButton
+      Position.X = 304.000000000000000000
+      Position.Y = 32.000000000000000000
+      TabOrder = 6
+      Text = 'Species'
+      OnClick = speciesClick
+    end
+    object Connect: TButton
+      Position.X = 416.000000000000000000
+      TabOrder = 7
+      Text = 'Connect'
+      OnClick = ConnectClick
+    end
+    object SaveToDatabase: TButton
+      Enabled = False
+      Position.X = 416.000000000000000000
+      Position.Y = 32.000000000000000000
+      TabOrder = 8
+      Text = 'Save'
+      OnClick = SaveToDatabaseClick
+    end
+    object Return: TButton
+      Position.X = 592.000000000000000000
+      Position.Y = 72.000000000000000000
+      TabOrder = 10
+      Text = 'Return'
+    end
+    object DatabaseQuery: TLabel
+      Position.X = 584.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 128.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Query'
+      TabOrder = 11
+      object Edit1: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 4
+        Position.X = -4.000000000000000000
+        Position.Y = 16.000000000000000000
+      end
+    end
+  end
+  object GridBindSourceDB1: TGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
+    Size.Width = 973.000000000000000000
+    Size.Height = 186.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    RowCount = 0
+    Viewport.Width = 969.000000000000000000
+    Viewport.Height = 161.000000000000000000
+  end
+  object MemoContent: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    TextSettings.WordWrap = True
+    Position.X = 8.000000000000000000
+    Position.Y = 104.000000000000000000
+    Size.Width = 969.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Viewport.Width = 965.000000000000000000
+    Viewport.Height = 46.000000000000000000
+  end
+  object EditParamsid: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 17
+    KeyboardType = DecimalNumberPad
+    Position.X = 16.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 25.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    object idSelector: TLabel
+      Position.Y = -16.000000000000000000
+      TextSettings.WordWrap = False
+      Text = 'SelectID'
+      TabOrder = 0
+    end
+  end
+  object RESTClient1: TRESTClient
+    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
+    AcceptCharset = 'utf-8, *;q=0.8'
+    BaseURL = 'https://swapi.dev/api/{category}/{id}'
+    Params = <
+      item
+        Kind = pkURLSEGMENT
+        Name = 'category'
+        Options = [poAutoCreated]
+        Value = 'people'
+      end
+      item
+        Kind = pkURLSEGMENT
+        Name = 'id'
+        Options = [poAutoCreated]
+      end>
+    Left = 88
+    Top = 264
+  end
+  object RESTRequest1: TRESTRequest
+    AssignedValues = [rvConnectTimeout, rvReadTimeout]
+    Client = RESTClient1
+    Params = <>
+    Response = RESTResponse1
+    Left = 160
+    Top = 264
+  end
+  object RESTResponse1: TRESTResponse
+    ContentType = 'application/json'
+    Left = 240
+    Top = 264
+  end
+  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTable1
+    FieldDefs = <>
+    Response = RESTResponse1
+    TypesMode = Rich
+    Left = 368
+    Top = 264
+  end
+  object FDMemTable1: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'people'
+        DataType = ftWideString
+        Size = 29
+      end
+      item
+        Name = 'planets'
+        DataType = ftWideString
+        Size = 30
+      end
+      item
+        Name = 'films'
+        DataType = ftWideString
+        Size = 28
+      end
+      item
+        Name = 'species'
+        DataType = ftWideString
+        Size = 30
+      end
+      item
+        Name = 'vehicles'
+        DataType = ftWideString
+        Size = 31
+      end
+      item
+        Name = 'starships'
+        DataType = ftWideString
+        Size = 32
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable]
+    UpdateOptions.LockWait = True
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    StoreDefs = True
+    Left = 496
+    Top = 264
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTable1
+    ScopeMappings = <>
+    Left = 576
+    Top = 264
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 261
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = GridBindSourceDB1
+      Columns = <>
+    end
+    object LinkControlToFieldContent: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = RESTResponse1
+      FieldName = 'Content'
+      Control = MemoContent
+      Track = False
+    end
+    object LinkControlToFieldParamsid: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = RESTClient1
+      FieldName = 'Params.id'
+      Control = EditParamsid
+      Track = False
+    end
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'User_Name=root'
+      'Password=06011997'
+      'Server=127.0.0.1'
+      'DriverID=MySQL')
+    LoginPrompt = False
+    Left = 152
+    Top = 192
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = FDQuery1
+    ScopeMappings = <>
+    Left = 240
+    Top = 192
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'USE sakila; SELECT * FROM actor LIMIT 10;')
+    Left = 312
+    Top = 192
+  end
+end
