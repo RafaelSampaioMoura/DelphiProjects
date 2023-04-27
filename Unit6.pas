@@ -18,33 +18,32 @@ uses
 
 type
   TForm6 = class(TForm)
-    FDConnection1: TFDConnection;
-    BindSourceDB1: TBindSourceDB;
-    BindNavigator1: TBindNavigator;
-    FDQuery1: TFDQuery;
-    StringGrid1: TStringGrid;
-    BindSourceDB2: TBindSourceDB;
-    FDQuery2: TFDQuery;
-    LinkGridToDataSourceBindSourceDB2: TLinkGridToDataSource;
-    BindingsList1: TBindingsList;
-    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
-    FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
     RadioButton1: TRadioButton;
     Panel1: TPanel;
     Connect: TButton;
-    Button2: TButton;
+    Execute: TButton;
     sakila: TRadioButton;
     menagerie: TRadioButton;
     world_x: TRadioButton;
     ListBox1: TListBox;
-    ListBoxItem1: TListBoxItem;
-    ListBoxItem2: TListBoxItem;
-    ListBoxItem3: TListBoxItem;
+    Ten: TListBoxItem;
+    TwentyFive: TListBoxItem;
+    Fifty: TListBoxItem;
     Edit1: TEdit;
+    FDConnection1: TFDConnection;
+    BindSourceDB1: TBindSourceDB;
+    FDQuery1: TFDQuery;
+    StringGridBindSourceDB1: TStringGrid;
+    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+    BindingsList1: TBindingsList;
     procedure sakilaClick(Sender: TObject);
     procedure menagerieClick(Sender: TObject);
     procedure world_xClick(Sender: TObject);
     procedure ConnectClick(Sender: TObject);
+    procedure TenClick(Sender: TObject);
+    procedure TwentyFiveClick(Sender: TObject);
+    procedure FiftyClick(Sender: TObject);
+    procedure ExecuteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,6 +52,7 @@ type
 
 var
   Form6: TForm6;
+  SQLLimit: string;
 
 implementation
 
@@ -64,13 +64,27 @@ procedure TForm6.ConnectClick(Sender: TObject);
     FDConnection1.Connected := true;
   end;
 
+procedure TForm6.ExecuteClick(Sender: TObject);
+  var
+    SQLQuery: string;
+  begin
+        SQLQuery := Concat(Edit1.Text, ' LIMIT ', SQLLimit);
+        FDQuery1.SQL.Text := SQLQuery;
+        FDQuery1.Open;
+  end;
+
+procedure TForm6.FiftyClick(Sender: TObject);
+  begin
+    SQLLimit := '50';
+  end;
+
 procedure TForm6.menagerieClick(Sender: TObject);
   begin
     begin
       if menagerie.IsChecked then
         menagerie.IsChecked := false
       else
-        FDConnection1.Params.Database := sakila.Text;
+        FDConnection1.Params.Database := menagerie.Text;
     end;
   end;
 
@@ -81,6 +95,16 @@ procedure TForm6.sakilaClick(Sender: TObject);
     else
       FDConnection1.Params.Database := sakila.Text;
   end;
+procedure TForm6.TenClick(Sender: TObject);
+  begin
+    SQLLimit := '10';
+  end;
+
+procedure TForm6.TwentyFiveClick(Sender: TObject);
+  begin
+    SQLLimit := '25';
+  end;
+
 procedure TForm6.world_xClick(Sender: TObject);
   begin
     begin

@@ -1,56 +1,56 @@
 ﻿[]
-Coordinates=425,187,90,36
+Coordinates=162,1,71,33
 Visible=True
 
-[FDConnection1]
-Coordinates=0,0,104,36
-
-[BindSourceDB1]
-Coordinates=0,0,106,58
-
-[FDQuery1]
-Coordinates=106,77,73,58
-
-[StringGrid1]
-Coordinates=500,110,80,58
-
-[BindSourceDB2]
-Coordinates=266,78,121,380
-
-[FDQuery2]
-Coordinates=266,78,73,36
-Visible=False
-
-[BindingsList1]
-Coordinates=266,1,91,36
-
-[FDGUIxWaitCursor1]
-Coordinates=247,1,132,36
-
-[FDPhysMySQLDriverLink1]
-Coordinates=247,1,168,36
-
 [RadioButton1]
-Coordinates=266,1,92,36
+Coordinates=266,1,81,33
 
 [Panel1]
-Coordinates=207,173,55,36
-
-[Button2]
-Coordinates=138,173,59,58
+Coordinates=420,300,47,33
 
 [ListBox1]
-Coordinates=118,250,139,212
+Coordinates=0,150,116,177
 
 [Connect]
-Coordinates=37,77,59,58
+Coordinates=0,80,55,51
 
 [sakila]
-Coordinates=39,173,92,36
+Coordinates=610,190,42,33
 
 [world_x]
-Coordinates=425,56,92,36
+Coordinates=610,270,53,33
 
 [menagerie]
-Coordinates=425,1,92,36
+Coordinates=610,230,65,33
+
+[Execute]
+Coordinates=120,160,53,51
+
+[Ten]
+Coordinates=590,60,40,33
+
+[Edit1]
+Coordinates=410,200,40,51
+
+[TwentyFive]
+Coordinates=590,100,70,33
+
+[Fifty]
+Coordinates=590,140,40,33
+
+[FDConnection1]
+Coordinates=0,0,90,33
+
+[BindSourceDB1]
+Coordinates=220,90,92,141
+
+[FDQuery1]
+Coordinates=111,1,63,33
+Visible=False
+
+[StringGridBindSourceDB1]
+Coordinates=0,0,143,51
+
+[BindingsList1]
+Coordinates=89,1,82,33
 
