@@ -1,9 +1,6 @@
 ﻿[]
-Coordinates=162,1,71,33
-Visible=True
-
-[RadioButton1]
 Coordinates=266,1,81,33
+Visible=True
 
 [Panel1]
 Coordinates=420,300,47,33

@@ -9,18 +9,12 @@ object Form6: TForm6
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
-  object RadioButton1: TRadioButton
-    Position.X = 512.000000000000000000
-    Position.Y = 48.000000000000000000
-    TabOrder = 0
-    Text = 'RadioButton1'
-  end
   object Panel1: TPanel
     Align = Top
     Size.Width = 640.000000000000000000
     Size.Height = 97.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 1
+    TabOrder = 0
     object Connect: TButton
       Position.X = 104.000000000000000000
       Position.Y = 32.000000000000000000
@@ -29,8 +23,12 @@ object Form6: TForm6
       OnClick = ConnectClick
     end
     object Execute: TButton
+      Enabled = False
       Position.X = 344.000000000000000000
       Position.Y = 56.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
       TabOrder = 1
       Text = 'Execute'
       OnClick = ExecuteClick
@@ -62,14 +60,12 @@ object Form6: TForm6
       Size.PlatformDefault = False
       TabOrder = 5
       DisableFocusEffect = True
-      ItemIndex = 0
       DefaultItemStyles.ItemStyle = ''
       DefaultItemStyles.GroupHeaderStyle = ''
       DefaultItemStyles.GroupFooterStyle = ''
       Viewport.Width = 85.000000000000000000
       Viewport.Height = 61.000000000000000000
       object Ten: TListBoxItem
-        IsSelected = True
         TabOrder = 0
         Text = 'Ten'
         OnClick = TenClick
@@ -105,7 +101,7 @@ object Form6: TForm6
     Size.Width = 640.000000000000000000
     Size.Height = 383.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 5
+    TabOrder = 4
     RowCount = 0
     Viewport.Width = 636.000000000000000000
     Viewport.Height = 358.000000000000000000
@@ -115,7 +111,8 @@ object Form6: TForm6
       'User_Name=root'
       'Password=06011997'
       'Server=127.0.0.1'
-      'DriverID=MySQL')
+      'DriverID=MySQL'
+      'Database=sakila')
     LoginPrompt = False
     Left = 56
     Top = 144

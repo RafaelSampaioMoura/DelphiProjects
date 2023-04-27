@@ -14,7 +14,7 @@ uses
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, FireDAC.Comp.UI, Data.Bind.Components,
   Data.Bind.Grid, FMX.Controls.Presentation, FMX.ScrollBox, FMX.Grid,
   FireDAC.Comp.DataSet, FMX.Layouts, Fmx.Bind.Navigator, Data.Bind.DBScope,
-  FMX.Edit, FMX.StdCtrls, FMX.Menus, FMX.ListBox;
+  FMX.Edit, FMX.StdCtrls, FMX.Menus, FMX.ListBox, Vcl.Dialogs;
 
 type
   TForm6 = class(TForm)
@@ -60,21 +60,22 @@ implementation
 
 
 procedure TForm6.ConnectClick(Sender: TObject);
+  var
+    DialogueMessage: string;
   begin
     FDConnection1.Connected := true;
+    DialogueMessage := Concat('Connected to the ',
+      FDConnection1.Params.Database, ' database.');
+    ShowMessage(DialogueMessage);
   end;
 
 procedure TForm6.ExecuteClick(Sender: TObject);
   var
     SQLQuery: string;
   begin
-    if FDConnection1.Connected = false then
-      begin
-        SQLQuery := Concat(Edit1.Text,' LIMIT ', SQLLimit);
+        SQLQuery := Concat(Edit1.Text, ' LIMIT ', SQLLimit);
         FDQuery1.SQL.Text := SQLQuery;
-      end
-    else
-      Execute.Enabled := false;
+        FDQuery1.Open;
   end;
 
 procedure TForm6.FiftyClick(Sender: TObject);
@@ -88,7 +89,7 @@ procedure TForm6.menagerieClick(Sender: TObject);
       if menagerie.IsChecked then
         menagerie.IsChecked := false
       else
-        FDConnection1.Params.Database := sakila.Text;
+        FDConnection1.Params.Database := menagerie.Text;
     end;
   end;
 

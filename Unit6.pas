@@ -18,7 +18,6 @@ uses
 
 type
   TForm6 = class(TForm)
-    RadioButton1: TRadioButton;
     Panel1: TPanel;
     Connect: TButton;
     Execute: TButton;
@@ -67,15 +66,25 @@ procedure TForm6.ConnectClick(Sender: TObject);
     DialogueMessage := Concat('Connected to the ',
       FDConnection1.Params.Database, ' database.');
     ShowMessage(DialogueMessage);
+    Execute.Enabled := true;
   end;
 
 procedure TForm6.ExecuteClick(Sender: TObject);
   var
     SQLQuery: string;
+    DialogueMessage: string;
   begin
-        SQLQuery := Concat(Edit1.Text, ' LIMIT ', SQLLimit);
-        FDQuery1.SQL.Text := SQLQuery;
-        FDQuery1.Open;
+        if SQLLimit.IsEmpty then
+          begin
+            DialogueMessage := 'Please choose how many results you want to fetch';
+            ShowMessage(DialogueMessage)
+          end
+        else
+          begin
+            SQLQuery := Concat(Edit1.Text, ' LIMIT ', SQLLimit);
+            FDQuery1.SQL.Text := SQLQuery;
+            FDQuery1.Open;
+          end;
   end;
 
 procedure TForm6.FiftyClick(Sender: TObject);
