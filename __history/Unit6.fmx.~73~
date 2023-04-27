@@ -29,8 +29,8 @@ object Form6: TForm6
       OnClick = ConnectClick
     end
     object Execute: TButton
-      Position.X = 344.000000000000000000
-      Position.Y = 56.000000000000000000
+      Position.X = 536.000000000000000000
+      Position.Y = 8.000000000000000000
       TabOrder = 1
       Text = 'Execute'
       OnClick = ExecuteClick
@@ -62,14 +62,12 @@ object Form6: TForm6
       Size.PlatformDefault = False
       TabOrder = 5
       DisableFocusEffect = True
-      ItemIndex = 0
       DefaultItemStyles.ItemStyle = ''
       DefaultItemStyles.GroupHeaderStyle = ''
       DefaultItemStyles.GroupFooterStyle = ''
       Viewport.Width = 85.000000000000000000
       Viewport.Height = 61.000000000000000000
       object Ten: TListBoxItem
-        IsSelected = True
         TabOrder = 0
         Text = 'Ten'
         OnClick = TenClick
@@ -97,6 +95,12 @@ object Form6: TForm6
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
     end
+    object Button1: TButton
+      Position.X = 344.000000000000000000
+      Position.Y = 56.000000000000000000
+      TabOrder = 8
+      Text = 'Button1'
+    end
   end
   object StringGridBindSourceDB1: TStringGrid
     Align = Client
@@ -105,19 +109,18 @@ object Form6: TForm6
     Size.Width = 640.000000000000000000
     Size.Height = 383.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 6
-    RowCount = 10
+    TabOrder = 5
+    RowCount = 0
     Viewport.Width = 636.000000000000000000
-    Viewport.Height = 342.000000000000000000
+    Viewport.Height = 358.000000000000000000
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'Database=sakila'
       'User_Name=root'
       'Password=06011997'
       'Server=127.0.0.1'
-      'DriverID=MySQL')
-    Connected = True
+      'DriverID=MySQL'
+      'Database=sakila')
     LoginPrompt = False
     Left = 56
     Top = 144
@@ -129,7 +132,6 @@ object Form6: TForm6
     Top = 144
   end
   object FDQuery1: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM actor LIMIT 10;')
@@ -139,8 +141,8 @@ object Form6: TForm6
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 20
-    Top = 5
+    Left = 292
+    Top = 141
     object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1

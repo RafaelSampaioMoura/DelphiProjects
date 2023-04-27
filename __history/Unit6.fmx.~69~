@@ -98,16 +98,52 @@ object Form6: TForm6
       Size.PlatformDefault = False
     end
   end
+  object StringGridBindSourceDB1: TStringGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
+    Size.Width = 640.000000000000000000
+    Size.Height = 383.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    RowCount = 0
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 358.000000000000000000
+  end
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'Database=sakila'
       'User_Name=root'
       'Password=06011997'
       'Server=127.0.0.1'
-      'DriverID=MySQL')
-    Connected = True
+      'DriverID=MySQL'
+      'Database=sakila')
     LoginPrompt = False
     Left = 56
     Top = 144
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDQuery1
+    ScopeMappings = <>
+    Left = 144
+    Top = 144
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM actor LIMIT 10;')
+    Left = 216
+    Top = 144
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 292
+    Top = 141
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGridBindSourceDB1
+      Columns = <>
+    end
   end
 end

@@ -9,18 +9,12 @@ object Form6: TForm6
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
-  object RadioButton1: TRadioButton
-    Position.X = 512.000000000000000000
-    Position.Y = 48.000000000000000000
-    TabOrder = 0
-    Text = 'RadioButton1'
-  end
   object Panel1: TPanel
     Align = Top
     Size.Width = 640.000000000000000000
     Size.Height = 97.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 1
+    TabOrder = 0
     object Connect: TButton
       Position.X = 104.000000000000000000
       Position.Y = 32.000000000000000000
@@ -31,6 +25,9 @@ object Form6: TForm6
     object Execute: TButton
       Position.X = 344.000000000000000000
       Position.Y = 56.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
       TabOrder = 1
       Text = 'Execute'
       OnClick = ExecuteClick
@@ -62,14 +59,12 @@ object Form6: TForm6
       Size.PlatformDefault = False
       TabOrder = 5
       DisableFocusEffect = True
-      ItemIndex = 0
       DefaultItemStyles.ItemStyle = ''
       DefaultItemStyles.GroupHeaderStyle = ''
       DefaultItemStyles.GroupFooterStyle = ''
       Viewport.Width = 85.000000000000000000
       Viewport.Height = 61.000000000000000000
       object Ten: TListBoxItem
-        IsSelected = True
         TabOrder = 0
         Text = 'Ten'
         OnClick = TenClick
@@ -96,6 +91,54 @@ object Form6: TForm6
       Size.Width = 169.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
+    end
+  end
+  object StringGridBindSourceDB1: TStringGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
+    Size.Width = 640.000000000000000000
+    Size.Height = 383.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    RowCount = 0
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 358.000000000000000000
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'User_Name=root'
+      'Password=06011997'
+      'Server=127.0.0.1'
+      'DriverID=MySQL'
+      'Database=sakila')
+    LoginPrompt = False
+    Left = 56
+    Top = 144
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDQuery1
+    ScopeMappings = <>
+    Left = 144
+    Top = 144
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM actor LIMIT 10;')
+    Left = 216
+    Top = 144
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 292
+    Top = 141
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGridBindSourceDB1
+      Columns = <>
     end
   end
 end
