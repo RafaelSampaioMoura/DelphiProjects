@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2023/04/25 16:25:00.170,=C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\Unit6.pas</Transaction>
+    <Transaction>2023/04/25 16:25:55.947,=C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\Unit7.pas</Transaction>
+    <Transaction>2023/04/25 16:29:52.985,C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\DatabasePracticeOne.pas=C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\Unit7.pas</Transaction>
+    <Transaction>2023/04/25 16:29:52.985,C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\DatabasePracticeOne.dfm=C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\Unit7.dfm</Transaction>
+    <Transaction>2023/04/25 16:30:19.253,C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\DatabasePracticeOneVCL.pas=C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\Unit6.pas</Transaction>
+    <Transaction>2023/04/25 16:30:19.253,C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\DatabasePracticeOneVCL.dfm=C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\Unit6.dfm</Transaction>
+    <Transaction>2023/04/25 16:30:39.712,C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\DatabasePracticeProjectOne.dproj=C:\Users\Rafael\Documents\Embarcadero\Studio\Projects\Project6.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
