@@ -53,6 +53,7 @@ type
     procedure starshipsClick(Sender: TObject);
     procedure speciesClick(Sender: TObject);
     procedure ConnectClick(Sender: TObject);
+    procedure SaveToDatabaseClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -61,6 +62,7 @@ type
 
 var
   Form5: TForm5;
+  GlobalJValue: TJSONValue;
 
 implementation
 
@@ -78,15 +80,15 @@ begin
         RESTResponse1.RootElement := 'results';
       end;
   jValue := RESTResponse1.JSONValue;
+  GlobalJValue := jValue;
   MemoContent.Text := jValue.ToString;
 end;
 
 procedure TForm5.ConnectClick(Sender: TObject);
 begin
-  FDConnection1.Connected := true;
-  FDQuery1.SQL.Text := 'CREATE DATABASE star_wars';
-  FDQuery1.ExecSQL;
   FDConnection1.Params.Database := 'star_wars';
+  FDConnection1.Connected := true;
+  ShowMessage('Connected to the Star Wars database');
   SaveToDatabase.Enabled := true;
 end;
 
@@ -128,6 +130,13 @@ begin
       RESTClient1.Params[0].Value := planets.Name;
       planets.IsChecked := true;
     end;
+end;
+
+procedure TForm5.SaveToDatabaseClick(Sender: TObject);
+var
+  SQLQuery: string;
+begin
+  SQLQuery := 'SELECT * FROM OPENJSON()';
 end;
 
 procedure TForm5.speciesClick(Sender: TObject);

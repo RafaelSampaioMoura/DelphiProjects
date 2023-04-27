@@ -74,6 +74,7 @@ object Form5: TForm5
       Position.Y = 32.000000000000000000
       TabOrder = 8
       Text = 'Save'
+      OnClick = SaveToDatabaseClick
     end
   end
   object GridBindSourceDB1: TGrid

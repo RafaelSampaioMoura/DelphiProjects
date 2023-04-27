@@ -15,13 +15,14 @@ object Form5: TForm5
     Size.PlatformDefault = False
     TabOrder = 0
     object Button1: TButton
-      Position.X = 24.000000000000000000
+      Position.X = 56.000000000000000000
       Position.Y = 24.000000000000000000
       TabOrder = 0
       Text = 'Execute'
       OnClick = Button1Click
     end
     object people: TRadioButton
+      IsChecked = True
       Position.X = 224.000000000000000000
       TabOrder = 1
       Text = 'People'
@@ -42,7 +43,6 @@ object Form5: TForm5
       OnClick = planetsClick
     end
     object films: TRadioButton
-      IsChecked = True
       Position.X = 304.000000000000000000
       TabOrder = 4
       Text = 'Films'
@@ -62,6 +62,19 @@ object Form5: TForm5
       Text = 'Species'
       OnClick = speciesClick
     end
+    object Connect: TButton
+      Position.X = 416.000000000000000000
+      TabOrder = 7
+      Text = 'Connect'
+      OnClick = ConnectClick
+    end
+    object SaveToDatabase: TButton
+      Enabled = False
+      Position.X = 416.000000000000000000
+      Position.Y = 32.000000000000000000
+      TabOrder = 8
+      Text = 'Save'
+    end
   end
   object GridBindSourceDB1: TGrid
     Align = Client
@@ -71,33 +84,27 @@ object Form5: TForm5
     Size.Height = 227.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 7
-    RowCount = 1
+    RowCount = 0
     Viewport.Width = 636.000000000000000000
-    Viewport.Height = 186.000000000000000000
+    Viewport.Height = 202.000000000000000000
   end
   object MemoContent: TMemo
     Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
     DataDetectorTypes = []
-    Lines.Strings = (
-      
-        '{"people":"https://swapi.dev/api/people/","planets":"https://swa' +
-        'pi.dev/api/planets/","films":"https://swapi.dev/api/films/","spe' +
-        'cies":"https://swapi.dev/api/species/","vehicles":"https://swapi' +
-        '.dev/api/vehicles/","starships":"https://swapi.dev/api/starships' +
-        '/"}')
     TextSettings.WordWrap = True
     Position.Y = 64.000000000000000000
     Size.Width = 625.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 9
-    Viewport.Width = 605.000000000000000000
+    Viewport.Width = 621.000000000000000000
     Viewport.Height = 46.000000000000000000
   end
   object EditParamsid: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 17
     KeyboardType = DecimalNumberPad
+    Position.X = 16.000000000000000000
     Position.Y = 24.000000000000000000
     Size.Width = 25.000000000000000000
     Size.Height = 22.000000000000000000
@@ -112,11 +119,17 @@ object Form5: TForm5
   object RESTClient1: TRESTClient
     Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
     AcceptCharset = 'utf-8, *;q=0.8'
-    BaseURL = 'https://swapi.dev/api/{category}'
+    BaseURL = 'https://swapi.dev/api/{category}/{id}'
     Params = <
       item
         Kind = pkURLSEGMENT
         Name = 'category'
+        Options = [poAutoCreated]
+        Value = 'people'
+      end
+      item
+        Kind = pkURLSEGMENT
+        Name = 'id'
         Options = [poAutoCreated]
       end>
     Left = 88
@@ -221,5 +234,28 @@ object Form5: TForm5
       Control = EditParamsid
       Track = False
     end
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'User_Name=root'
+      'Password=06011997'
+      'Server=127.0.0.1'
+      'DriverID=MySQL')
+    LoginPrompt = False
+    Left = 48
+    Top = 192
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = FDQuery1
+    ScopeMappings = <>
+    Left = 128
+    Top = 192
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'USE sakila; SELECT * FROM actor LIMIT 10;')
+    Left = 200
+    Top = 192
   end
 end

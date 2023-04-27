@@ -61,6 +61,7 @@ type
 
 var
   Form5: TForm5;
+  GlobalJValue: TJSONValue;
 
 implementation
 
@@ -78,12 +79,15 @@ begin
         RESTResponse1.RootElement := 'results';
       end;
   jValue := RESTResponse1.JSONValue;
+  GlobalJValue := jValue;
   MemoContent.Text := jValue.ToString;
 end;
 
 procedure TForm5.ConnectClick(Sender: TObject);
 begin
+  FDConnection1.Params.Database := 'star_wars';
   FDConnection1.Connected := true;
+  ShowMessage('Connected to the Star Wars database');
   SaveToDatabase.Enabled := true;
 end;
 

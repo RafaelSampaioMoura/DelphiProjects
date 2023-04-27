@@ -53,6 +53,7 @@ type
     procedure starshipsClick(Sender: TObject);
     procedure speciesClick(Sender: TObject);
     procedure ConnectClick(Sender: TObject);
+    procedure SaveToDatabaseClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -61,6 +62,7 @@ type
 
 var
   Form5: TForm5;
+  GlobalJValue: TJSONValue;
 
 implementation
 
@@ -69,6 +71,7 @@ implementation
 procedure TForm5.Button1Click(Sender: TObject);
 var
   jValue:TJSONValue;
+  dummyString: string;
 begin
   RESTResponse1.RootElement := '';
   RESTRequest1.Execute;
@@ -78,6 +81,8 @@ begin
         RESTResponse1.RootElement := 'results';
       end;
   jValue := RESTResponse1.JSONValue;
+  GlobalJValue := jValue;
+  dummyString := GlobalJValue.ToString;
   MemoContent.Text := jValue.ToString;
 end;
 
@@ -127,6 +132,15 @@ begin
       RESTClient1.Params[0].Value := planets.Name;
       planets.IsChecked := true;
     end;
+end;
+
+procedure TForm5.SaveToDatabaseClick(Sender: TObject);
+var
+  SQLQuery: string;
+begin
+  SQLQuery := Concat('INSERT INTO t1 VALUES(', QuotedStr(GlobalJValue.ToString), ');');
+  //FDQuery1.SQL.Text := SQLQuery;
+  FDQuery1.ExecSQL(SQLQuery);
 end;
 
 procedure TForm5.speciesClick(Sender: TObject);
