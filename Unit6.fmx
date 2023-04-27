@@ -1,6 +1,7 @@
 object Form6: TForm6
   Left = 0
   Top = 0
+  ActiveControl = ListBox1
   Caption = 'Form6'
   ClientHeight = 480
   ClientWidth = 640
@@ -8,22 +9,10 @@ object Form6: TForm6
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
-  object StringGrid1: TStringGrid
-    Align = Client
-    CanFocus = True
-    ClipChildren = True
-    Size.Width = 640.000000000000000000
-    Size.Height = 358.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 3
-    RowCount = 0
-    Viewport.Width = 636.000000000000000000
-    Viewport.Height = 333.000000000000000000
-  end
   object RadioButton1: TRadioButton
     Position.X = 512.000000000000000000
     Position.Y = 48.000000000000000000
-    TabOrder = 9
+    TabOrder = 0
     Text = 'RadioButton1'
   end
   object Panel1: TPanel
@@ -31,7 +20,7 @@ object Form6: TForm6
     Size.Width = 640.000000000000000000
     Size.Height = 97.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 10
+    TabOrder = 1
     object Connect: TButton
       Position.X = 104.000000000000000000
       Position.Y = 32.000000000000000000
@@ -39,11 +28,12 @@ object Form6: TForm6
       Text = 'Connect'
       OnClick = ConnectClick
     end
-    object Button2: TButton
+    object Execute: TButton
       Position.X = 344.000000000000000000
       Position.Y = 56.000000000000000000
       TabOrder = 1
-      Text = 'Button2'
+      Text = 'Execute'
+      OnClick = ExecuteClick
     end
     object sakila: TRadioButton
       IsChecked = True
@@ -65,36 +55,42 @@ object Form6: TForm6
       OnClick = world_xClick
     end
     object ListBox1: TListBox
-      Position.X = 224.000000000000000000
-      Position.Y = 16.000000000000000000
+      Position.X = 528.000000000000000000
+      Position.Y = 8.000000000000000000
       Size.Width = 89.000000000000000000
       Size.Height = 65.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 5
       DisableFocusEffect = True
+      ItemIndex = 0
       DefaultItemStyles.ItemStyle = ''
       DefaultItemStyles.GroupHeaderStyle = ''
       DefaultItemStyles.GroupFooterStyle = ''
       Viewport.Width = 85.000000000000000000
       Viewport.Height = 61.000000000000000000
-      object ListBoxItem1: TListBoxItem
+      object Ten: TListBoxItem
+        IsSelected = True
         TabOrder = 0
-        Text = 'ListBoxItem1'
+        Text = 'Ten'
+        OnClick = TenClick
       end
-      object ListBoxItem2: TListBoxItem
+      object TwentyFive: TListBoxItem
         Position.Y = 19.000000000000000000
         TabOrder = 1
-        Text = 'ListBoxItem2'
+        Text = 'TwentyFive'
+        OnClick = TwentyFiveClick
       end
-      object ListBoxItem3: TListBoxItem
+      object Fifty: TListBoxItem
         Position.Y = 38.000000000000000000
         TabOrder = 2
-        Text = 'ListBoxItem3'
+        Text = 'Fifty'
+        OnClick = FiftyClick
       end
     end
     object Edit1: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 6
+      Text = 'SELECT * FROM'
       Position.X = 344.000000000000000000
       Position.Y = 24.000000000000000000
       Size.Width = 169.000000000000000000
@@ -102,71 +98,51 @@ object Form6: TForm6
       Size.PlatformDefault = False
     end
   end
-  object BindNavigator1: TBindNavigator
-    Align = Top
-    Position.Y = 97.000000000000000000
+  object StringGridBindSourceDB1: TStringGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
     Size.Width = 640.000000000000000000
-    Size.Height = 25.000000000000000000
+    Size.Height = 383.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 11
-    DataSource = BindSourceDB2
-    xRadius = 4.000000000000000000
-    yRadius = 4.000000000000000000
+    TabOrder = 5
+    RowCount = 0
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 358.000000000000000000
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
       'User_Name=root'
       'Password=06011997'
       'Server=127.0.0.1'
-      'Database=sakila'
       'DriverID=MySQL')
-    Connected = True
     LoginPrompt = False
-    Left = 136
-    Top = 136
+    Left = 56
+    Top = 144
   end
   object BindSourceDB1: TBindSourceDB
+    DataSet = FDQuery1
     ScopeMappings = <>
-    Left = 48
-    Top = 136
+    Left = 144
+    Top = 144
   end
   object FDQuery1: TFDQuery
     Connection = FDConnection1
-    Left = 216
-    Top = 192
-  end
-  object BindSourceDB2: TBindSourceDB
-    DataSet = FDQuery2
-    ScopeMappings = <>
-    Left = 288
-    Top = 192
-  end
-  object FDQuery2: TFDQuery
-    Connection = FDConnection1
     SQL.Strings = (
-      'SELECT * FROM film LIMIT 50;')
+      'SELECT * FROM actor LIMIT 10;')
     Left = 216
-    Top = 136
+    Top = 144
   end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 44
-    Top = 189
-    object LinkGridToDataSourceBindSourceDB2: TLinkGridToDataSource
+    Left = 292
+    Top = 141
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB2
-      GridControl = StringGrid1
+      DataSource = BindSourceDB1
+      GridControl = StringGridBindSourceDB1
       Columns = <>
     end
-  end
-  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
-    Provider = 'FMX'
-    Left = 136
-    Top = 192
-  end
-  object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
-    Left = 312
-    Top = 136
   end
 end
