@@ -68,8 +68,9 @@ procedure TForm6.ExecuteClick(Sender: TObject);
   var
     SQLQuery: string;
   begin
-    SQLQuery := Concat(Edit1.Text,' LIMIT ', SQLLimit);
-    FDQuery2.SQL.Text := SQLQuery;
+        SQLQuery := Concat(Edit1.Text, ' LIMIT ', SQLLimit);
+        FDQuery1.SQL.Text := SQLQuery;
+        FDQuery1.Open;
   end;
 
 procedure TForm6.FiftyClick(Sender: TObject);
@@ -83,7 +84,7 @@ procedure TForm6.menagerieClick(Sender: TObject);
       if menagerie.IsChecked then
         menagerie.IsChecked := false
       else
-        FDConnection1.Params.Database := sakila.Text;
+        FDConnection1.Params.Database := menagerie.Text;
     end;
   end;
 

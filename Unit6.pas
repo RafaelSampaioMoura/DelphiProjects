@@ -14,7 +14,7 @@ uses
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, FireDAC.Comp.UI, Data.Bind.Components,
   Data.Bind.Grid, FMX.Controls.Presentation, FMX.ScrollBox, FMX.Grid,
   FireDAC.Comp.DataSet, FMX.Layouts, Fmx.Bind.Navigator, Data.Bind.DBScope,
-  FMX.Edit, FMX.StdCtrls, FMX.Menus, FMX.ListBox;
+  FMX.Edit, FMX.StdCtrls, FMX.Menus, FMX.ListBox, Vcl.Dialogs;
 
 type
   TForm6 = class(TForm)
@@ -60,8 +60,13 @@ implementation
 
 
 procedure TForm6.ConnectClick(Sender: TObject);
+  var
+    DialogueMessage: string;
   begin
     FDConnection1.Connected := true;
+    DialogueMessage := Concat('Connected to the ',
+      FDConnection1.Params.Database, ' database.');
+    ShowMessage(DialogueMessage);
   end;
 
 procedure TForm6.ExecuteClick(Sender: TObject);
