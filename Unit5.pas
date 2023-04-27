@@ -38,6 +38,8 @@ type
     films: TRadioButton;
     starships: TRadioButton;
     species: TRadioButton;
+    Connect: TButton;
+    SaveToDatabase: TButton;
     procedure Button1Click(Sender: TObject);
     procedure peopleClick(Sender: TObject);
     procedure planetsClick(Sender: TObject);
