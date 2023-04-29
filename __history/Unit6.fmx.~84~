@@ -9,12 +9,25 @@ object Form6: TForm6
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
+<<<<<<<< HEAD:__history/Unit6.fmx.~84~
+========
+  object RadioButton1: TRadioButton
+    Position.X = 512.000000000000000000
+    Position.Y = 48.000000000000000000
+    TabOrder = 0
+    Text = 'RadioButton1'
+  end
+>>>>>>>> 30e88408234039df461648d157b645b87c659c6b:__history/Unit6.fmx.~65~
   object Panel1: TPanel
     Align = Top
     Size.Width = 640.000000000000000000
     Size.Height = 97.000000000000000000
     Size.PlatformDefault = False
+<<<<<<<< HEAD:__history/Unit6.fmx.~84~
     TabOrder = 0
+========
+    TabOrder = 1
+>>>>>>>> 30e88408234039df461648d157b645b87c659c6b:__history/Unit6.fmx.~65~
     object Connect: TButton
       Position.X = 96.000000000000000000
       Position.Y = 16.000000000000000000
@@ -23,12 +36,17 @@ object Form6: TForm6
       OnClick = ConnectClick
     end
     object Execute: TButton
+<<<<<<<< HEAD:__history/Unit6.fmx.~84~
       Enabled = False
       Position.X = 288.000000000000000000
       Position.Y = 48.000000000000000000
       Size.Width = 97.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
+========
+      Position.X = 344.000000000000000000
+      Position.Y = 56.000000000000000000
+>>>>>>>> 30e88408234039df461648d157b645b87c659c6b:__history/Unit6.fmx.~65~
       TabOrder = 1
       Text = 'Execute'
       OnClick = ExecuteClick
@@ -69,12 +87,17 @@ object Form6: TForm6
       Size.PlatformDefault = False
       TabOrder = 5
       DisableFocusEffect = True
+      ItemIndex = 0
       DefaultItemStyles.ItemStyle = ''
       DefaultItemStyles.GroupHeaderStyle = ''
       DefaultItemStyles.GroupFooterStyle = ''
       Viewport.Width = 85.000000000000000000
       Viewport.Height = 61.000000000000000000
       object Ten: TListBoxItem
+<<<<<<<< HEAD:__history/Unit6.fmx.~84~
+========
+        IsSelected = True
+>>>>>>>> 30e88408234039df461648d157b645b87c659c6b:__history/Unit6.fmx.~65~
         TabOrder = 0
         Text = 'Ten'
         OnClick = TenClick
@@ -96,8 +119,13 @@ object Form6: TForm6
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 6
       Text = 'SELECT * FROM'
+<<<<<<<< HEAD:__history/Unit6.fmx.~84~
       Position.X = 288.000000000000000000
       Position.Y = 16.000000000000000000
+========
+      Position.X = 344.000000000000000000
+      Position.Y = 24.000000000000000000
+>>>>>>>> 30e88408234039df461648d157b645b87c659c6b:__history/Unit6.fmx.~65~
       Size.Width = 169.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
@@ -123,7 +151,11 @@ object Form6: TForm6
     Size.Width = 640.000000000000000000
     Size.Height = 383.000000000000000000
     Size.PlatformDefault = False
+<<<<<<<< HEAD:__history/Unit6.fmx.~84~
     TabOrder = 4
+========
+    TabOrder = 5
+>>>>>>>> 30e88408234039df461648d157b645b87c659c6b:__history/Unit6.fmx.~65~
     RowCount = 0
     Viewport.Width = 636.000000000000000000
     Viewport.Height = 358.000000000000000000
@@ -133,8 +165,12 @@ object Form6: TForm6
       'User_Name=root'
       'Password=06011997'
       'Server=127.0.0.1'
+<<<<<<<< HEAD:__history/Unit6.fmx.~84~
       'DriverID=MySQL'
       'Database=sakila')
+========
+      'DriverID=MySQL')
+>>>>>>>> 30e88408234039df461648d157b645b87c659c6b:__history/Unit6.fmx.~65~
     LoginPrompt = False
     Left = 56
     Top = 144

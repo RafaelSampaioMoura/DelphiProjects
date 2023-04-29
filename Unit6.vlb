@@ -1,12 +1,20 @@
 ﻿[]
+<<<<<<< HEAD
 Coordinates=364,1,89,36
+=======
+Coordinates=266,1,81,33
+>>>>>>> 30e88408234039df461648d157b645b87c659c6b
 Visible=True
 
 [Panel1]
 Coordinates=420,300,47,33
 
 [ListBox1]
+<<<<<<< HEAD
 Coordinates=200,190,116,177
+=======
+Coordinates=0,150,116,177
+>>>>>>> 30e88408234039df461648d157b645b87c659c6b
 
 [Connect]
 Coordinates=0,80,55,51
@@ -39,7 +47,11 @@ Coordinates=590,140,40,33
 Coordinates=0,0,90,33
 
 [BindSourceDB1]
+<<<<<<< HEAD
 Coordinates=220,90,92,69
+=======
+Coordinates=220,90,92,141
+>>>>>>> 30e88408234039df461648d157b645b87c659c6b
 
 [FDQuery1]
 Coordinates=111,1,63,33
@@ -50,6 +62,7 @@ Coordinates=0,0,143,51
 
 [BindingsList1]
 Coordinates=89,1,82,33
+<<<<<<< HEAD
 
 [Functions]
 Coordinates=11,157,84,123
@@ -59,4 +72,6 @@ Coordinates=183,1,54,33
 
 [DELETE]
 Coordinates=123,77,54,33
+=======
+>>>>>>> 30e88408234039df461648d157b645b87c659c6b
 

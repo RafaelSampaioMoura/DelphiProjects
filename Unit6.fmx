@@ -24,8 +24,13 @@ object Form6: TForm6
     end
     object Execute: TButton
       Enabled = False
+<<<<<<< HEAD
       Position.X = 288.000000000000000000
       Position.Y = 48.000000000000000000
+=======
+      Position.X = 344.000000000000000000
+      Position.Y = 56.000000000000000000
+>>>>>>> 30e88408234039df461648d157b645b87c659c6b
       Size.Width = 97.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
@@ -95,9 +100,15 @@ object Form6: TForm6
     object Edit1: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 6
+<<<<<<< HEAD
       Text = '* FROM'
       Position.X = 288.000000000000000000
       Position.Y = 16.000000000000000000
+=======
+      Text = 'SELECT * FROM'
+      Position.X = 344.000000000000000000
+      Position.Y = 24.000000000000000000
+>>>>>>> 30e88408234039df461648d157b645b87c659c6b
       Size.Width = 169.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False

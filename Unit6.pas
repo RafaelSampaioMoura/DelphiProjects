@@ -14,7 +14,11 @@ uses
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, FireDAC.Comp.UI, Data.Bind.Components,
   Data.Bind.Grid, FMX.Controls.Presentation, FMX.ScrollBox, FMX.Grid,
   FireDAC.Comp.DataSet, FMX.Layouts, Fmx.Bind.Navigator, Data.Bind.DBScope,
+<<<<<<< HEAD
   FMX.Edit, FMX.StdCtrls, FMX.Menus, FMX.ListBox, Vcl.Dialogs, FMX.ExtCtrls;
+=======
+  FMX.Edit, FMX.StdCtrls, FMX.Menus, FMX.ListBox, Vcl.Dialogs;
+>>>>>>> 30e88408234039df461648d157b645b87c659c6b
 
 type
   TForm6 = class(TForm)
@@ -35,9 +39,12 @@ type
     StringGridBindSourceDB1: TStringGrid;
     LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     BindingsList1: TBindingsList;
+<<<<<<< HEAD
     Functions: TComboBox;
     SELECT: TListBoxItem;
     DELETE: TListBoxItem;
+=======
+>>>>>>> 30e88408234039df461648d157b645b87c659c6b
     procedure sakilaClick(Sender: TObject);
     procedure menagerieClick(Sender: TObject);
     procedure world_xClick(Sender: TObject);
@@ -84,8 +91,12 @@ procedure TForm6.ExecuteClick(Sender: TObject);
           end
         else
           begin
+<<<<<<< HEAD
             SQLQuery := Concat(Functions.Items[Functions.ItemIndex], ' ',
                Edit1.Text, ' LIMIT ', SQLLimit);
+=======
+            SQLQuery := Concat(Edit1.Text, ' LIMIT ', SQLLimit);
+>>>>>>> 30e88408234039df461648d157b645b87c659c6b
             FDQuery1.SQL.Text := SQLQuery;
             FDQuery1.Open;
           end;
