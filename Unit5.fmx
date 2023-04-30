@@ -240,12 +240,6 @@ object Form5: TForm5
     OutputConverters = <>
     Left = 20
     Top = 261
-    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB1
-      GridControl = GridBindSourceDB1
-      Columns = <>
-    end
     object LinkControlToFieldContent: TLinkControlToField
       Category = 'Quick Bindings'
       DataSource = RESTResponse1
@@ -259,6 +253,12 @@ object Form5: TForm5
       FieldName = 'Params.id'
       Control = EditParamsid
       Track = False
+    end
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = GridBindSourceDB1
+      Columns = <>
     end
   end
   object FDConnection1: TFDConnection

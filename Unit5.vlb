@@ -19,13 +19,13 @@ Coordinates=221,1,99,36
 Visible=False
 
 [RESTClient1]
-Coordinates=360,80,100,124
+Coordinates=400,50,100,124
 
 [RESTResponse1]
 Coordinates=10,200,113,366
 
 [BindSourceDB1]
-Coordinates=230,-10,106,212
+Coordinates=250,-10,106,212
 
 [GridBindSourceDB1]
 Coordinates=400,-10,130,58
@@ -34,7 +34,7 @@ Coordinates=400,-10,130,58
 Coordinates=221,89,91,36
 
 [MemoContent]
-Coordinates=130,410,95,58
+Coordinates=210,240,95,58
 
 [people]
 Coordinates=410,380,53,36
@@ -46,7 +46,7 @@ Coordinates=410,430,61,36
 Coordinates=410,480,56,36
 
 [EditParamsid]
-Coordinates=540,140,91,58
+Coordinates=550,120,91,58
 
 [idSelector]
 Coordinates=630,280,72,58
@@ -70,10 +70,10 @@ Coordinates=265,524,104,36
 Coordinates=630,350,62,58
 
 [BindSourceDB2]
-Coordinates=590,0,106,80
+Coordinates=393,470,106,80
 
 [FDQuery1]
-Coordinates=673,10,73,36
+Coordinates=476,480,73,36
 Visible=True
 
 [Return]
