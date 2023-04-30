@@ -77,6 +77,8 @@ var
   dummyString: string;
 begin
   Connect.Enabled := true;
+  FDConnection1.Connected := true;
+  FDQuery1.ExecSQL('DROP DATABASE star_wars IF EXISTS #13 #10; CREATE DATABASE star_wars;');
   RESTResponse1.RootElement := '';
   RESTRequest1.Execute;
   if RESTClient1.Params[1].Value = '' then
@@ -186,5 +188,10 @@ begin
       vehicles.IsChecked := true;
     end;
 end;
+
+initialization
+
+finalization
+
 
 end.

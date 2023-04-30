@@ -78,6 +78,7 @@ var
 begin
   Connect.Enabled := true;
   FDConnection1.Connected := true;
+  FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
   FDQuery1.ExecSQL('CREATE DATABASE star_wars;');
   RESTResponse1.RootElement := '';
   RESTRequest1.Execute;
@@ -188,5 +189,10 @@ begin
       vehicles.IsChecked := true;
     end;
 end;
+
+initialization
+
+finalization
+
 
 end.

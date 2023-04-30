@@ -76,6 +76,9 @@ var
   jValue:TJSONValue;
   dummyString: string;
 begin
+  Connect.Enabled := true;
+  FDConnection1.Connected := true;
+  FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars; #13#10 CREATE DATABASE star_wars;');
   RESTResponse1.RootElement := '';
   RESTRequest1.Execute;
   if RESTClient1.Params[1].Value = '' then
@@ -91,6 +94,7 @@ end;
 
 procedure TForm5.ConnectClick(Sender: TObject);
 begin
+
   FDConnection1.Params.Database := 'star_wars';
   FDConnection1.Connected := true;
   ShowMessage('Connected to the Star Wars database');
@@ -142,8 +146,8 @@ var
   SQLQuery: string;
 begin
   SQLQuery := Concat('INSERT INTO t1 VALUES(', QuotedStr(GlobalJValue.ToString), ');');
-  //FDQuery1.SQL.Text := SQLQuery;
-  FDQuery1.ExecSQL(SQLQuery);
+  FDQuery1.SQL.Text := SQLQuery;
+  FDQuery1.ExecSQL;
 end;
 
 procedure TForm5.speciesClick(Sender: TObject);
@@ -184,5 +188,10 @@ begin
       vehicles.IsChecked := true;
     end;
 end;
+
+initialization
+
+finalization
+
 
 end.
