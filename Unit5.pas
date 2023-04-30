@@ -158,6 +158,7 @@ begin
   SQLQuery := Concat('INSERT INTO t1 VALUES(', QuotedStr(GlobalJValue.ToString), ');');
   FDQuery1.SQL.Text := SQLQuery;
   FDQuery1.ExecSQL;
+  Connect.Enabled := false;
 end;
 
 procedure TForm5.speciesClick(Sender: TObject);

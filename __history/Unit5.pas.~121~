@@ -57,6 +57,7 @@ type
     procedure speciesClick(Sender: TObject);
     procedure ConnectClick(Sender: TObject);
     procedure SaveToDatabaseClick(Sender: TObject);
+    procedure ReturnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,7 +79,8 @@ var
 begin
   Connect.Enabled := true;
   FDConnection1.Connected := true;
-  FDQuery1.ExecSQL('DROP DATABASE star_wars IF EXISTS #13 #10; CREATE DATABASE star_wars;');
+  FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
+  FDQuery1.ExecSQL('CREATE DATABASE star_wars;');
   RESTResponse1.RootElement := '';
   RESTRequest1.Execute;
   if RESTClient1.Params[1].Value = '' then
@@ -141,10 +143,18 @@ begin
     end;
 end;
 
+procedure TForm5.ReturnClick(Sender: TObject);
+begin
+  FDQuery1.SQL.Text := Edit1.Text;
+  FDQuery1.Open;
+end;
+
 procedure TForm5.SaveToDatabaseClick(Sender: TObject);
 var
   SQLQuery: string;
 begin
+  FDQuery1.ExecSQL('DROP TABLE IF EXISTS t1;');
+  FDQuery1.ExecSQL('CREATE TABLE t1 (jdoc JSON);');
   SQLQuery := Concat('INSERT INTO t1 VALUES(', QuotedStr(GlobalJValue.ToString), ');');
   FDQuery1.SQL.Text := SQLQuery;
   FDQuery1.ExecSQL;
