@@ -76,6 +76,9 @@ var
   jValue:TJSONValue;
   dummyString: string;
 begin
+  Connect.Enabled := true;
+  FDConnection1.Connected := true;
+  FDQuery1.ExecSQL('CREATE DATABASE star_wars;');
   RESTResponse1.RootElement := '';
   RESTRequest1.Execute;
   if RESTClient1.Params[1].Value = '' then
@@ -91,6 +94,7 @@ end;
 
 procedure TForm5.ConnectClick(Sender: TObject);
 begin
+
   FDConnection1.Params.Database := 'star_wars';
   FDConnection1.Connected := true;
   ShowMessage('Connected to the Star Wars database');
