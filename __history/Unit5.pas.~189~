@@ -130,6 +130,38 @@ begin
     end;
 end;
 
+procedure InjectPeopleTable(Query: TFDQuery, MemTable: TFDMemTable);
+var
+  oJsonString: string;
+  JSonValue:TJSonValue;
+  oJson: TJSONObject;
+  oArr: TJsonArray;
+  oPair: TJSONPair;
+  i: Integer;
+  oProd: TJSONObject;
+begin
+  oJsonString := Query.FieldByName('jdoc').AsString;
+  Query.Close;
+  oArr := TJSonObject.ParseJSONValue(oJsonString) as TJSONArray;
+  oProd := oArr.Items[0] as TJSONObject;
+  MemTable.FieldByName('birth_year').AsString := oProd.GetValue('birth_year').Value;
+  MemTable.FieldByName('eye_color').AsString := oProd.GetValue('eye_color').Value;
+  MemTable.FieldByName('films').AsString := oProd.GetValue('films').ToString;
+  MemTable.FieldByName('gender').AsString := oProd.GetValue('gender').Value;
+  MemTable.FieldByName('hair_color').AsString := oProd.GetValue('hair_color').Value;
+  MemTable.FieldByName('height').AsString := oProd.GetValue('height').Value;
+  MemTable.FieldByName('homeworld').AsString := oProd.GetValue('homeworld').Value;
+  MemTable.FieldByName('mass').AsString := oProd.GetValue('mass').Value;
+  MemTable.FieldByName('name').AsString := oProd.GetValue('name').Value;
+  MemTable.FieldByName('skin_color').AsString := oProd.GetValue('skin_color').Value;
+  MemTable.FieldByName('created').AsString := oProd.GetValue('created').Value;
+  MemTable.FieldByName('edited').AsString := oProd.GetValue('edited').Value;
+  MemTable.FieldByName('species').AsString := oProd.GetValue('species').Value;
+  MemTable.FieldByName('starships').AsString := oProd.GetValue('starships').Value;
+  MemTable.FieldByName('url').AsString := oProd.GetValue('url').Value;
+  MemTable.FieldByName('vehicles').AsString := oProd.GetValue('vehicles').Value;
+end;
+
 procedure TForm5.planetsClick(Sender: TObject);
 begin
   if planets.IsChecked then
@@ -145,21 +177,12 @@ end;
 
 procedure TForm5.ReturnClick(Sender: TObject);
 var
-  oJsonString: string;
-  JSonValue:TJSonValue;
-  oJson: TJSONObject;
-  oArr: TJsonArray;
-  oPair: TJSONPair;
-  i: Integer;
   oProd: TJSONObject;
 begin
   //LinkGridToDataSourceBindSourceDB1.DataSource := BindSourceDB2;
   FDQuery1.SQL.Text := Edit1.Text;
   FDQuery1.Open;
-  oJsonString := FDQuery1.FieldByName('jdoc').AsString;
-  FDQuery1.Close;
-  oArr := TJSonObject.ParseJSONValue(oJsonString) as TJSONArray;
-  oProd := oArr.Items[0] as TJSONObject;
+  InjectPeopleTable(FDQuery1);
   FDMemTable1.Close;
   FDMemTable1.CreateDataSet;
   FDMemTable1.Active := True;
@@ -167,15 +190,6 @@ begin
   FDMemTable1.Insert;
   FDMemTable1.Edit;
   FDMemTable1.Append;
-  FDMemTable1.FieldByName('birth_year').AsString := oProd.GetValue('birth_year').Value;
-  FDMemTable1.FieldByName('eye_color').AsString := oProd.GetValue('eye_color').Value;
-  FDMemTable1.FieldByName('films').AsString := oProd.GetValue('films').ToString;
-  FDMemTable1.FieldByName('gender').AsString := oProd.GetValue('gender').Value;
-  FDMemTable1.FieldByName('hair_color').AsString := oProd.GetValue('hair_color').Value;
-  FDMemTable1.FieldByName('height').AsString := oProd.GetValue('height').Value;
-  FDMemTable1.FieldByName('homeworld').AsString := oProd.GetValue('homeworld').Value;
-  FDMemTable1.FieldByName('mass').AsString := oProd.GetValue('mass').Value;
-  FDMemTable1.FieldByName('name').AsString := oProd.GetValue('name').Value;
   FDMemTable1.Post;
 end;
 
