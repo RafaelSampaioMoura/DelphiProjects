@@ -153,12 +153,14 @@ var
   i: Integer;
   oProd: TJSONObject;
 begin
-  LinkGridToDataSourceBindSourceDB1.DataSource := BindSourceDB2;
+  //LinkGridToDataSourceBindSourceDB1.DataSource := BindSourceDB2;
   FDQuery1.SQL.Text := Edit1.Text;
   FDQuery1.Open;
   oJsonString := FDQuery1.FieldByName('jdoc').AsString;
   FDQuery1.Close;
-  JSonValue := TJSonObject.ParseJSONValue(oJsonString);
+  oArr := TJSonObject.ParseJSONValue(oJsonString) as TJSONArray;
+  oProd := oArr.Items[0] as TJSONObject;
+  //oArr := oJson as TJSONArray;
   //FDMemTable1.Append;
   //FDMemTable1.Close;
   FDMemTable1.FieldDefs.Add('Birth Year',ftString,10);
@@ -172,6 +174,8 @@ begin
   //FDMemTable1.Open;
   FDMemTable1.Insert;
   FDMemTable1.Edit;
+  FDMemTable1.Append;
+  FDMemTable1.FieldByName('Birth Year').AsString := oProd.GetValue('birth_year').Value;
   FDMemTable1.Post;
 end;
 
