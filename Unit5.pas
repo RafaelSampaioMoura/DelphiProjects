@@ -160,14 +160,6 @@ begin
   FDQuery1.Close;
   oArr := TJSonObject.ParseJSONValue(oJsonString) as TJSONArray;
   oProd := oArr.Items[0] as TJSONObject;
-  //oArr := oJson as TJSONArray;
-  //FDMemTable1.Append;
-  //FDMemTable1.Close;
-  FDMemTable1.FieldDefs.Add('Birth Year',ftString,10);
-  FDMemTable1.FieldDefs.Add('Eye Color',ftString,10);
-  //FDMemTable1.FieldDefs.Add('Films',ftString,10);
-  //FDMemTable1.FieldDefs.Add('Gender',ftString,10);
-  FDMemTable1.FieldDefs.Add('Hair Color',ftString,10);
   FDMemTable1.Close;
   FDMemTable1.CreateDataSet;
   FDMemTable1.Active := True;
@@ -175,7 +167,22 @@ begin
   FDMemTable1.Insert;
   FDMemTable1.Edit;
   FDMemTable1.Append;
-  FDMemTable1.FieldByName('Birth Year').AsString := oProd.GetValue('birth_year').Value;
+  FDMemTable1.FieldByName('birth_year').AsString := oProd.GetValue('birth_year').Value;
+  FDMemTable1.FieldByName('eye_color').AsString := oProd.GetValue('eye_color').Value;
+  FDMemTable1.FieldByName('films').AsString := oProd.GetValue('films').ToString;
+  FDMemTable1.FieldByName('gender').AsString := oProd.GetValue('gender').Value;
+  FDMemTable1.FieldByName('hair_color').AsString := oProd.GetValue('hair_color').Value;
+  FDMemTable1.FieldByName('height').AsString := oProd.GetValue('height').Value;
+  FDMemTable1.FieldByName('homeworld').AsString := oProd.GetValue('homeworld').Value;
+  FDMemTable1.FieldByName('mass').AsString := oProd.GetValue('mass').Value;
+  FDMemTable1.FieldByName('name').AsString := oProd.GetValue('name').Value;
+  FDMemTable1.FieldByName('skin_color').AsString := oProd.GetValue('skin_color').Value;
+  FDMemTable1.FieldByName('created').AsString := oProd.GetValue('created').Value;
+  FDMemTable1.FieldByName('edited').AsString := oProd.GetValue('edited').Value;
+  FDMemTable1.FieldByName('species').AsString := oProd.GetValue('species').Value;
+  FDMemTable1.FieldByName('starships').AsString := oProd.GetValue('starships').Value;
+  FDMemTable1.FieldByName('url').AsString := oProd.GetValue('url').Value;
+  FDMemTable1.FieldByName('vehicles').AsString := oProd.GetValue('vehicles').Value;
   FDMemTable1.Post;
 end;
 
