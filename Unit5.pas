@@ -77,6 +77,8 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonString: string;
         jsonArr: TJSONArray;
         jsonItem: TJSONObject;
+        i: Integer;
+        dummyString: string;
     begin
         // applies the sql command
         Query.SQL.Text := Edit.Text;
@@ -88,14 +90,17 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         // preps the table to receive the data
         MemTable.Close;
         MemTable.CreateDataSet;
-        MemTable.Active := True;
+        MemTable.Open;
         MemTable.Insert;
-        MemTable.Edit;
-        MemTable.Append;
         // appends the data to the table;
-        MemTable.FieldByName('birth_year').AsString := jsonItem.GetValue('birth_year').Value;
-        // shows data on the table
+        for i := 0 to MemTable.Fields.Count -1 do
+          begin
+            MemTable.Edit;
+            MemTable.Fields[i].AsString
+              := jsonItem.GetValue(MemTable.FieldDefs[i].Name).Value;
+          end;
         MemTable.Post;
+        // shows data on the table
     end;
 
 procedure TForm5.Button1Click(Sender: TObject);
@@ -170,14 +175,6 @@ begin
 end;
 
 procedure TForm5.ReturnClick(Sender: TObject);
-var
-  oJsonString: string;
-  //JSonValue:TJSonValue;
-  oJson: TJSONObject;
-  oArr: TJsonArray;
-  oPair: TJSONPair;
-  i: Integer;
-  oProd: TJSONObject;
 begin
   InjectJSONIntoTable(FDQuery1, FDMemTable1, Edit1);
   //LinkGridToDataSourceBindSourceDB1.DataSource := BindSourceDB2;
