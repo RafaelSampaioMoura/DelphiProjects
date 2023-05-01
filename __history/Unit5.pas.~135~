@@ -27,7 +27,6 @@ type
     FDMemTable1: TFDMemTable;
     BindSourceDB1: TBindSourceDB;
     GridBindSourceDB1: TGrid;
-    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     BindingsList1: TBindingsList;
     MemoContent: TMemo;
     LinkControlToFieldContent: TLinkControlToField;
@@ -48,6 +47,7 @@ type
     Return: TButton;
     Edit1: TEdit;
     DatabaseQuery: TLabel;
+    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     procedure Button1Click(Sender: TObject);
     procedure peopleClick(Sender: TObject);
     procedure planetsClick(Sender: TObject);
@@ -144,9 +144,13 @@ begin
 end;
 
 procedure TForm5.ReturnClick(Sender: TObject);
+var
+  sqlstring: TField;
 begin
+  LinkGridToDataSourceBindSourceDB1.DataSource := BindSourceDB2;
   FDQuery1.SQL.Text := Edit1.Text;
   FDQuery1.Open;
+  sqlstring := FDQuery1.Fields[0];
 end;
 
 procedure TForm5.SaveToDatabaseClick(Sender: TObject);
@@ -158,6 +162,7 @@ begin
   SQLQuery := Concat('INSERT INTO t1 VALUES(', QuotedStr(GlobalJValue.ToString), ');');
   FDQuery1.SQL.Text := SQLQuery;
   FDQuery1.ExecSQL;
+  Connect.Enabled := false;
 end;
 
 procedure TForm5.speciesClick(Sender: TObject);

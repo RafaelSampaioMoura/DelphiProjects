@@ -27,7 +27,6 @@ type
     FDMemTable1: TFDMemTable;
     BindSourceDB1: TBindSourceDB;
     GridBindSourceDB1: TGrid;
-    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     BindingsList1: TBindingsList;
     MemoContent: TMemo;
     LinkControlToFieldContent: TLinkControlToField;
@@ -48,6 +47,7 @@ type
     Return: TButton;
     Edit1: TEdit;
     DatabaseQuery: TLabel;
+    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     procedure Button1Click(Sender: TObject);
     procedure peopleClick(Sender: TObject);
     procedure planetsClick(Sender: TObject);
@@ -145,8 +145,10 @@ end;
 
 procedure TForm5.ReturnClick(Sender: TObject);
 begin
+  LinkGridToDataSourceBindSourceDB1.DataSource := BindSourceDB2;
   FDQuery1.SQL.Text := Edit1.Text;
   FDQuery1.Open;
+  FDQuery1.First;
 end;
 
 procedure TForm5.SaveToDatabaseClick(Sender: TObject);

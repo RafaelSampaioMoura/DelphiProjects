@@ -63,6 +63,7 @@ object Form5: TForm5
       OnClick = speciesClick
     end
     object Connect: TButton
+      Enabled = False
       Position.X = 416.000000000000000000
       TabOrder = 7
       Text = 'Connect'
@@ -81,6 +82,7 @@ object Form5: TForm5
       Position.Y = 48.000000000000000000
       TabOrder = 9
       Text = 'Return'
+      OnClick = ReturnClick
     end
     object DatabaseQuery: TLabel
       Position.X = 584.000000000000000000
@@ -93,6 +95,7 @@ object Form5: TForm5
       object Edit1: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 4
+        Text = 'SELECT * FROM people;'
         Position.X = -4.000000000000000000
         Position.Y = 16.000000000000000000
       end
@@ -237,12 +240,6 @@ object Form5: TForm5
     OutputConverters = <>
     Left = 20
     Top = 261
-    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB1
-      GridControl = GridBindSourceDB1
-      Columns = <>
-    end
     object LinkControlToFieldContent: TLinkControlToField
       Category = 'Quick Bindings'
       DataSource = RESTResponse1
@@ -256,6 +253,12 @@ object Form5: TForm5
       FieldName = 'Params.id'
       Control = EditParamsid
       Track = False
+    end
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = GridBindSourceDB1
+      Columns = <>
     end
   end
   object FDConnection1: TFDConnection

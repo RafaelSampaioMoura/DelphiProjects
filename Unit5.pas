@@ -144,10 +144,13 @@ begin
 end;
 
 procedure TForm5.ReturnClick(Sender: TObject);
+var
+  sqlstring: string;
 begin
   LinkGridToDataSourceBindSourceDB1.DataSource := BindSourceDB2;
   FDQuery1.SQL.Text := Edit1.Text;
   FDQuery1.Open;
+  sqlstring := FDQuery1.FieldByName('jdoc').AsString;
 end;
 
 procedure TForm5.SaveToDatabaseClick(Sender: TObject);
