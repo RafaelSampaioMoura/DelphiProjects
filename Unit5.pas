@@ -78,6 +78,7 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonArr: TJSONArray;
         jsonItem: TJSONObject;
         i: Integer;
+        j: Integer;
         dummyString: string;
     begin
         // applies the sql command
@@ -86,19 +87,23 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         // transforms the sql return back into JSON
         jsonString := Query.FieldByName('jdoc').AsString;
         jsonArr := TJSonObject.ParseJSONValue(jsonString) as TJSONArray;
-        jsonItem := jsonArr.Items[0] as TJSonObject;
         // preps the table to receive the data
         MemTable.Close;
         MemTable.CreateDataSet;
         MemTable.Open;
         MemTable.Insert;
         // appends the data to the table;
-        for i := 0 to MemTable.Fields.Count -1 do
-          begin
-            MemTable.Edit;
-            MemTable.Fields[i].AsString
-              := jsonItem.GetValue(MemTable.FieldDefs[i].Name).Value;
-          end;
+        for i := 0 to jsonArr.Count -1 do begin
+          jsonItem := jsonArr.Items[i] as TJSonObject;
+          for j := 0 to MemTable.Fields.Count -1 do
+            begin
+              MemTable.Edit;
+              MemTable.Fields[j].AsString
+                := jsonItem.GetValue(MemTable.FieldDefs[j].Name).Value;
+            end;
+        end;
+
+
         MemTable.Post;
         // shows data on the table
     end;
