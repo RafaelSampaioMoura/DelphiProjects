@@ -78,6 +78,7 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonArr: TJSONArray;
         jsonItem: TJSONObject;
         i: Integer;
+        dummyString: string;
     begin
         // applies the sql command
         Query.SQL.Text := Edit.Text;
@@ -91,13 +92,14 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         MemTable.CreateDataSet;
         MemTable.Open;
         MemTable.Insert;
-        MemTable.Edit;
         // appends the data to the table;
         for i := 0 to MemTable.Fields.Count -1 do
           begin
-            MemTable.Fields[i].AsString := jsonItem.Get(i).Value;
-            MemTable.Post;
+            MemTable.Edit;
+            MemTable.Fields[i].AsString
+              := jsonItem.GetValue(MemTable.FieldDefs[i].Name).Value;
           end;
+        MemTable.Post;
         // shows data on the table
     end;
 
@@ -216,7 +218,7 @@ var
 begin
   FDQuery1.ExecSQL('DROP TABLE IF EXISTS t1;');
   FDQuery1.ExecSQL('CREATE TABLE t1 (jdoc JSON);');
-  SQLQuery := Concat('INSERT INTO t1 VALUES(', QuotedStr(GlobalJValue.ToString), ');');
+  SQLQuery := Concat('INSERT INTO t1 VALUES(', GlobalJValue.ToString, ');');
   FDQuery1.SQL.Text := SQLQuery;
   FDQuery1.ExecSQL;
   Connect.Enabled := false;

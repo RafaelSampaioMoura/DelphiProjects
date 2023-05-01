@@ -177,48 +177,17 @@ end;
 procedure TForm5.ReturnClick(Sender: TObject);
 begin
   InjectJSONIntoTable(FDQuery1, FDMemTable1, Edit1);
-  //LinkGridToDataSourceBindSourceDB1.DataSource := BindSourceDB2;
-  //FDQuery1.SQL.Text := Edit1.Text;
-  //FDQuery1.Open;
-
-  //oJsonString := FDQuery1.FieldByName('jdoc').AsString;
-  //FDQuery1.Close;
-  //oArr := TJSonObject.ParseJSONValue(oJsonString) as TJSONArray;
-  //oProd := oArr.Items[0] as TJSONObject;
-
-  //FDMemTable1.Close;
-  //FDMemTable1.CreateDataSet;
-  //FDMemTable1.Active := True;
-  //FDMemTable1.Open;
-  //FDMemTable1.Insert;
-  //FDMemTable1.Edit;
-  //FDMemTable1.Append;
-  //FDMemTable1.FieldByName('birth_year').AsString := oProd.GetValue('birth_year').Value;
-  //FDMemTable1.FieldByName('eye_color').AsString := oProd.GetValue('eye_color').Value;
-  //FDMemTable1.FieldByName('films').AsString := oProd.GetValue('films').ToString;
-  //FDMemTable1.FieldByName('gender').AsString := oProd.GetValue('gender').Value;
-  //FDMemTable1.FieldByName('hair_color').AsString := oProd.GetValue('hair_color').Value;
-  //FDMemTable1.FieldByName('height').AsString := oProd.GetValue('height').Value;
-  //FDMemTable1.FieldByName('homeworld').AsString := oProd.GetValue('homeworld').Value;
-  //FDMemTable1.FieldByName('mass').AsString := oProd.GetValue('mass').Value;
-  //FDMemTable1.FieldByName('name').AsString := oProd.GetValue('name').Value;
-  //FDMemTable1.FieldByName('skin_color').AsString := oProd.GetValue('skin_color').Value;
-  //FDMemTable1.FieldByName('created').AsString := oProd.GetValue('created').Value;
-  //FDMemTable1.FieldByName('edited').AsString := oProd.GetValue('edited').Value;
-  //FDMemTable1.FieldByName('species').AsString := oProd.GetValue('species').Value;
-  //FDMemTable1.FieldByName('starships').AsString := oProd.GetValue('starships').Value;
-  //FDMemTable1.FieldByName('url').AsString := oProd.GetValue('url').Value;
-  //FDMemTable1.FieldByName('vehicles').AsString := oProd.GetValue('vahicles').Value;
-  //FDMemTable1.Post;
 end;
 
 procedure TForm5.SaveToDatabaseClick(Sender: TObject);
 var
   SQLQuery: string;
 begin
-  FDQuery1.ExecSQL('DROP TABLE IF EXISTS t1;');
-  FDQuery1.ExecSQL('CREATE TABLE t1 (jdoc JSON);');
-  SQLQuery := Concat('INSERT INTO t1 VALUES(', QuotedStr(GlobalJValue.ToString), ');');
+  SQLQuery := Concat('DROP TABLE IF EXISTS ', people.Text, ';');
+  FDQuery1.ExecSQL(SQLQuery);
+  SQLQuery := Concat('CREATE TABLE ', people.Text, ' (jdoc JSON);');
+  FDQuery1.ExecSQL(SQLQuery);
+  SQLQuery := Concat('INSERT INTO ', people.Text, ' VALUES(', QuotedStr(GlobalJValue.ToString), ');');
   FDQuery1.SQL.Text := SQLQuery;
   FDQuery1.ExecSQL;
   Connect.Enabled := false;
