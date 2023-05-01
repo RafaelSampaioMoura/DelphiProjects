@@ -145,12 +145,33 @@ end;
 
 procedure TForm5.ReturnClick(Sender: TObject);
 var
-  sqlstring: TFields;
+  oJsonString: string;
+  JSonValue:TJSonValue;
+  oJson: TJSONObject;
+  oArr: TJsonArray;
+  oPair: TJSONPair;
+  i: Integer;
+  oProd: TJSONObject;
 begin
   LinkGridToDataSourceBindSourceDB1.DataSource := BindSourceDB2;
   FDQuery1.SQL.Text := Edit1.Text;
   FDQuery1.Open;
-  sqlstring := FDQuery1.Fields;
+  oJsonString := FDQuery1.FieldByName('jdoc').AsString;
+  FDQuery1.Close;
+  JSonValue := TJSonObject.ParseJSONValue(oJsonString);
+  //FDMemTable1.Append;
+  //FDMemTable1.Close;
+  FDMemTable1.Insert;
+  FDMemTable1.Edit;
+  FDMemTable1.FieldDefs.Add('Birth Year',ftString,10);
+  FDMemTable1.FieldDefs.Add('Eye Color',ftString,10);
+  //FDMemTable1.FieldDefs.Add('Films',ftString,10);
+  //FDMemTable1.FieldDefs.Add('Gender',ftString,10);
+  FDMemTable1.FieldDefs.Add('Hair Color',ftString,10);
+  FDMemTable1.CreateDataSet;
+  FDMemTable1.Active := True;
+  //FDMemTable1.Open;
+  FDMemTable1.Post;
 end;
 
 procedure TForm5.SaveToDatabaseClick(Sender: TObject);
