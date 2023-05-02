@@ -200,11 +200,11 @@ begin
         ShowMessage(currentTable);
       end;
   end;
-  SQLQuery := Concat('DROP TABLE IF EXISTS ', people.Text, ';');
+  SQLQuery := Concat('DROP TABLE IF EXISTS ', currentTable, ';');
   FDQuery1.ExecSQL(SQLQuery);
-  SQLQuery := Concat('CREATE TABLE ', people.Text, ' (jdoc JSON);');
+  SQLQuery := Concat('CREATE TABLE ', currentTable, ' (jdoc JSON);');
   FDQuery1.ExecSQL(SQLQuery);
-  SQLQuery := Concat('INSERT INTO ', people.Text, ' VALUES(', QuotedStr(GlobalJValue.ToString), ');');
+  SQLQuery := Concat('INSERT INTO ', currentTable, ' VALUES(', QuotedStr(GlobalJValue.ToString), ');');
   FDQuery1.SQL.Text := SQLQuery;
   FDQuery1.ExecSQL;
   Connect.Enabled := false;
