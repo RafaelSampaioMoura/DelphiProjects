@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, REST.Types,
-  FMX.Memo.Types, System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors,
+  FMX.Memo.Types, FMX.Platform, System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors,
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, FMX.StdCtrls, FMX.Edit,
   Data.Bind.Components, FMX.Controls.Presentation, FMX.ScrollBox, FMX.Memo,
   REST.Client, Data.Bind.ObjectScope, System.JSON, FireDAC.Stan.Intf,
@@ -67,6 +67,7 @@ type
 var
   Form5: TForm5;
   GlobalJValue: TJSONValue;
+  currentTable: string;
 
 implementation
 
@@ -116,7 +117,7 @@ begin
   Connect.Enabled := true;
   FDConnection1.Connected := true;
   //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
-  FDQuery1.ExecSQL('CREATE DATABASE star_wars IF NOT EXISTS00000;');
+  FDQuery1.ExecSQL('CREATE DATABASE IF NOT EXISTS star_wars;');
   RESTResponse1.RootElement := '';
   RESTRequest1.Execute;
   if RESTClient1.Params[1].Value = '' then
@@ -188,11 +189,13 @@ procedure TForm5.SaveToDatabaseClick(Sender: TObject);
 var
   SQLQuery: string;
 begin
-  SQLQuery := Concat('DROP TABLE IF EXISTS ', people.Text, ';');
+  currentTable := Panel1.Children[0].Name;
+  MessageDlg(currentTable);
+  SQLQuery := Concat('DROP TABLE IF EXISTS ', currentTable, ';');
   FDQuery1.ExecSQL(SQLQuery);
-  SQLQuery := Concat('CREATE TABLE ', people.Text, ' (jdoc JSON);');
+  SQLQuery := Concat('CREATE TABLE ', currentTable, ' (jdoc JSON);');
   FDQuery1.ExecSQL(SQLQuery);
-  SQLQuery := Concat('INSERT INTO ', people.Text, ' VALUES(', QuotedStr(GlobalJValue.ToString), ');');
+  SQLQuery := Concat('INSERT INTO ', currentTable, ' VALUES(', QuotedStr(GlobalJValue.ToString), ');');
   FDQuery1.SQL.Text := SQLQuery;
   FDQuery1.ExecSQL;
   Connect.Enabled := false;

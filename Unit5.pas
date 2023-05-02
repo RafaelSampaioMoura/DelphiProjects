@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, REST.Types,
-  FMX.Memo.Types, System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors,
+  FMX.Memo.Types, FMX.Platform, System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors,
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, FMX.StdCtrls, FMX.Edit,
   Data.Bind.Components, FMX.Controls.Presentation, FMX.ScrollBox, FMX.Memo,
   REST.Client, Data.Bind.ObjectScope, System.JSON, FireDAC.Stan.Intf,
@@ -67,6 +67,7 @@ type
 var
   Form5: TForm5;
   GlobalJValue: TJSONValue;
+  currentTable: string;
 
 implementation
 
@@ -187,7 +188,18 @@ end;
 procedure TForm5.SaveToDatabaseClick(Sender: TObject);
 var
   SQLQuery: string;
+  i: Integer;
+  radioButton: TRadioButton;
 begin
+  radioButton := vehicles;
+  for i := 0 to Panel1.ChildrenCount - 1 do begin
+    if Panel1.Children[i].ClassType = TRadioButton then
+      radioButton := Panel1.Children[i] as TRadioButton;
+      if radioButton.IsChecked then begin
+        currentTable := radioButton.Name;
+        ShowMessage(currentTable);
+      end;
+  end;
   SQLQuery := Concat('DROP TABLE IF EXISTS ', people.Text, ';');
   FDQuery1.ExecSQL(SQLQuery);
   SQLQuery := Concat('CREATE TABLE ', people.Text, ' (jdoc JSON);');
