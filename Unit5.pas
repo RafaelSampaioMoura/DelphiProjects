@@ -191,7 +191,12 @@ var
   i: Integer;
   radioButton: TRadioButton;
 begin
+  // initiates variable to avoid access violation error
   radioButton := vehicles;
+  //for loop with two if conditions
+  //first if checks if the current child of Panel1 is a radio button
+  //second if checks if the radio button is checked
+  //if both are true, stores name of checked button on currentTable global variable
   for i := 0 to Panel1.ChildrenCount - 1 do begin
     if Panel1.Children[i].ClassType = TRadioButton then
       radioButton := Panel1.Children[i] as TRadioButton;
@@ -200,6 +205,7 @@ begin
         ShowMessage(currentTable);
       end;
   end;
+  // currentTable is used to create table with same name as the API endpoint
   SQLQuery := Concat('CREATE TABLE IF NOT EXISTS ',
     currentTable, ' (jdoc JSON);');
   FDQuery1.ExecSQL(SQLQuery);
