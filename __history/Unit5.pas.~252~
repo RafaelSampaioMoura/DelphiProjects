@@ -188,9 +188,18 @@ end;
 procedure TForm5.SaveToDatabaseClick(Sender: TObject);
 var
   SQLQuery: string;
+  i: Integer;
+  radioButton: TRadioButton;
 begin
-  currentTable := Panel1.Children[0].Name;
-  ShowMessage(currentTable);
+  radioButton := vehicles;
+  for i := 0 to Panel1.ChildrenCount - 1 do begin
+    if Panel1.Children[i].ClassType = TRadioButton then
+      radioButton := Panel1.Children[i] as TRadioButton;
+      if radioButton.IsChecked then begin
+        currentTable := radioButton.Name;
+        ShowMessage(currentTable);
+      end;
+  end;
   SQLQuery := Concat('DROP TABLE IF EXISTS ', currentTable, ';');
   FDQuery1.ExecSQL(SQLQuery);
   SQLQuery := Concat('CREATE TABLE ', currentTable, ' (jdoc JSON);');
