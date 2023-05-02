@@ -115,8 +115,8 @@ var
 begin
   Connect.Enabled := true;
   FDConnection1.Connected := true;
-  FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
-  FDQuery1.ExecSQL('CREATE DATABASE star_wars;');
+  //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
+  FDQuery1.ExecSQL('CREATE DATABASE IF NOT EXISTS star_wars;');
   RESTResponse1.RootElement := '';
   RESTRequest1.Execute;
   if RESTClient1.Params[1].Value = '' then
