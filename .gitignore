@@ -1,2 +1,4 @@
 *.exe
-__history
+Win32/
+Win64/
+
