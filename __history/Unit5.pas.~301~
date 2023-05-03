@@ -102,9 +102,8 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
             MemTable.Edit;
             jsonValue := jsonItem.GetValue(MemTable.FieldDefs[j].Name);
             if jsonValue.TryGetValue<TDateTime>(LDateTimeVar) then begin
-              ShowMessage('tralala');
               MemTable.Fields[j].AsDateTime
-                := jsonValue.GetValue<TDateTime>(LDateTimeVar)
+                := jsonItem.GetValue<TDateTime>(MemTable.FieldDefs[j].Name);
             end
             else begin
               MemTable.Fields[j].AsString

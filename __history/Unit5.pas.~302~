@@ -79,6 +79,7 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonArr: TJSONArray;
         jsonItem: TJSONObject;
         jsonValue: TJSONValue;
+        LDateTimeVar: TDateTime;
         i: Integer;
         j: Integer;
         dummyString: string;
@@ -97,15 +98,20 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         // appends the data to the table;
         for i := 0 to jsonArr.Count -1 do begin
           jsonItem := jsonArr.Items[i] as TJSonObject;
-          jsonValue := jsonItem.GetValue(MemTable.FieldDefs[j].Name);
-
-            for j := 0 to MemTable.Fields.Count - 1 do begin
+          for j := 0 to MemTable.Fields.Count - 1 do begin
+            MemTable.Edit;
+            jsonValue := jsonItem.GetValue(MemTable.FieldDefs[j].Name);
+            if jsonValue.TryGetValue<TDateTime>(LDateTimeVar) then begin
+              MemTable.Fields[j].AsDateTime
+                := jsonItem.GetValue<TDateTime>(MemTable.FieldDefs[j].Name);
+            end
+            else begin
               MemTable.Fields[j].AsString
-                := jsonItem.GetValue(MemTable.FieldDefs[j].Name).Value;
+              := jsonItem.GetValue(MemTable.FieldDefs[j].Name).Value;
             end;
+
+          end;
         end;
-
-
         MemTable.Post;
         // shows data on the table
     end;
