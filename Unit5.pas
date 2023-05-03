@@ -139,8 +139,8 @@ procedure TForm5.Button1Click(Sender: TObject);
         end;
     jValue := RESTResponse1.JSONValue;
     GlobalJValue := jValue;
-    dummyString := GlobalJValue.ToString;
-    MemoContent.Text := jValue.ToString;
+    dummyString := GlobalJValue.ToString.Replace('\', '');
+    MemoContent.Text := jValue.ToString.Replace('\', '');
   end;
 
 procedure TForm5.ConnectClick(Sender: TObject);
@@ -221,7 +221,8 @@ begin
   SQLQuery := Concat('CREATE TABLE IF NOT EXISTS ',
     currentTable, ' (jdoc JSON);');
   FDQuery1.ExecSQL(SQLQuery);
-  jsonString := QuotedStr(GlobalJValue.ToString);
+  jsonString := QuotedStr(GlobalJValue.ToString).Replace('\', '');
+  ShowMessage(jsonString);
   SQLQuery := Concat('INSERT INTO ',
     currentTable, ' VALUES(', jsonString, ');');
   FDQuery1.SQL.Text := SQLQuery;
