@@ -79,7 +79,6 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonArr: TJSONArray;
         jsonItem: TJSONObject;
         jsonValue: TJSONValue;
-        jsonBool: Boolean;
         i: Integer;
         j: Integer;
         dummyString: string;
@@ -101,8 +100,7 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
           for j := 0 to MemTable.Fields.Count - 1 do begin
             MemTable.Edit;
             jsonValue := jsonItem.GetValue(MemTable.FieldDefs[j].Name);
-            jsonBool := jsonValue.ClassType is TDateTime;
-            if jsonBool then ShowMessage('tralala');
+            if jsonValue.ClassType = TDateTime then ShowMessage('tralala');
             MemTable.Fields[j].AsString
               := jsonItem.GetValue(MemTable.FieldDefs[j].Name).Value;
           end;
