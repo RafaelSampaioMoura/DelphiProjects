@@ -80,6 +80,7 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonItem: TJSONObject;
         jsonValue: TJSONValue;
         LDateTimeVar: TDateTime;
+        Table: TFDMemTable;
         i: Integer;
         j: Integer;
         dummyString: string;
@@ -95,6 +96,7 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         MemTable.CreateDataSet;
         MemTable.Open;
         MemTable.Insert;
+        MemTable.ClearDetails;
         // appends the data to the table;
         for i := 0 to jsonArr.Count -1 do begin
           jsonItem := jsonArr.Items[i] as TJSonObject;

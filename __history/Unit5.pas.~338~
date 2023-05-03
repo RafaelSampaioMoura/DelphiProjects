@@ -80,6 +80,7 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonItem: TJSONObject;
         jsonValue: TJSONValue;
         LDateTimeVar: TDateTime;
+        Table: TFDMemTable;
         i: Integer;
         j: Integer;
         dummyString: string;
@@ -91,10 +92,13 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonString := Query.FieldByName('jdoc').AsString;
         jsonArr := TJSonObject.ParseJSONValue(jsonString) as TJSONArray;
         // preps the table to receive the data
+        MemTable.Free;
+        MemTable := TFDMemTable.Create(Table);
         MemTable.Close;
         MemTable.CreateDataSet;
         MemTable.Open;
         MemTable.Insert;
+        MemTable.ClearFields;
         // appends the data to the table;
         for i := 0 to jsonArr.Count -1 do begin
           jsonItem := jsonArr.Items[i] as TJSonObject;
@@ -140,7 +144,7 @@ procedure TForm5.Button1Click(Sender: TObject);
     jValue := RESTResponse1.JSONValue;
     GlobalJValue := jValue;
     dummyString := GlobalJValue.ToString.Replace('\', '');
-    MemoContent.Text := jValue.ToString.Replace('\', '');
+    MemoContent.Text := jValue.ToString.Replace('\r\n', '');
   end;
 
 procedure TForm5.ConnectClick(Sender: TObject);
@@ -221,7 +225,7 @@ begin
   SQLQuery := Concat('CREATE TABLE IF NOT EXISTS ',
     currentTable, ' (jdoc JSON);');
   FDQuery1.ExecSQL(SQLQuery);
-  jsonString := QuotedStr(GlobalJValue.ToString);
+  jsonString := QuotedStr(GlobalJValue.ToString).Replace('\n\r', '');
   ShowMessage(jsonString);
   SQLQuery := Concat('INSERT INTO ',
     currentTable, ' VALUES(', jsonString, ');');
