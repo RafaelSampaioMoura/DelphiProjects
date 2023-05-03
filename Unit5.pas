@@ -136,9 +136,8 @@ procedure TForm5.Button1Click(Sender: TObject);
       if RESTResponse1.StatusCode = 200 then
         begin
           RESTResponse1.RootElement := 'results';
-          jValue := RESTResponse1.JSONValue;
         end;
-
+    jValue := RESTResponse1.JSONValue;
     GlobalJValue := jValue;
     dummyString := GlobalJValue.ToString;
     MemoContent.Text := jValue.ToString;
@@ -201,6 +200,7 @@ end;
 procedure TForm5.SaveToDatabaseClick(Sender: TObject);
 var
   SQLQuery: string;
+  jsonString: string;
   i: Integer;
   radioButton: TRadioButton;
 begin
@@ -221,8 +221,9 @@ begin
   SQLQuery := Concat('CREATE TABLE IF NOT EXISTS ',
     currentTable, ' (jdoc JSON);');
   FDQuery1.ExecSQL(SQLQuery);
+  jsonString := QuotedStr(GlobalJValue.ToString);
   SQLQuery := Concat('INSERT INTO ',
-    currentTable, ' VALUES(', QuotedStr(GlobalJValue.ToString), ');');
+    currentTable, ' VALUES(', jsonString, ');');
   FDQuery1.SQL.Text := SQLQuery;
   FDQuery1.ExecSQL;
   Connect.Enabled := false;
