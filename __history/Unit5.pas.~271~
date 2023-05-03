@@ -78,6 +78,7 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonString: string;
         jsonArr: TJSONArray;
         jsonItem: TJSONObject;
+        jsonValue: TJSONValue;
         i: Integer;
         j: Integer;
         dummyString: string;
@@ -96,9 +97,8 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         // appends the data to the table;
         for i := 0 to jsonArr.Count -1 do begin
           jsonItem := jsonArr.Items[i] as TJSonObject;
-          for j := 0 to MemTable.Fields.Count -1 do
-            begin
-              MemTable.Edit;
+
+            for j := 0 to MemTable.Fields.Count - 1 do begin
               MemTable.Fields[j].AsString
                 := jsonItem.GetValue(MemTable.FieldDefs[j].Name).Value;
             end;
@@ -191,7 +191,12 @@ var
   i: Integer;
   radioButton: TRadioButton;
 begin
+  // initiates variable to avoid access violation error
   radioButton := vehicles;
+  //for loop with two if conditions
+  //first if checks if the current child of Panel1 is a radio button
+  //second if checks if the radio button is checked
+  //if both are true, stores name of checked button on currentTable global variable
   for i := 0 to Panel1.ChildrenCount - 1 do begin
     if Panel1.Children[i].ClassType = TRadioButton then
       radioButton := Panel1.Children[i] as TRadioButton;
@@ -200,11 +205,12 @@ begin
         ShowMessage(currentTable);
       end;
   end;
-  SQLQuery := Concat('DROP TABLE IF EXISTS ', people.Text, ';');
+  // currentTable is used to create table with same name as the API endpoint
+  SQLQuery := Concat('CREATE TABLE IF NOT EXISTS ',
+    currentTable, ' (jdoc JSON);');
   FDQuery1.ExecSQL(SQLQuery);
-  SQLQuery := Concat('CREATE TABLE ', people.Text, ' (jdoc JSON);');
-  FDQuery1.ExecSQL(SQLQuery);
-  SQLQuery := Concat('INSERT INTO ', people.Text, ' VALUES(', QuotedStr(GlobalJValue.ToString), ');');
+  SQLQuery := Concat('INSERT INTO ',
+    currentTable, ' VALUES(', QuotedStr(GlobalJValue.ToString), ');');
   FDQuery1.SQL.Text := SQLQuery;
   FDQuery1.ExecSQL;
   Connect.Enabled := false;
