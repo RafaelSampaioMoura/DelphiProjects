@@ -100,8 +100,11 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
           jsonItem := jsonArr.Items[i] as TJSonObject;
           for j := 0 to MemTable.Fields.Count - 1 do begin
             MemTable.Edit;
+            // gets the JSONValue from the object
             jsonValue := jsonItem.GetValue(MemTable.FieldDefs[j].Name);
+            // checks if JSONValue is in TDataTime format by converting the return
             if jsonValue.TryGetValue<TDateTime>(LDateTimeVar) then begin
+              // if the above is true, adds returning value to field as a DateTime format
               MemTable.Fields[j].AsDateTime
                 := jsonItem.GetValue<TDateTime>(MemTable.FieldDefs[j].Name);
             end
