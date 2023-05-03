@@ -100,11 +100,13 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
           jsonItem := jsonArr.Items[i] as TJSonObject;
           for j := 0 to MemTable.Fields.Count - 1 do begin
             MemTable.Edit;
+            // gets the JSONValue from the object
             jsonValue := jsonItem.GetValue(MemTable.FieldDefs[j].Name);
+            // checks if JSONValue is in TDataTime format by converting the return
             if jsonValue.TryGetValue<TDateTime>(LDateTimeVar) then begin
-              ShowMessage('tralala');
+              // if the above is true, adds returning value to field as a DateTime format
               MemTable.Fields[j].AsDateTime
-                := jsonValue.GetValue<TDateTime>(MemTable.FieldDefs[j].Name)
+                := jsonItem.GetValue<TDateTime>(MemTable.FieldDefs[j].Name);
             end
             else begin
               MemTable.Fields[j].AsString
@@ -112,34 +114,34 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
             end;
 
           end;
+           MemTable.Append;
         end;
-
-
         MemTable.Post;
         // shows data on the table
     end;
 
 procedure TForm5.Button1Click(Sender: TObject);
-var
-  jValue:TJSONValue;
-  dummyString: string;
-begin
-  Connect.Enabled := true;
-  FDConnection1.Connected := true;
-  //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
-  FDQuery1.ExecSQL('CREATE DATABASE IF NOT EXISTS star_wars;');
-  RESTResponse1.RootElement := '';
-  RESTRequest1.Execute;
-  if RESTClient1.Params[1].Value = '' then
-    if RESTResponse1.StatusCode = 200 then
-      begin
-        RESTResponse1.RootElement := 'results';
-      end;
-  jValue := RESTResponse1.JSONValue;
-  GlobalJValue := jValue;
-  dummyString := GlobalJValue.ToString;
-  MemoContent.Text := jValue.ToString;
-end;
+  var
+    jValue:TJSONValue;
+    jArr: TJSONArray;
+    dummyString: string;
+  begin
+    Connect.Enabled := true;
+    FDConnection1.Connected := true;
+    //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
+    FDQuery1.ExecSQL('CREATE DATABASE IF NOT EXISTS star_wars;');
+    RESTResponse1.RootElement := '';
+    RESTRequest1.Execute;
+    if RESTClient1.Params[1].Value = '' then
+      if RESTResponse1.StatusCode = 200 then
+        begin
+          RESTResponse1.RootElement := 'results';
+        end;
+    jValue := RESTResponse1.JSONValue;
+    GlobalJValue := jValue;
+    dummyString := GlobalJValue.ToString;
+    MemoContent.Text := jValue.ToString;
+  end;
 
 procedure TForm5.ConnectClick(Sender: TObject);
 begin

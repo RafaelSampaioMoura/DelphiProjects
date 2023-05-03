@@ -121,26 +121,28 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
     end;
 
 procedure TForm5.Button1Click(Sender: TObject);
-var
-  jValue:TJSONValue;
-  dummyString: string;
-begin
-  Connect.Enabled := true;
-  FDConnection1.Connected := true;
-  //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
-  FDQuery1.ExecSQL('CREATE DATABASE IF NOT EXISTS star_wars;');
-  RESTResponse1.RootElement := '';
-  RESTRequest1.Execute;
-  if RESTClient1.Params[1].Value = '' then
-    if RESTResponse1.StatusCode = 200 then
-      begin
-        RESTResponse1.RootElement := 'results';
-      end;
-  jValue := RESTResponse1.JSONValue;
-  GlobalJValue := jValue;
-  dummyString := GlobalJValue.ToString;
-  MemoContent.Text := jValue.ToString;
-end;
+  var
+    jValue:TJSONValue;
+    jArr: TJSONArray;
+    dummyString: string;
+  begin
+    Connect.Enabled := true;
+    FDConnection1.Connected := true;
+    //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
+    FDQuery1.ExecSQL('CREATE DATABASE IF NOT EXISTS star_wars;');
+    RESTResponse1.RootElement := '';
+    RESTRequest1.Execute;
+    if RESTClient1.Params[1].Value = '' then
+      if RESTResponse1.StatusCode = 200 then
+        begin
+          RESTResponse1.RootElement := 'results';
+          jValue := RESTResponse1.JSONValue;
+        end;
+
+    GlobalJValue := jValue;
+    dummyString := GlobalJValue.ToString;
+    MemoContent.Text := jValue.ToString;
+  end;
 
 procedure TForm5.ConnectClick(Sender: TObject);
 begin
@@ -213,7 +215,6 @@ begin
       radioButton := Panel1.Children[i] as TRadioButton;
       if radioButton.IsChecked then begin
         currentTable := radioButton.Name;
-        ShowMessage(currentTable);
       end;
   end;
   // currentTable is used to create table with same name as the API endpoint
