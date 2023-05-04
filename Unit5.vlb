@@ -1,5 +1,5 @@
 ﻿[]
-Coordinates=132,1,96,58
+Coordinates=210,240,82,51
 Visible=True
 
 [Panel1]
@@ -32,9 +32,6 @@ Coordinates=400,10,113,51
 
 [BindingsList1]
 Coordinates=221,89,82,33
-
-[MemoContent]
-Coordinates=210,240,82,51
 
 [people]
 Coordinates=410,380,47,33

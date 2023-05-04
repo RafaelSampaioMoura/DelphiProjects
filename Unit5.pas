@@ -14,7 +14,7 @@ uses
   Data.Bind.Grid, FMX.Grid, Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, REST.Response.Adapter, FireDAC.UI.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
-  FireDAC.Phys.MySQLDef, FireDAC.FMXUI.Wait, FireDAC.DApt;
+  FireDAC.Phys.MySQLDef, FireDAC.FMXUI.Wait, FireDAC.DApt, FMX.TabControl;
 
 type
   TForm5 = class(TForm)
@@ -28,8 +28,6 @@ type
     BindSourceDB1: TBindSourceDB;
     GridBindSourceDB1: TGrid;
     BindingsList1: TBindingsList;
-    MemoContent: TMemo;
-    LinkControlToFieldContent: TLinkControlToField;
     people: TRadioButton;
     vehicles: TRadioButton;
     planets: TRadioButton;
@@ -48,6 +46,7 @@ type
     Edit1: TEdit;
     DatabaseQuery: TLabel;
     LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+    StarTabs: TTabControl;
     procedure Button1Click(Sender: TObject);
     procedure peopleClick(Sender: TObject);
     procedure planetsClick(Sender: TObject);
@@ -128,7 +127,6 @@ procedure TForm5.Button1Click(Sender: TObject);
     jArr: TJSONArray;
     dummyString: string;
   begin
-    Connect.Enabled := true;
     FDConnection1.Connected := true;
     //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
     FDQuery1.ExecSQL('CREATE DATABASE IF NOT EXISTS star_wars;');
