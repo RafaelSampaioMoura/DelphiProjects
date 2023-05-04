@@ -223,7 +223,7 @@ begin
   SQLQuery := Concat('CREATE TABLE IF NOT EXISTS ',
     currentTable, ' (jdoc JSON);');
   FDQuery1.ExecSQL(SQLQuery);
-  jsonString := QuotedStr(GlobalJValue.ToString).Replace('\n\r', '');
+  jsonString := QuotedStr(GlobalJValue.ToString).Replace('\r\n', '');
   ShowMessage(jsonString);
   SQLQuery := Concat('INSERT INTO ',
     currentTable, ' VALUES(', jsonString, ');');

@@ -23,41 +23,59 @@ object Form5: TForm5
     end
     object people: TRadioButton
       IsChecked = True
-      Position.X = 224.000000000000000000
+      Position.X = 160.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
       TabOrder = 1
       Text = 'People'
       OnClick = peopleClick
     end
     object vehicles: TRadioButton
-      Position.X = 224.000000000000000000
+      Position.X = 160.000000000000000000
       Position.Y = 16.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
       TabOrder = 2
       Text = 'Vehicles'
       OnClick = vehiclesClick
     end
     object planets: TRadioButton
-      Position.X = 224.000000000000000000
+      Position.X = 160.000000000000000000
       Position.Y = 32.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
       TabOrder = 3
       Text = 'Planets'
       OnClick = planetsClick
     end
     object films: TRadioButton
-      Position.X = 304.000000000000000000
+      Position.X = 232.000000000000000000
+      Size.Width = 65.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
       TabOrder = 4
       Text = 'Films'
       OnClick = filmsClick
     end
     object starships: TRadioButton
-      Position.X = 304.000000000000000000
+      Position.X = 232.000000000000000000
       Position.Y = 16.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
       TabOrder = 5
       Text = 'Starships'
       OnClick = starshipsClick
     end
     object species: TRadioButton
-      Position.X = 304.000000000000000000
+      Position.X = 232.000000000000000000
       Position.Y = 32.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
       TabOrder = 6
       Text = 'Species'
       OnClick = speciesClick
@@ -95,7 +113,7 @@ object Form5: TForm5
       object Edit1: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 4
-        Text = 'SELECT * FROM people;'
+        Text = 'SELECT * FROM t1;'
         Position.X = -4.000000000000000000
         Position.Y = 16.000000000000000000
       end
