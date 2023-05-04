@@ -2,7 +2,7 @@ object Form5: TForm5
   Left = 0
   Top = 0
   Caption = 'Form5'
-  ClientHeight = 347
+  ClientHeight = 345
   ClientWidth = 973
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -11,7 +11,7 @@ object Form5: TForm5
   object Panel1: TPanel
     Align = Top
     Size.Width = 973.000000000000000000
-    Size.Height = 161.000000000000000000
+    Size.Height = 105.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object Button1: TButton
@@ -83,7 +83,6 @@ object Form5: TForm5
       OnClick = speciesClick
     end
     object Connect: TButton
-      Enabled = False
       Position.X = 416.000000000000000000
       TabOrder = 7
       Text = 'Connect'
@@ -120,35 +119,30 @@ object Form5: TForm5
         Position.Y = 16.000000000000000000
       end
     end
+    object StarTabs: TTabControl
+      Position.Y = 72.000000000000000000
+      Size.Width = 489.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 27
+      TabPosition = PlatformDefault
+    end
   end
   object GridBindSourceDB1: TGrid
     Align = Client
     CanFocus = True
     ClipChildren = True
     Size.Width = 973.000000000000000000
-    Size.Height = 186.000000000000000000
+    Size.Height = 240.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 7
     RowCount = 0
     Viewport.Width = 969.000000000000000000
-    Viewport.Height = 161.000000000000000000
-  end
-  object MemoContent: TMemo
-    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-    DataDetectorTypes = []
-    TextSettings.WordWrap = True
-    Position.X = 8.000000000000000000
-    Position.Y = 104.000000000000000000
-    Size.Width = 969.000000000000000000
-    Size.Height = 50.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 9
-    Viewport.Width = 965.000000000000000000
-    Viewport.Height = 46.000000000000000000
+    Viewport.Height = 215.000000000000000000
   end
   object EditParamsid: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 17
+    TabOrder = 16
     KeyboardType = DecimalNumberPad
     Position.X = 192.000000000000000000
     Position.Y = 32.000000000000000000
@@ -260,13 +254,6 @@ object Form5: TForm5
     OutputConverters = <>
     Left = 20
     Top = 261
-    object LinkControlToFieldContent: TLinkControlToField
-      Category = 'Quick Bindings'
-      DataSource = RESTResponse1
-      FieldName = 'Content'
-      Control = MemoContent
-      Track = False
-    end
     object LinkControlToFieldParamsid: TLinkControlToField
       Category = 'Quick Bindings'
       DataSource = RESTClient1

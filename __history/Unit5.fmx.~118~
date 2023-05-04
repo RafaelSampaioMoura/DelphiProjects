@@ -2,7 +2,7 @@ object Form5: TForm5
   Left = 0
   Top = 0
   Caption = 'Form5'
-  ClientHeight = 347
+  ClientHeight = 345
   ClientWidth = 973
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -11,19 +11,20 @@ object Form5: TForm5
   object Panel1: TPanel
     Align = Top
     Size.Width = 973.000000000000000000
-    Size.Height = 161.000000000000000000
+    Size.Height = 105.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object Button1: TButton
-      Position.X = 56.000000000000000000
-      Position.Y = 24.000000000000000000
+      Position.X = 232.000000000000000000
+      Position.Y = 32.000000000000000000
       TabOrder = 0
       Text = 'Execute'
       OnClick = Button1Click
     end
     object people: TRadioButton
       IsChecked = True
-      Position.X = 160.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
       Size.Width = 73.000000000000000000
       Size.Height = 19.000000000000000000
       Size.PlatformDefault = False
@@ -32,8 +33,8 @@ object Form5: TForm5
       OnClick = peopleClick
     end
     object vehicles: TRadioButton
-      Position.X = 160.000000000000000000
-      Position.Y = 16.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 24.000000000000000000
       Size.Width = 73.000000000000000000
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
@@ -42,8 +43,8 @@ object Form5: TForm5
       OnClick = vehiclesClick
     end
     object planets: TRadioButton
-      Position.X = 160.000000000000000000
-      Position.Y = 32.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 40.000000000000000000
       Size.Width = 73.000000000000000000
       Size.Height = 19.000000000000000000
       Size.PlatformDefault = False
@@ -52,7 +53,8 @@ object Form5: TForm5
       OnClick = planetsClick
     end
     object films: TRadioButton
-      Position.X = 232.000000000000000000
+      Position.X = 80.000000000000000000
+      Position.Y = 8.000000000000000000
       Size.Width = 65.000000000000000000
       Size.Height = 19.000000000000000000
       Size.PlatformDefault = False
@@ -61,8 +63,8 @@ object Form5: TForm5
       OnClick = filmsClick
     end
     object starships: TRadioButton
-      Position.X = 232.000000000000000000
-      Position.Y = 16.000000000000000000
+      Position.X = 80.000000000000000000
+      Position.Y = 24.000000000000000000
       Size.Width = 81.000000000000000000
       Size.Height = 19.000000000000000000
       Size.PlatformDefault = False
@@ -71,8 +73,8 @@ object Form5: TForm5
       OnClick = starshipsClick
     end
     object species: TRadioButton
-      Position.X = 232.000000000000000000
-      Position.Y = 32.000000000000000000
+      Position.X = 80.000000000000000000
+      Position.Y = 40.000000000000000000
       Size.Width = 73.000000000000000000
       Size.Height = 19.000000000000000000
       Size.PlatformDefault = False
@@ -81,7 +83,6 @@ object Form5: TForm5
       OnClick = speciesClick
     end
     object Connect: TButton
-      Enabled = False
       Position.X = 416.000000000000000000
       TabOrder = 7
       Text = 'Connect'
@@ -118,38 +119,50 @@ object Form5: TForm5
         Position.Y = 16.000000000000000000
       end
     end
+    object StarTabs: TTabControl
+      Position.X = -8.000000000000000000
+      Position.Y = 80.000000000000000000
+      Size.Width = 57.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabIndex = 0
+      TabOrder = 26
+      TabPosition = PlatformDefault
+      Sizes = (
+        57s
+        0s)
+      object PeopleTab: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 74.000000000000000000
+        Size.Height = 26.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'PeopleTab'
+      end
+    end
   end
   object GridBindSourceDB1: TGrid
     Align = Client
     CanFocus = True
     ClipChildren = True
     Size.Width = 973.000000000000000000
-    Size.Height = 186.000000000000000000
+    Size.Height = 240.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 7
     RowCount = 0
     Viewport.Width = 969.000000000000000000
-    Viewport.Height = 161.000000000000000000
-  end
-  object MemoContent: TMemo
-    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-    DataDetectorTypes = []
-    TextSettings.WordWrap = True
-    Position.X = 8.000000000000000000
-    Position.Y = 104.000000000000000000
-    Size.Width = 969.000000000000000000
-    Size.Height = 50.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 9
-    Viewport.Width = 965.000000000000000000
-    Viewport.Height = 46.000000000000000000
+    Viewport.Height = 215.000000000000000000
   end
   object EditParamsid: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 17
+    TabOrder = 16
     KeyboardType = DecimalNumberPad
-    Position.X = 16.000000000000000000
-    Position.Y = 24.000000000000000000
+    Position.X = 192.000000000000000000
+    Position.Y = 32.000000000000000000
     Size.Width = 25.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
@@ -258,13 +271,6 @@ object Form5: TForm5
     OutputConverters = <>
     Left = 20
     Top = 261
-    object LinkControlToFieldContent: TLinkControlToField
-      Category = 'Quick Bindings'
-      DataSource = RESTResponse1
-      FieldName = 'Content'
-      Control = MemoContent
-      Track = False
-    end
     object LinkControlToFieldParamsid: TLinkControlToField
       Category = 'Quick Bindings'
       DataSource = RESTClient1

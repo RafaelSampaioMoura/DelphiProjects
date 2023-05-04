@@ -120,11 +120,13 @@ object Form5: TForm5
       end
     end
     object StarTabs: TTabControl
-      Position.Y = 72.000000000000000000
-      Size.Width = 489.000000000000000000
+      Position.X = -8.000000000000000000
+      Position.Y = 80.000000000000000000
+      Size.Width = 57.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 27
+      TabIndex = 0
+      TabOrder = 26
       TabPosition = PlatformDefault
     end
   end
