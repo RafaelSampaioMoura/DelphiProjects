@@ -78,6 +78,8 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonString: string;
         jsonArr: TJSONArray;
         jsonItem: TJSONObject;
+        jsonValue: TJSONValue;
+        LDateTimeVar: TDateTime;
         i: Integer;
         j: Integer;
         dummyString: string;
@@ -96,40 +98,50 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         // appends the data to the table;
         for i := 0 to jsonArr.Count -1 do begin
           jsonItem := jsonArr.Items[i] as TJSonObject;
-          for j := 0 to MemTable.Fields.Count -1 do
-            begin
-              MemTable.Edit;
+          for j := 0 to MemTable.Fields.Count - 1 do begin
+            MemTable.Edit;
+            // gets the JSONValue from the object
+            jsonValue := jsonItem.GetValue(MemTable.FieldDefs[j].Name);
+            // checks if JSONValue is in TDataTime format by converting the return
+            if jsonValue.TryGetValue<TDateTime>(LDateTimeVar) then begin
+              // if the above is true, adds returning value to field as a DateTime format
+              MemTable.Fields[j].AsDateTime
+                := jsonItem.GetValue<TDateTime>(MemTable.FieldDefs[j].Name);
+            end
+            else begin
               MemTable.Fields[j].AsString
-                := jsonItem.GetValue(MemTable.FieldDefs[j].Name).Value;
+              := jsonItem.GetValue(MemTable.FieldDefs[j].Name).Value;
             end;
+
+          end;
+           MemTable.Append;
         end;
-
-
         MemTable.Post;
         // shows data on the table
     end;
 
 procedure TForm5.Button1Click(Sender: TObject);
-var
-  jValue:TJSONValue;
-  dummyString: string;
-begin
-  Connect.Enabled := true;
-  FDConnection1.Connected := true;
-  //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
-  FDQuery1.ExecSQL('CREATE DATABASE IF NOT EXISTS star_wars;');
-  RESTResponse1.RootElement := '';
-  RESTRequest1.Execute;
-  if RESTClient1.Params[1].Value = '' then
-    if RESTResponse1.StatusCode = 200 then
-      begin
-        RESTResponse1.RootElement := 'results';
-      end;
-  jValue := RESTResponse1.JSONValue;
-  GlobalJValue := jValue;
-  dummyString := GlobalJValue.ToString;
-  MemoContent.Text := jValue.ToString;
-end;
+  var
+    jValue:TJSONValue;
+    jArr: TJSONArray;
+    dummyString: string;
+  begin
+    Connect.Enabled := true;
+    FDConnection1.Connected := true;
+    //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
+    FDQuery1.ExecSQL('CREATE DATABASE IF NOT EXISTS star_wars;');
+    RESTResponse1.RootElement := '';
+    RESTRequest1.Execute;
+    if RESTClient1.Params[1].Value = '' then
+      if RESTResponse1.StatusCode = 200 then
+        begin
+          RESTResponse1.RootElement := 'results';
+        end;
+    jValue := RESTResponse1.JSONValue;
+    GlobalJValue := jValue;
+    dummyString := GlobalJValue.ToString.Replace('\', '');
+    MemoContent.Text := jValue.ToString.Replace('\', '');
+  end;
 
 procedure TForm5.ConnectClick(Sender: TObject);
 begin
@@ -188,22 +200,31 @@ end;
 procedure TForm5.SaveToDatabaseClick(Sender: TObject);
 var
   SQLQuery: string;
+  jsonString: string;
   i: Integer;
   radioButton: TRadioButton;
 begin
+  // initiates variable to avoid access violation error
+  radioButton := vehicles;
+  //for loop with two if conditions
+  //first if checks if the current child of Panel1 is a radio button
+  //second if checks if the radio button is checked
+  //if both are true, stores name of checked button on currentTable global variable
   for i := 0 to Panel1.ChildrenCount - 1 do begin
     if Panel1.Children[i].ClassType = TRadioButton then
       radioButton := Panel1.Children[i] as TRadioButton;
       if radioButton.IsChecked then begin
         currentTable := radioButton.Name;
-        ShowMessage(currentTable);
       end;
   end;
-  SQLQuery := Concat('DROP TABLE IF EXISTS ', people.Text, ';');
+  // currentTable is used to create table with same name as the API endpoint
+  SQLQuery := Concat('CREATE TABLE IF NOT EXISTS ',
+    currentTable, ' (jdoc JSON);');
   FDQuery1.ExecSQL(SQLQuery);
-  SQLQuery := Concat('CREATE TABLE ', people.Text, ' (jdoc JSON);');
-  FDQuery1.ExecSQL(SQLQuery);
-  SQLQuery := Concat('INSERT INTO ', people.Text, ' VALUES(', QuotedStr(GlobalJValue.ToString), ');');
+  jsonString := QuotedStr(GlobalJValue.ToString).Replace('\n\r', '');
+  ShowMessage(jsonString);
+  SQLQuery := Concat('INSERT INTO ',
+    currentTable, ' VALUES(', jsonString, ');');
   FDQuery1.SQL.Text := SQLQuery;
   FDQuery1.ExecSQL;
   Connect.Enabled := false;

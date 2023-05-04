@@ -92,11 +92,13 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonString := Query.FieldByName('jdoc').AsString;
         jsonArr := TJSonObject.ParseJSONValue(jsonString) as TJSONArray;
         // preps the table to receive the data
+        MemTable.Free;
+        MemTable := TFDMemTable.Create(Table);
         MemTable.Close;
         MemTable.CreateDataSet;
         MemTable.Open;
         MemTable.Insert;
-        MemTable.ClearDetails;
+        MemTable.ClearFields;
         // appends the data to the table;
         for i := 0 to jsonArr.Count -1 do begin
           jsonItem := jsonArr.Items[i] as TJSonObject;

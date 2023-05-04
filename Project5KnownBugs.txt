@@ -1,5 +1,7 @@
 #1 When data is fetched from endpoints Vehicle, Planets Starships, and Species, the 'unknown' value in cost_in_credits means the global variable GlobalJValue does not store the JSON string.
 
-#2 The invalid escape characters in the return of the Films endpoint means the JSON string cannot be stored in MySQL.
+#2 (Solved) The invalid escape characters in the return of the Films endpoint means the JSON string cannot be stored in MySQL.
 
-#3 Invalid Date data means the full JSON table is not shown on the grid.
+#3 (Solved) Invalid Date data means the full JSON table is not shown on the grid.
+
+#4 Differences in structures on the JSON Return value causing Access Violations.

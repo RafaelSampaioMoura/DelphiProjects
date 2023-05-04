@@ -92,33 +92,35 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonString := Query.FieldByName('jdoc').AsString;
         jsonArr := TJSonObject.ParseJSONValue(jsonString) as TJSONArray;
         // preps the table to receive the data
-        MemTable.Close;
-        MemTable.CreateDataSet;
-        MemTable.Open;
-        MemTable.Insert;
-        MemTable.ClearDetails;
+        MemTable.Free;
+        MemTable := TFDMemTable.Create(Table);
+        Table.Close;
+        Table.CreateDataSet;
+        Table.Open;
+        Table.Insert;
+        Table.ClearFields;
         // appends the data to the table;
         for i := 0 to jsonArr.Count -1 do begin
           jsonItem := jsonArr.Items[i] as TJSonObject;
           for j := 0 to MemTable.Fields.Count - 1 do begin
-            MemTable.Edit;
+            Table.Edit;
             // gets the JSONValue from the object
             jsonValue := jsonItem.GetValue(MemTable.FieldDefs[j].Name);
             // checks if JSONValue is in TDataTime format by converting the return
             if jsonValue.TryGetValue<TDateTime>(LDateTimeVar) then begin
               // if the above is true, adds returning value to field as a DateTime format
-              MemTable.Fields[j].AsDateTime
+              Table.Fields[j].AsDateTime
                 := jsonItem.GetValue<TDateTime>(MemTable.FieldDefs[j].Name);
             end
             else begin
-              MemTable.Fields[j].AsString
+              Table.Fields[j].AsString
               := jsonItem.GetValue(MemTable.FieldDefs[j].Name).Value;
             end;
 
           end;
-           MemTable.Append;
+           Table.Append;
         end;
-        MemTable.Post;
+        Table.Post;
         // shows data on the table
     end;
 
