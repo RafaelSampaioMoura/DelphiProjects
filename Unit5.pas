@@ -125,7 +125,9 @@ procedure TForm5.Button1Click(Sender: TObject);
   var
     jValue:TJSONValue;
     jArr: TJSONArray;
+    tabNumber: Integer;
   begin
+    tabNumber := StarTabs.TabCount;
     FDConnection1.Connected := true;
     //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
     FDQuery1.ExecSQL('CREATE DATABASE IF NOT EXISTS star_wars;');
@@ -139,7 +141,8 @@ procedure TForm5.Button1Click(Sender: TObject);
     jValue := RESTResponse1.JSONValue;
     GlobalJValue := jValue;
     StarTabs.Add();
-    StarTabs.Tabs[0].Name := 'NewTab';
+    StarTabs.Tabs[StarTabs.TabCount - 1].Name := 'NewTab' + IntToStr(tabNumber);
+
   end;
 
 procedure InserJSONIntoTable(panel: TPanel; activeButton: TRadioButton; Query: TFDQuery);
