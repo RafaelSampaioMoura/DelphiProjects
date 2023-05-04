@@ -142,6 +142,37 @@ procedure TForm5.Button1Click(Sender: TObject);
     StarTabs.Tabs[0].Name := 'NewTab';
   end;
 
+procedure InserJSONIntoTable(panel: TPanel; activeButton: TRadioButton; Query: TFDQuery);
+var
+  SQLQuery: string;
+  jsonString: string;
+  i: Integer;
+  radioButton: TRadioButton;
+begin
+  //for loop with two if conditions
+  //first if checks if the current child of Panel1 is a radio button
+  //second if checks if the radio button is checked
+  //if both are true, stores name of checked button on currentTable global variable
+  for i := 0 to panel.ChildrenCount - 1 do begin
+    if panel.Children[i].ClassType = TRadioButton then
+      radioButton := panel.Children[i] as TRadioButton;
+      if radioButton.IsChecked then begin
+        currentTable := radioButton.Name;
+      end;
+  end;
+  // currentTable is used to create table with same name as the API endpoint
+  SQLQuery := Concat('CREATE TABLE IF NOT EXISTS ',
+    currentTable, ' (jdoc JSON);');
+  Query.ExecSQL(SQLQuery);
+  jsonString := QuotedStr(GlobalJValue.ToString).Replace('\r\n', '');
+  ShowMessage(jsonString);
+  SQLQuery := Concat('INSERT INTO ',
+    currentTable, ' VALUES(', jsonString, ');');
+  Query.SQL.Text := SQLQuery;
+  Query.ExecSQL;
+  //Connect.Enabled := false;
+end;
+
 procedure TForm5.ConnectClick(Sender: TObject);
 begin
 
