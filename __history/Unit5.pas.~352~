@@ -14,7 +14,7 @@ uses
   Data.Bind.Grid, FMX.Grid, Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, REST.Response.Adapter, FireDAC.UI.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
-  FireDAC.Phys.MySQLDef, FireDAC.FMXUI.Wait, FireDAC.DApt;
+  FireDAC.Phys.MySQLDef, FireDAC.FMXUI.Wait, FireDAC.DApt, FMX.TabControl;
 
 type
   TForm5 = class(TForm)
@@ -28,8 +28,6 @@ type
     BindSourceDB1: TBindSourceDB;
     GridBindSourceDB1: TGrid;
     BindingsList1: TBindingsList;
-    MemoContent: TMemo;
-    LinkControlToFieldContent: TLinkControlToField;
     people: TRadioButton;
     vehicles: TRadioButton;
     planets: TRadioButton;
@@ -48,6 +46,7 @@ type
     Edit1: TEdit;
     DatabaseQuery: TLabel;
     LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+    StarTabs: TTabControl;
     procedure Button1Click(Sender: TObject);
     procedure peopleClick(Sender: TObject);
     procedure planetsClick(Sender: TObject);
@@ -80,6 +79,7 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         jsonItem: TJSONObject;
         jsonValue: TJSONValue;
         LDateTimeVar: TDateTime;
+        Table: TFDMemTable;
         i: Integer;
         j: Integer;
         dummyString: string;
@@ -95,6 +95,7 @@ procedure InjectJSONIntoTable(Query: TFDQuery; MemTable: TFDMemTable; Edit: TEdi
         MemTable.CreateDataSet;
         MemTable.Open;
         MemTable.Insert;
+        MemTable.ClearDetails;
         // appends the data to the table;
         for i := 0 to jsonArr.Count -1 do begin
           jsonItem := jsonArr.Items[i] as TJSonObject;
@@ -124,9 +125,7 @@ procedure TForm5.Button1Click(Sender: TObject);
   var
     jValue:TJSONValue;
     jArr: TJSONArray;
-    dummyString: string;
   begin
-    Connect.Enabled := true;
     FDConnection1.Connected := true;
     //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
     FDQuery1.ExecSQL('CREATE DATABASE IF NOT EXISTS star_wars;');
@@ -139,8 +138,8 @@ procedure TForm5.Button1Click(Sender: TObject);
         end;
     jValue := RESTResponse1.JSONValue;
     GlobalJValue := jValue;
-    dummyString := GlobalJValue.ToString.Replace('\', '');
-    MemoContent.Text := jValue.ToString.Replace('/n/r', '');
+    StarTabs.Add();
+    StarTabs.Tabs[0].Name := 'NewTab';
   end;
 
 procedure TForm5.ConnectClick(Sender: TObject);
@@ -221,7 +220,7 @@ begin
   SQLQuery := Concat('CREATE TABLE IF NOT EXISTS ',
     currentTable, ' (jdoc JSON);');
   FDQuery1.ExecSQL(SQLQuery);
-  jsonString := QuotedStr(GlobalJValue.ToString).Replace('/n/r', '');
+  jsonString := QuotedStr(GlobalJValue.ToString).Replace('\r\n', '');
   ShowMessage(jsonString);
   SQLQuery := Concat('INSERT INTO ',
     currentTable, ' VALUES(', jsonString, ');');

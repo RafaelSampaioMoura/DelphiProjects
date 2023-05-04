@@ -125,7 +125,6 @@ procedure TForm5.Button1Click(Sender: TObject);
   var
     jValue:TJSONValue;
     jArr: TJSONArray;
-    dummyString: string;
   begin
     FDConnection1.Connected := true;
     //FDQuery1.ExecSQL('DROP DATABASE IF EXISTS star_wars;');
@@ -139,8 +138,8 @@ procedure TForm5.Button1Click(Sender: TObject);
         end;
     jValue := RESTResponse1.JSONValue;
     GlobalJValue := jValue;
-    dummyString := GlobalJValue.ToString.Replace('\', '');
-    MemoContent.Text := jValue.ToString.Replace('\r\n', '');
+    StarTabs.Add();
+    StarTabs.Tabs[0].Name := 'NewTab';
   end;
 
 procedure TForm5.ConnectClick(Sender: TObject);

@@ -3,82 +3,85 @@ Coordinates=210,240,82,51
 Visible=True
 
 [Panel1]
-Coordinates=410,310,47,33
+Coordinates=410,310,55,36
 
 [Button1]
-Coordinates=410,250,53,51
+Coordinates=410,250,59,58
 
 [RESTRequest1]
-Coordinates=10,-10,88,87
+Coordinates=10,-10,103,102
 
 [RESTResponseDataSetAdapter1]
-Coordinates=202,71,174,33
+Coordinates=202,71,205,36
 
 [FDMemTable1]
-Coordinates=221,1,84,33
+Coordinates=221,1,99,36
 Visible=False
 
 [RESTClient1]
-Coordinates=370,70,84,105
+Coordinates=370,70,100,124
 
 [RESTResponse1]
-Coordinates=10,200,96,303
+Coordinates=10,200,113,366
 
 [BindSourceDB1]
-Coordinates=250,-10,92,177
+Coordinates=250,-10,106,212
 
 [GridBindSourceDB1]
-Coordinates=400,10,113,51
+Coordinates=400,10,130,58
 
 [BindingsList1]
-Coordinates=221,89,82,33
+Coordinates=221,89,91,36
 
 [people]
-Coordinates=410,380,47,33
+Coordinates=410,380,53,36
 
 [vehicles]
-Coordinates=410,430,54,33
+Coordinates=410,430,61,36
 
 [planets]
-Coordinates=410,480,50,33
+Coordinates=410,480,56,36
 
 [EditParamsid]
-Coordinates=550,120,80,51
+Coordinates=550,120,91,58
 
 [idSelector]
-Coordinates=630,280,64,51
+Coordinates=630,280,72,58
 
 [films]
-Coordinates=500,380,40,33
+Coordinates=500,380,41,36
 
 [starships]
-Coordinates=500,430,60,33
+Coordinates=500,430,66,36
 
 [species]
-Coordinates=500,480,52,33
+Coordinates=500,480,58,36
 
 [SaveToDatabase]
-Coordinates=630,420,96,51
+Coordinates=630,420,113,58
 
 [FDConnection1]
-Coordinates=265,524,90,33
+Coordinates=265,524,104,36
 
 [Connect]
-Coordinates=630,350,55,51
+Coordinates=630,350,62,58
 
 [BindSourceDB2]
-Coordinates=393,470,92,69
+Coordinates=393,470,106,80
 
 [FDQuery1]
-Coordinates=240,400,63,33
+Coordinates=240,400,73,36
 Visible=True
 
 [Return]
-Coordinates=132,100,47,51
+Coordinates=132,100,53,58
 
 [Edit1]
-Coordinates=590,60,40,51
+Coordinates=590,60,44,58
 
 [DatabaseQuery]
-Coordinates=132,1,89,51
+Coordinates=132,1,104,58
+
+[StarTabs]
+Coordinates=63,111,67,36
 

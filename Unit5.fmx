@@ -2,7 +2,7 @@ object Form5: TForm5
   Left = 0
   Top = 0
   Caption = 'Form5'
-  ClientHeight = 347
+  ClientHeight = 345
   ClientWidth = 973
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -125,12 +125,12 @@ object Form5: TForm5
     CanFocus = True
     ClipChildren = True
     Size.Width = 973.000000000000000000
-    Size.Height = 186.000000000000000000
+    Size.Height = 184.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 7
     RowCount = 0
     Viewport.Width = 969.000000000000000000
-    Viewport.Height = 161.000000000000000000
+    Viewport.Height = 159.000000000000000000
   end
   object EditParamsid: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -149,10 +149,9 @@ object Form5: TForm5
     end
   end
   object StarTabs: TTabControl
-    Position.X = 8.000000000000000000
-    Position.Y = 64.000000000000000000
+    Position.Y = 136.000000000000000000
     Size.Width = 489.000000000000000000
-    Size.Height = 81.000000000000000000
+    Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 27
     TabPosition = PlatformDefault
