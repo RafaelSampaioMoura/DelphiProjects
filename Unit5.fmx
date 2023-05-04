@@ -83,7 +83,6 @@ object Form5: TForm5
       OnClick = speciesClick
     end
     object Connect: TButton
-      Enabled = False
       Position.X = 416.000000000000000000
       TabOrder = 7
       Text = 'Connect'
